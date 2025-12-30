@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 03:28:42 by ncaravac         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:17:16 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_list
 {
-	void				*content;
+	long				content;
 	struct s_list		*next;
 }	t_list;
 
@@ -29,11 +29,11 @@ int		check_num(char **argv);
 int		check_minmax(char **argv);
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(long value);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
-long	*ft_atol(char *argv_char);
+long	ft_atol(char *argv_char);
 
 // Simple
 void	simple(t_list **stack_a, t_list **stack_b);

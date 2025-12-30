@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 04:10:35 by ncaravac         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:19:39 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ float	index_error(int n, t_list *stack_a)
 		tmp = stack_a->next;
 		while (tmp)
 		{
-			if (*(long *)stack_a->content > *(long *)tmp->content)
+			if (stack_a->content > tmp->content)
 				errors++;
 			tmp = tmp->next;
 		}
@@ -38,7 +38,6 @@ float	index_error(int n, t_list *stack_a)
 
 void	free_list(t_list *stack_a)
 {
-	int	i;
 	t_list	*tmp;
 
 	if (!stack_a)
@@ -46,14 +45,12 @@ void	free_list(t_list *stack_a)
 	while (stack_a)
 	{
 		tmp = stack_a->next;
-		free(stack_a->content);
 		free(stack_a);
 		stack_a = tmp;
 	}
-	free(stack_a);
 }
 
-int	for_argv(int argc, char **argv, t_list *stack_a, t_list *stack_b)
+int	for_argv(int argc, char **argv, t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node;
 	int		i;
@@ -61,18 +58,21 @@ int	for_argv(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 	i = 0;
 	if (!check_num(argv) || !check_minmax(argv))
 		return (printf("Error\n"), 0);
+	*stack_a = NULL;
+	*stack_b = NULL;
 	i = 1;
 	while (i < argc)
 	{
 		node = ft_lstnew(ft_atol(argv[i]));
 		if (!node)
 			return (0);
-		ft_lstadd_back(&stack_a, node);
+		ft_lstadd_back(stack_a, node);
 		i++;
 	}
-	index_error(i, stack_a);
-	simple(&stack_a, &stack_b);
-	free_list(stack_a);
+	index_error(i, *stack_a);
+	simple(stack_a, stack_b);
+	free_list(*stack_a);
+	*stack_a = NULL;
 	return (1);
 }
 
@@ -88,7 +88,7 @@ void	free_split(char **split)
 	free(split);
 }
 
-int	for_split(int argc, char **argv, t_list *stack_a, t_list *stack_b)
+int	for_split(char **argv, t_list *stack_a)
 {
 	char	**split;
 	t_list	*node;
@@ -128,8 +128,8 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (printf("Error\n"), 0);
 	else if (argc == 2)
-		for_split(argc, argv, stack_a, stack_b);
+		for_split(argv, stack_a);
 	else if (argc > 2)
-		for_argv(argc, argv, stack_a, stack_b);
+		for_argv(argc, argv, &stack_a, &stack_b);
 	return (0);
 }

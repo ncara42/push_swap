@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
+/*   Updated: 2025/12/30 15:20:53 by vvan-ach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	get_min(t_list *stack_a)
@@ -8,14 +20,14 @@ int	get_min(t_list *stack_a)
 
 	if (!stack_a)
 		return (0);
-	min = *(long *)stack_a->content;
+	min = stack_a->content;
 	pos_min = 0;
 	pos_current = 0;
 	while (stack_a)
 	{
-		if (*(long *)stack_a->content < min)
+		if (stack_a->content < min)
 		{
-			min = *(long *)stack_a->content;
+			min = stack_a->content;
 			pos_min = pos_current;
 		}
 		stack_a = stack_a->next;
@@ -29,32 +41,23 @@ void	simple(t_list **stack_a, t_list **stack_b)
 	int	nodes;
 	int	pos_min;
 	
-	while (ft_lstsize(*stack_a) > 0)
+	while (*stack_a) // mientras hay algo en el stack_a
 	{
-		pos_min = get_min(*stack_a);
-		nodes = ft_lstsize(*stack_a);
-		if (pos_min <= nodes / 2)
+		pos_min = get_min(*stack_a); // el lugar del mas pequeno
+		nodes = ft_lstsize(*stack_a); // el tamano del stack_a
+		if (pos_min <= nodes / 2) // poner el mas pequeno arriba de todo
 		{
-			while (pos_min > 0)
-			{
+			while (pos_min--) // hacia arriba hasta que sea el primero
 				ra(stack_a);
-				pos_min--;
-			}
 		}
 		else
 		{
-			while (pos_min < nodes)
-			{
+			while (nodes - pos_min++) // hacia abajo hasta que se convierta del ultimo al primero
 				rra(stack_a);
-				pos_min++;
-			}
 		}
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b); // push el primero en el stack_b
 	}
 
-	while (ft_lstsize(*stack_b) > 0)
-	{
-		nodes = ft_lstsize(*stack_b);
-		pa(stack_a, stack_b);
-	}
+	while (*stack_b)
+		pa(stack_a, stack_b); // push todo del stack_b en el a (orden invertido)
 }
