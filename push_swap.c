@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 15:19:39 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2025/12/30 18:47:54 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	free_list(t_list *stack_a)
 	}
 }
 
-int	for_argv(int argc, char **argv, t_list **stack_a, t_list **stack_b)
+int	for_argv(int argc, char **argv, t_list **stack_a)
 {
 	t_list	*node;
 	int		i;
@@ -59,7 +59,6 @@ int	for_argv(int argc, char **argv, t_list **stack_a, t_list **stack_b)
 	if (!check_num(argv) || !check_minmax(argv))
 		return (printf("Error\n"), 0);
 	*stack_a = NULL;
-	*stack_b = NULL;
 	i = 1;
 	while (i < argc)
 	{
@@ -70,9 +69,6 @@ int	for_argv(int argc, char **argv, t_list **stack_a, t_list **stack_b)
 		i++;
 	}
 	index_error(i, *stack_a);
-	simple(stack_a, stack_b);
-	free_list(*stack_a);
-	*stack_a = NULL;
 	return (1);
 }
 
@@ -88,7 +84,7 @@ void	free_split(char **split)
 	free(split);
 }
 
-int	for_split(char **argv, t_list *stack_a)
+int	for_split(char **argv, t_list **stack_a)
 {
 	char	**split;
 	t_list	*node;
@@ -109,12 +105,11 @@ int	for_split(char **argv, t_list *stack_a)
 		if (!node)
 			return (0);
 		free(split[i]);
-		ft_lstadd_back(&stack_a, node);
+		ft_lstadd_back(stack_a, node);
 		i++;
 	}
 	free(split);
-	index_error(i, stack_a);
-	free_list(stack_a);
+	index_error(i, *stack_a);
 	return (1);
 }
 
@@ -128,8 +123,11 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (printf("Error\n"), 0);
 	else if (argc == 2)
-		for_split(argv, stack_a);
+		for_split(argv, &stack_a);
 	else if (argc > 2)
-		for_argv(argc, argv, &stack_a, &stack_b);
+		for_argv(argc, argv, &stack_a);
+	medium(&stack_a, &stack_b);
+	free_list(stack_a);
+	free_list(stack_b);
 	return (0);
 }
