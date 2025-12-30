@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 18:17:07 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2025/12/30 22:20:15 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_chunks
 {
 	long	**chunks;
 	size_t	*sizes;
-	size_t count;
-} t_chunks;
+	size_t	count;
+}	t_chunks;
 
 // Functions
 int		check_num(char **argv);
@@ -42,6 +42,7 @@ t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 long	ft_atol(char *argv_char);
 size_t	int_sqrt(size_t n);
+void	sort_three(t_list **stack_a);
 
 // Simple
 void	simple(t_list **stack_a, t_list **stack_b);
@@ -54,5 +55,8 @@ void	rra(t_list **stack_a);
 void	ra(t_list **stack_a);
 void	pb(t_list **stack_a, t_list **stack_b);
 void	pa(t_list **stack_a, t_list **stack_b);
+void	sa(t_list **stack_a);
+void	sb(t_list **stack_b);
+void	ss(t_list **stack_a, t_list **stack_b);
 
 #endif

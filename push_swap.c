@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 18:47:54 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2025/12/30 22:49:44 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ float	index_error(int n, t_list *stack_a)
 		}
 		stack_a = stack_a->next;
 	}
-	index = (float)errors / even_total;
+	index = (float)errors / (float)even_total;
+	printf("%f\n", index);
 	return (index);
 }
 

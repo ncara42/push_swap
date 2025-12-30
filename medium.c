@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2025/12/30 18:44:30 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2025/12/30 22:50:44 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,15 @@ void	medium(t_list **stack_a, t_list **stack_b)
 	{
 		j = 0;
 		while (j < chunksmx->sizes[i])
-			moveandpushb(stack_a, stack_b, getindex(chunksmx->chunks[i][j++], *stack_a));
+		{
+			if (ft_lstsize(*stack_a) > 3)
+				moveandpushb(stack_a, stack_b, getindex(chunksmx->chunks[i][j++], *stack_a));
+			else
+				j++;
+		}
 		i++;
 	}
+	sort_three(stack_a);
 	while (*stack_b)
 		pa(stack_a, stack_b);
 	freechunks(chunksmx);

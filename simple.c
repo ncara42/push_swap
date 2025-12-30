@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2025/12/30 15:20:53 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2025/12/30 22:47:56 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	simple(t_list **stack_a, t_list **stack_b)
 	int	nodes;
 	int	pos_min;
 	
-	while (*stack_a) // mientras hay algo en el stack_a
+	while (ft_lstsize(*stack_a) > 3) // mientras hay algo en el stack_a
 	{
 		pos_min = get_min(*stack_a); // el lugar del mas pequeno
 		nodes = ft_lstsize(*stack_a); // el tamano del stack_a
@@ -57,7 +57,7 @@ void	simple(t_list **stack_a, t_list **stack_b)
 		}
 		pb(stack_a, stack_b); // push el primero en el stack_b
 	}
-
+	sort_three(stack_a);
 	while (*stack_b)
 		pa(stack_a, stack_b); // push todo del stack_b en el a (orden invertido)
 }
