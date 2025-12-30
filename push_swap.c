@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 01:12:08 by ncaravac         ###   ########.fr       */
+/*   Updated: 2025/12/30 03:22:41 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	free_list(t_list *stack_a)
 	free(stack_a);
 }
 
-int	for_argv(int argc, char **argv, t_list *stack_a)
+int	for_argv(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 {
 	t_list	*node;
 	int		i;
@@ -74,7 +74,7 @@ int	for_argv(int argc, char **argv, t_list *stack_a)
 		i++;
 	}
 	index_error(i, stack_a);
-	simple(&stack_a, argc);
+	simple(&stack_a, &stack_b);
 	free_list(stack_a);
 	return (1);
 }
@@ -91,7 +91,7 @@ void	free_split(char **split)
 	free(split);
 }
 
-int	for_split(int argc, char **argv, t_list *stack_a)
+int	for_split(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 {
 	char	**split;
 	t_list	*node;
@@ -124,13 +124,15 @@ int	for_split(int argc, char **argv, t_list *stack_a)
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
+	t_list	*stack_b;
 
 	stack_a = NULL;
+	stack_b = NULL;
 	if (argc == 1)
 		return (printf("Error\n"), 0);
 	else if (argc == 2)
-		for_split(argc, argv, stack_a);
+		for_split(argc, argv, stack_a, stack_b);
 	else if (argc > 2)
-		for_argv(argc, argv, stack_a);
+		for_argv(argc, argv, stack_a, stack_b);
 	return (0);
 }
