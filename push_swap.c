@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 03:22:41 by ncaravac         ###   ########.fr       */
+/*   Updated: 2025/12/30 04:10:35 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ float	index_error(int n, t_list *stack_a)
 		stack_a = stack_a->next;
 	}
 	index = (float)errors / even_total;
-	printf("%f\n", index);
 	return (index);
 }
 
@@ -62,8 +61,6 @@ int	for_argv(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 	i = 0;
 	if (!check_num(argv) || !check_minmax(argv))
 		return (printf("Error\n"), 0);
-	else
-		printf("OK\n");
 	i = 1;
 	while (i < argc)
 	{

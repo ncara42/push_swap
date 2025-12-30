@@ -21,7 +21,6 @@ int	get_min(t_list *stack_a)
 		stack_a = stack_a->next;
 		pos_current++;
 	}
-	printf("%d\n", pos_min);
 	return (pos_min);
 }
 

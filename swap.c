@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 02:21:05 by vvan-ach          #+#    #+#             */
-/*   Updated: 2025/12/30 02:44:37 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2025/12/30 04:06:40 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sa(t_list **stack_a)
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_list **stack_a)
+void	sb(t_list **stack_b)
 {
 	swap(stack_b);
 	write(1, "sb\n", 3);
