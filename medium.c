@@ -6,13 +6,13 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2025/12/30 22:50:44 by ncaravac         ###   ########.fr       */
+/*   Updated: 2025/12/31 09:48:09 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	bubblesort(long	*arr, size_t size)
+void	bubblesort(long	*arr, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -36,35 +36,33 @@ static void	bubblesort(long	*arr, size_t size)
 	}
 }
 
-static long	*getsortedarr(t_list *stack)
+long	*getsortedarr(t_list *stack, int len)
 {
 	long	*arr;
-	size_t	i;
-	size_t	size;
+	int		i;
 
-	size = ft_lstsize(stack);
-	arr = malloc(size * sizeof(long));
+	arr = malloc(len * sizeof(long));
 	if (!arr)
 		return (NULL);
 	i = 0;
-	while (stack)
+	while (i < len && stack)
 	{
 		arr[i] = stack->content;
 		stack = stack->next;
 		i++;
 	}
-	bubblesort(arr, size);
+	bubblesort(arr, len);
 	return (arr);
 }
 
 t_chunks	*divideinchunks(long *tmparr, size_t size)
 {
 	t_chunks	*res;
-	size_t	rest;
-	size_t	i;
-	size_t	j;
-	size_t	k;
-	size_t	chunkamount;
+	size_t		rest;
+	size_t		i;
+	size_t		j;
+	size_t		k;
+	size_t		chunkamount;
 
 	chunkamount = (size_t)int_sqrt(size);
 	rest = size % chunkamount;
@@ -156,9 +154,9 @@ void	medium(t_list **stack_a, t_list **stack_b)
 
 	if (!stack_a || !*stack_a)
 		return ;
-	size = ft_lstsize(*stack_a);
-	tmparr = getsortedarr(*stack_a);
-	chunksmx = divideinchunks(tmparr, size);
+	size = ft_lstsize(*stack_a); // Tamano del stack_a
+	tmparr = getsortedarr(*stack_a, ft_lstsize(*stack_a));  // Array ordenado, numeros del stack_a
+	chunksmx = divideinchunks(tmparr, size); // Chunk 1, chunk 2, chunk 3...
 	if (!chunksmx)
 		return ;
 	i = 0;
@@ -180,3 +178,4 @@ void	medium(t_list **stack_a, t_list **stack_b)
 	freechunks(chunksmx);
 	free(tmparr);
 }
+

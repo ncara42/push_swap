@@ -9,7 +9,6 @@ void	sort_three(t_list **stack_a)
 	first = (*stack_a)->content;
 	second = (*stack_a)->next->content;
 	third = (*stack_a)->next->next->content;
-	// 3 1 2
 	if (first > second && second < third && first < third)
 		sa(stack_a);
 	else if (first > second && second > third)

@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 22:20:15 by ncaravac         ###   ########.fr       */
+/*   Updated: 2025/12/31 09:50:45 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,26 @@ int		ft_lstsize(t_list *lst);
 long	ft_atol(char *argv_char);
 size_t	int_sqrt(size_t n);
 void	sort_three(t_list **stack_a);
+void sort_three_b(t_list **stack_a, t_list **stack_b, int len);
+
 
 // Simple
 void	simple(t_list **stack_a, t_list **stack_b);
 
 // Medium
 void	medium(t_list **stack_a, t_list **stack_b);
+long	*getsortedarr(t_list *stack, int len);
+
+// Complex
+void	complex(t_list **stack_a, t_list **stack_b, int len);
+void    complex_b(t_list **stack_a, t_list **stack_b, int pushed);
+void	sort_three_complex(t_list **stack_a, t_list **stack_b, int pushed);
 
 // Movements
 void	rra(t_list **stack_a);
+void	rrb(t_list **stack_b);
 void	ra(t_list **stack_a);
+void	rb(t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
 void	pa(t_list **stack_a, t_list **stack_b);
 void	sa(t_list **stack_a);

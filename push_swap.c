@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2025/12/30 22:49:44 by ncaravac         ###   ########.fr       */
+/*   Updated: 2025/12/31 09:32:17 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ float	index_error(int n, t_list *stack_a)
 		stack_a = stack_a->next;
 	}
 	index = (float)errors / (float)even_total;
-	printf("%f\n", index);
 	return (index);
 }
 
@@ -127,7 +126,7 @@ int	main(int argc, char **argv)
 		for_split(argv, &stack_a);
 	else if (argc > 2)
 		for_argv(argc, argv, &stack_a);
-	medium(&stack_a, &stack_b);
+	complex(&stack_a, &stack_b, ft_lstsize(stack_a));
 	free_list(stack_a);
 	free_list(stack_b);
 	return (0);

@@ -5,6 +5,8 @@ void	ra(t_list **stack_a)
 	t_list	*first;
 	t_list	*last;
 
+	if (!stack_a || !*stack_a|| !(*stack_a)->next)
+		return ;
 	first = *stack_a;
 	*stack_a = first->next;
 	first->next = NULL;
@@ -20,6 +22,8 @@ void	rra(t_list **stack_a)
 	t_list	*last;
 	t_list	*tmp;
 
+	if (!stack_a || !*stack_a|| !(*stack_a)->next)
+		return ;
 	tmp = *stack_a;
 	while (tmp->next)
 	{
