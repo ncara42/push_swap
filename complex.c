@@ -2,7 +2,7 @@
 
 void	complex(t_list **stack_a, t_list **stack_b, int len)
 {
-	long	pivot; // Numero pivote (mitad del stack > pivot <)
+	long	pivot;
 	long	*arr;
 	int		i;
 	int		pushed;
@@ -10,6 +10,8 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 	if (len <= 3)
 	{
 		sort_three_complex(stack_a, stack_b, len);
+		
+		
 		return ;
 	}
 	arr = getsortedarr(*stack_a, len);
@@ -22,16 +24,16 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 	ra_count = 0;
 	while (i < len) 
 	{
-		if ((*stack_a)->content <= pivot) // Si N es <= pivot...
+		if ((*stack_a)->content <= pivot)
 		{
 			pb(stack_a, stack_b);
-			pushed++;		  // ... haz un push a B
+			pushed++;
 		}
-		else if ((*stack_a)->content > pivot)// Si es mas grande...
+		else if ((*stack_a)->content > pivot)
 		{
 			ra(stack_a);
 			ra_count++;
-		}				  // ... rota para ver el siguiente
+		}
 		i++;
 	}
 
@@ -41,14 +43,9 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 		ra_count--;
 	}
 
-/*---------------------------------------------------------------------------*/
-
-
 	complex(stack_a, stack_b, len - pushed);
 	complex_b(stack_a, stack_b, pushed);
 }
-
-/*---------------------------------------------------------------------------*/
 
 void	complex_b(t_list **stack_a, t_list **stack_b, int len)
 {
@@ -72,12 +69,12 @@ void	complex_b(t_list **stack_a, t_list **stack_b, int len)
 	pushed = 0;
 	while (i < len)
 	{
-		if ((*stack_b)->content >= pivot) // Si N es <= pivot...
+		if ((*stack_b)->content >= pivot)
 		{
 			pa(stack_a, stack_b);
 			pushed++;
 		}
-		else if ((*stack_b)->content < pivot)// Si es mas grande...
+		else if ((*stack_b)->content < pivot)
 		{
 			rb(stack_b);
 			rb_count++;
@@ -90,8 +87,6 @@ void	complex_b(t_list **stack_a, t_list **stack_b, int len)
 		rrb(stack_b);
 		rb_count--;
 	}
-
-/*---------------------------------------------------------------------------*/
 
 	complex(stack_a, stack_b, pushed);
 	complex_b(stack_a, stack_b, len - pushed);
