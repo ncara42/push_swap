@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/02 17:58:07 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/02 17:58:33 by vvan-ach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_three(t_list **stack_a)
 {
-	long first;
-	long second;
-	long third;
+	long	first;
+	long	second;
+	long	third;
 
 	first = (*stack_a)->content;
 	second = (*stack_a)->next->content;

@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   bubblesort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 16:21:42 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 16:21:47 by vvan-ach         ###   ########.fr       */
+/*   Created: 2026/01/02 16:28:42 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/02 16:29:23 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(char *argv_char)
+void	bubblesort(long	*arr, size_t size)
 {
-	int		i;
-	int		sign;
-	long	result;
+	size_t	i;
+	size_t	j;
+	long	tmp;
 
-	sign = 1;
-	result = 0;
 	i = 0;
-	while (argv_char[i])
+	while (i < size - 1)
 	{
-		if (argv_char[i] == '-' || argv_char[i] == '+')
+		j = 0;
+		while (j < size - i - 1)
 		{
-			if (argv_char[i] == '-')
-				sign = -1;
-			i++;
+			if (arr[j] > arr[j + 1])
+			{
+				tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+			}
+			j++;
 		}
-		result = result * 10 + (argv_char[i] - '0');
 		i++;
 	}
-	return (result * sign);
 }

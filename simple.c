@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2025/12/30 22:47:56 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:57:49 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,24 @@ void	simple(t_list **stack_a, t_list **stack_b)
 {
 	int	nodes;
 	int	pos_min;
-	
-	while (ft_lstsize(*stack_a) > 3) // mientras hay algo en el stack_a
+
+	while (ft_lstsize(*stack_a) > 3)
 	{
-		pos_min = get_min(*stack_a); // el lugar del mas pequeno
-		nodes = ft_lstsize(*stack_a); // el tamano del stack_a
-		if (pos_min <= nodes / 2) // poner el mas pequeno arriba de todo
+		pos_min = get_min(*stack_a);
+		nodes = ft_lstsize(*stack_a);
+		if (pos_min <= nodes / 2)
 		{
-			while (pos_min--) // hacia arriba hasta que sea el primero
+			while (pos_min--)
 				ra(stack_a);
 		}
 		else
 		{
-			while (nodes - pos_min++) // hacia abajo hasta que se convierta del ultimo al primero
+			while (nodes - pos_min++)
 				rra(stack_a);
 		}
-		pb(stack_a, stack_b); // push el primero en el stack_b
+		pb(stack_a, stack_b);
 	}
 	sort_three(stack_a);
 	while (*stack_b)
-		pa(stack_a, stack_b); // push todo del stack_b en el a (orden invertido)
+		pa(stack_a, stack_b);
 }

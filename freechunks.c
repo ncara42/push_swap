@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   freechunks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 16:21:42 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 16:21:47 by vvan-ach         ###   ########.fr       */
+/*   Created: 2026/01/02 16:30:24 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/02 18:06:54 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(char *argv_char)
+void	freechunks(t_chunks *chunks)
 {
-	int		i;
-	int		sign;
-	long	result;
+	size_t	i;
 
-	sign = 1;
-	result = 0;
+	if (!chunks)
+		return ;
 	i = 0;
-	while (argv_char[i])
-	{
-		if (argv_char[i] == '-' || argv_char[i] == '+')
-		{
-			if (argv_char[i] == '-')
-				sign = -1;
-			i++;
-		}
-		result = result * 10 + (argv_char[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	while (i < chunks->count)
+		free(chunks->chunks[i++]);
+	free(chunks->chunks);
+	free(chunks->sizes);
+	free(chunks);
 }

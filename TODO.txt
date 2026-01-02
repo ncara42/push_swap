@@ -1,0 +1,16 @@
+
+> OPTIONS;
+
+	> --bench
+	> --adaptive
+	> --simple
+	> --medium
+	> --complex
+
+> OPTIMISATIONS
+
+> NORMINETTE
+
+(que bestia noel, no queda mucho mas, yo haré las opciones si quieres,
+ he arreglado un poco el codigo para norminette, y dividido las funciones,
+ pero me queda algunas cosas por hacer, primero haré las opciones, y luego limpiamos todo)

@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 02:21:05 by vvan-ach          #+#    #+#             */
-/*   Updated: 2025/12/30 04:06:40 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:03:46 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	swap(t_list **stack)
 	first = *stack;
 	second = first->next;
 	first->next = second->next;
-	second->next =first;
+	second->next = first;
 	*stack = second;
 }
 

@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   freelist.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 16:21:42 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 16:21:47 by vvan-ach         ###   ########.fr       */
+/*   Created: 2026/01/02 16:14:20 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/02 16:14:36 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(char *argv_char)
+void	free_list(t_list *stack_a)
 {
-	int		i;
-	int		sign;
-	long	result;
+	t_list	*tmp;
 
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (argv_char[i])
+	if (!stack_a)
+		return ;
+	while (stack_a)
 	{
-		if (argv_char[i] == '-' || argv_char[i] == '+')
-		{
-			if (argv_char[i] == '-')
-				sign = -1;
-			i++;
-		}
-		result = result * 10 + (argv_char[i] - '0');
-		i++;
+		tmp = stack_a->next;
+		free(stack_a);
+		stack_a = tmp;
 	}
-	return (result * sign);
 }

@@ -6,98 +6,11 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2025/12/31 09:48:09 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/02 16:44:00 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	bubblesort(long	*arr, size_t size)
-{
-	size_t	i;
-	size_t	j;
-	long	tmp;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		j = 0;
-		while (j < size - i - 1)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				tmp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = tmp;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-long	*getsortedarr(t_list *stack, int len)
-{
-	long	*arr;
-	int		i;
-
-	arr = malloc(len * sizeof(long));
-	if (!arr)
-		return (NULL);
-	i = 0;
-	while (i < len && stack)
-	{
-		arr[i] = stack->content;
-		stack = stack->next;
-		i++;
-	}
-	bubblesort(arr, len);
-	return (arr);
-}
-
-t_chunks	*divideinchunks(long *tmparr, size_t size)
-{
-	t_chunks	*res;
-	size_t		rest;
-	size_t		i;
-	size_t		j;
-	size_t		k;
-	size_t		chunkamount;
-
-	chunkamount = (size_t)int_sqrt(size);
-	rest = size % chunkamount;
-		res = malloc(sizeof(t_chunks));
-	if (!res)
-		return (NULL);
-	if (rest)
-		res->count = chunkamount + 1;
-	else
-		res->count = chunkamount;
-	res->chunks = malloc(res->count * sizeof(long *));
-	res->sizes = malloc(res->count * sizeof(size_t));
-	if (!res->chunks || !res->sizes)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (i < chunkamount)
-	{
-		res->sizes[i] = chunkamount;
-		res->chunks[i] = malloc(chunkamount * sizeof(long));
-		k = 0;
-		while (k < chunkamount)
-			res->chunks[i][k++] = tmparr[j++];
-		i++;
-	}
-	if (rest)
-	{
-		k = 0;
-		res->sizes[i] = rest;
-		res->chunks[i] = malloc(rest * sizeof(long));
-		while (k < rest)
-			res->chunks[i][k++] = tmparr[j++];
-	}
-	return (res);
-}
 
 static ssize_t	getindex(long chunkvalue, t_list *stack_a)
 {
@@ -130,33 +43,19 @@ void	moveandpushb(t_list **stack_a, t_list **stack_b, size_t index)
 	pb(stack_a, stack_b);
 }
 
-void	freechunks(t_chunks *chunks)
-{
-	size_t	i;
-	if (!chunks)
-		return ;
-
-	i = 0;
-	while (i < chunks->count)
-		free(chunks->chunks[i++]);
-	free(chunks->chunks);
-	free(chunks->sizes);
-	free(chunks);
-}
-
 void	medium(t_list **stack_a, t_list **stack_b)
 {
-	size_t	size;
-	size_t	i;
-	size_t	j;
-	long	*tmparr;
+	size_t		size;
+	size_t		i;
+	size_t		j;
+	long		*tmparr;
 	t_chunks	*chunksmx;
 
 	if (!stack_a || !*stack_a)
 		return ;
-	size = ft_lstsize(*stack_a); // Tamano del stack_a
-	tmparr = getsortedarr(*stack_a, ft_lstsize(*stack_a));  // Array ordenado, numeros del stack_a
-	chunksmx = divideinchunks(tmparr, size); // Chunk 1, chunk 2, chunk 3...
+	size = ft_lstsize(*stack_a);
+	tmparr = getsortedarr(*stack_a, ft_lstsize(*stack_a));
+	chunksmx = divideinchunks(*stack_a);
 	if (!chunksmx)
 		return ;
 	i = 0;
@@ -166,9 +65,8 @@ void	medium(t_list **stack_a, t_list **stack_b)
 		while (j < chunksmx->sizes[i])
 		{
 			if (ft_lstsize(*stack_a) > 3)
-				moveandpushb(stack_a, stack_b, getindex(chunksmx->chunks[i][j++], *stack_a));
-			else
-				j++;
+				moveandpushb(stack_a, stack_b, getindex(chunksmx->chunks[i][j], *stack_a));
+			j++;
 		}
 		i++;
 	}
@@ -178,4 +76,3 @@ void	medium(t_list **stack_a, t_list **stack_b)
 	freechunks(chunksmx);
 	free(tmparr);
 }
-
