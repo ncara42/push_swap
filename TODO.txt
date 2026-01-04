@@ -7,9 +7,23 @@
 	> --medium
 	> --complex
 
+		++ sistema de parsing de las opciones y del stack hacercho.
+		-- Funciones para elegir lo que pasa segun las opciones.
+
+
+
+
+
+
 > OPTIMISATIONS
 
 > NORMINETTE
+
+
+
+
+
+
 
 (que bestia noel, no queda mucho mas, yo haré las opciones si quieres,
  he arreglado un poco el codigo para norminette, y dividido las funciones,

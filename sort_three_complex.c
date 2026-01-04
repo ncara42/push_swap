@@ -6,7 +6,7 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 17:58:54 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 18:02:41 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/04 01:09:43 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	sort_three_b(t_list **stack_a, t_list **stack_b, int len)
 	}
 }
 
-void	sort_three_complex(t_list **stack, t_list **stack2, int pushed)
+void	sort_three_c(t_list **stack, t_list **stack2, int pushed)
 {
 	if (pushed == 3 && ft_lstsize(*stack) == 3)
 		sort_three(stack);

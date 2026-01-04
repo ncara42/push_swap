@@ -6,54 +6,28 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:22:28 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 18:06:19 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/03 23:14:58 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_r(char **argv)
+int	check_num(char *str)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	while (argv[i])
-	{
-		j = i + 1;
-		while (argv[j])
-		{
-			if (ft_strcmp(argv[i], argv[j]) == 0)
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	check_num(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i])
-	{
-		j = 0;
-		if (argv[i][j] == '-' || argv[i][j] == '+')
-			j++;
-		if (argv[i][j] == '\0')
-			return (0);
-		while (argv[i][j])
-		{
-			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	if (!check_r(argv))
+	if (!str)
 		return (0);
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
 	return (1);
 }

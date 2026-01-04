@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freelist.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 16:14:20 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 01:40:37 by vvan-ach         ###   ########.fr       */
+/*   Created: 2026/01/03 23:20:38 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/03 23:22:04 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_list(t_list *stack_a)
+size_t	ft_strlen(const char *str)
 {
-	t_list	*tmp;
+	size_t	len;
 
-	if (!stack_a)
-		return ;
-	while (stack_a)
-	{
-		tmp = stack_a->next;
-		free(stack_a);
-		stack_a = tmp;
-	}
-}
-
-void	freeall(t_list **stack_a, t_list **stack_b, t_options **options)
-{
-	free_list(*stack_a);
-	free_list(*stack_b);
-	if (*options)
-	{
-		free((*options)->options);
-		free(*options);
-	}
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

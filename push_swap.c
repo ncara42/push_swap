@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/02 18:05:22 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/04 01:41:42 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,38 @@ float	index_error(int n, t_list *stack_a)
 	return (index);
 }
 
-int	for_argv(int argc, char **argv, t_list **stack_a)
+int	parsestack(int argc, char **argv, t_list **stack_a)
 {
 	t_list	*node;
 	int		i;
+	int		count;
+	int		parsing_numbers;
 
-	i = 0;
-	if (!check_num(argv) || !check_minmax(argv))
-		return (printf("Error\n"), 0);
 	*stack_a = NULL;
 	i = 1;
+	count = 0;
+	parsing_numbers = 1;
 	while (i < argc)
 	{
+		if (ft_strcmp(argv[i], "--bench") == 0
+			|| (argv[i][0] == '-' && argv[i][1] == '-'))
+		{
+			parsing_numbers = 0;
+			i++;
+			continue ;
+		}
+		if (!check_num(argv[i]) || !check_minmax(argv[i]))
+			return (write(1, "Error\n", 6), 0);
+		if (parsing_numbers == 0)
+			return (write(1, "Error\n", 6), 0);
 		node = ft_lstnew(ft_atol(argv[i]));
 		if (!node)
 			return (0);
 		ft_lstadd_back(stack_a, node);
+		count++;
 		i++;
 	}
-	index_error(i, *stack_a);
+	index_error(count, *stack_a);
 	return (1);
 }
 
@@ -78,42 +91,51 @@ int	for_split(char **argv, t_list **stack_a)
 
 	i = 0;
 	split = ft_split(argv[1], ' ');
-	if (!check_num(split) || !check_minmax(split))
-	{
-		free_split(split);
-		return (printf("Error\n"), 0);
-	}
-	else
-		printf("OK\n");
+	if (!split)
+		return (0);
 	while (split[i])
 	{
-		node = ft_lstnew(ft_atol(split[i]));
-		if (!node)
-			return (0);
-		free(split[i]);
-		ft_lstadd_back(stack_a, node);
+		if (!check_num(split[i]) || !check_minmax(split[i]))
+			return (free_split(split), write(1, "Error\n", 6), 0);
 		i++;
 	}
-	free(split);
+	i = 0;
+	while (split[i])
+	{
+		node = ft_lstnew(ft_atol(split[i++]));
+		if (!node)
+			return (free_split(split), 0);
+		ft_lstadd_back(stack_a, node);
+	}
+	free_split(split);
 	index_error(i, *stack_a);
 	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list		*stack_a;
+	t_list		*stack_b;
+	t_options	*options;
 
 	stack_a = NULL;
 	stack_b = NULL;
+	options = NULL;
 	if (argc == 1)
-		return (printf("Error\n"), 0);
-	else if (argc == 2)
-		for_split(argv, &stack_a);
-	else if (argc > 2)
-		for_argv(argc, argv, &stack_a);
-	medium(&stack_a, &stack_b);
-	free_list(stack_a);
-	free_list(stack_b);
+		return (write(1, "Error\n", 6), 0);
+	if (argc == 2)
+	{
+		if (!for_split(argv, &stack_a))
+			return (0);
+	}
+	else
+	{
+		if (!parsestack(argc, argv, &stack_a))
+			return (0);
+		if (parseoptions(argc, argv, &options) == 3 || options->count > 2)
+			return (write(1, "Wrong options usage\n", 20), 0);
+	}
+	chooseandusealgo(&stack_a, &stack_b, &options);
+	freeall(&stack_a, &stack_b, &options);
 	return (0);
 }

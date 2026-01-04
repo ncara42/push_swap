@@ -6,7 +6,7 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 16:21:02 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/04 01:10:30 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 
 	if (len <= 3)
 	{
-		sort_three_complex(stack_a, stack_b, len);
+		sort_three_c(stack_a, stack_b, len);
 		return ;
 	}
 	arr = getsortedarr(*stack_a, len);
