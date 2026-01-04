@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 17:57:49 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:33:45 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	simple(t_list **stack_a, t_list **stack_b)
 		}
 		pb(stack_a, stack_b);
 	}
-	sort_three(stack_a);
+	sort_three_a(stack_a);
 	while (*stack_b)
 		pa(stack_a, stack_b);
 }

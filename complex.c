@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 01:10:30 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:35:30 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 {
 	long	pivot;
 	long	*arr;
-	int		i;
 	int		pushed;
-	int		ra_count;
 
 	if (len <= 3)
 	{
-		sort_three_c(stack_a, stack_b, len);
+		sort_three(stack_a, stack_b, len);
 		return ;
 	}
 	arr = getsortedarr(*stack_a, len);
@@ -30,6 +28,17 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 		return ;
 	pivot = arr[len / 2];
 	free(arr);
+	pushed = complex_a_next(stack_a, stack_b, len, pivot);
+	complex(stack_a, stack_b, len - pushed);
+	complex_b(stack_a, stack_b, pushed);
+}
+
+int	complex_a_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
+{
+	int		i;
+	int		pushed;
+	int		ra_count;
+
 	i = 0;
 	pushed = 0;
 	ra_count = 0;
@@ -47,23 +56,18 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 		}
 		i++;
 	}
-	while (ra_count > 0)
-	{
+	while (ra_count-- > 0)
 		rra(stack_a);
-		ra_count--;
-	}
-	complex(stack_a, stack_b, len - pushed);
-	complex_b(stack_a, stack_b, pushed);
+	return (pushed);
 }
 
 void	complex_b(t_list **stack_a, t_list **stack_b, int len)
 {
 	long	pivot;
 	long	*arr;
-	int		i;
 	int		pushed;
-	int		rb_count;
 
+	pushed = 0;
 	if (len <= 3)
 	{
 		sort_three_b(stack_a, stack_b, len);
@@ -74,6 +78,17 @@ void	complex_b(t_list **stack_a, t_list **stack_b, int len)
 		return ;
 	pivot = arr[len / 2];
 	free(arr);
+	pushed = complex_b_next(stack_a, stack_b, len, pivot);
+	complex(stack_a, stack_b, pushed);
+	complex_b(stack_a, stack_b, len - pushed);
+}
+
+int	complex_b_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
+{
+	int		i;
+	int		pushed;
+	int		rb_count;
+
 	i = 0;
 	rb_count = 0;
 	pushed = 0;
@@ -91,11 +106,7 @@ void	complex_b(t_list **stack_a, t_list **stack_b, int len)
 		}
 		i++;
 	}
-	while (rb_count > 0)
-	{
+	while (rb_count-- > 0)
 		rrb(stack_b);
-		rb_count--;
-	}
-	complex(stack_a, stack_b, pushed);
-	complex_b(stack_a, stack_b, len - pushed);
+	return (pushed);
 }

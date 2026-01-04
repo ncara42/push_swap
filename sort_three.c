@@ -3,38 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 17:58:07 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 17:58:33 by vvan-ach         ###   ########.fr       */
+/*   Created: 2026/01/02 17:58:54 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/04 15:31:37 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_list **stack_a)
+void	sort_three_top(t_list **stack, t_list **stack2)
+{
+	sort_three_top_next(stack, stack2);
+	sort_three_top_next_next(stack, stack2);
+}
+
+void	sort_three_top_next(t_list **stack, t_list **stack2)
 {
 	long	first;
 	long	second;
 	long	third;
 
-	first = (*stack_a)->content;
-	second = (*stack_a)->next->content;
-	third = (*stack_a)->next->next->content;
+	first = (*stack)->content;
+	second = (*stack)->next->content;
+	third = (*stack)->next->next->content;
 	if (first > second && second < third && first < third)
-		sa(stack_a);
-	else if (first > second && second > third)
-	{
-		sa(stack_a);
-		rra(stack_a);
-	}
+		sa(stack);
 	else if (first > second && second < third && first > third)
-		ra(stack_a);
-	else if (first < second && second > third && first < third)
 	{
-		sa(stack_a);
-		ra(stack_a);
+		sa(stack);
+		pb(stack, stack2);
+		sa(stack);
+		pa(stack, stack2);
 	}
 	else if (first < second && second > third && first > third)
-		rra(stack_a);
+	{
+		pb(stack, stack2);
+		sa(stack);
+		pa(stack, stack2);
+		sa(stack);
+	}
+}
+
+void	sort_three_top_next_next(t_list **stack, t_list **stack2)
+{
+	long	first;
+	long	second;
+	long	third;
+
+	first = (*stack)->content;
+	second = (*stack)->next->content;
+	third = (*stack)->next->next->content;
+	if (first < second && second > third && first < third)
+	{
+		pb(stack, stack2);
+		sa(stack);
+		pa(stack, stack2);
+	}
+	else if (first > second && second > third)
+	{
+		sa(stack);
+		pb(stack, stack2);
+		sa(stack);
+		pa(stack, stack2);
+		sa(stack);
+	}
+}
+
+void	sort_three(t_list **stack, t_list **stack2, int pushed)
+{
+	if (pushed == 3 && ft_lstsize(*stack) == 3)
+		sort_three_a(stack);
+	else if (pushed == 3)
+		sort_three_top(stack, stack2);
+	else if (pushed == 2)
+	{
+		if ((*stack)->content > (*stack)->next->content)
+			sa(stack);
+	}
 }

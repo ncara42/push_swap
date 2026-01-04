@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_num.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:22:28 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/03 23:14:58 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:29:25 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	check_minmax(char *str)
+{
+	long	num;
+
+	if (!str)
+		return (0);
+	num = ft_atol(str);
+	if (num < INT_MIN || num > INT_MAX)
+		return (0);
+	return (1);
+}
 
 int	check_num(char *str)
 {

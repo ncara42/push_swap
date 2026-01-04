@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 01:23:15 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:35:12 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	domediummoves(t_list **stack_a, t_list **stack_b, t_chunks **chunks)
 		}
 		i++;
 	}
-	sort_three(stack_a);
+	sort_three_a(stack_a);
 	while (*stack_b)
 		pa(stack_a, stack_b);
 }

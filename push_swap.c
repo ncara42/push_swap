@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/04 01:41:42 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:38:18 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,51 +36,42 @@ float	index_error(int n, t_list *stack_a)
 	return (index);
 }
 
-int	parsestack(int argc, char **argv, t_list **stack_a)
+int	add_node(char *argv, t_list **stack_a)
 {
 	t_list	*node;
-	int		i;
-	int		count;
-	int		parsing_numbers;
+
+	if (!check_num(argv) || !check_minmax(argv))
+		return (0);
+	node = ft_lstnew(ft_atol(argv));
+	if (!node)
+		return (0);
+	ft_lstadd_back(stack_a, node);
+	return (1);
+}
+
+int	parsestack(int argc, char **argv, t_list **stack_a)
+{
+	int	i;
+	int	count;
 
 	*stack_a = NULL;
 	i = 1;
 	count = 0;
-	parsing_numbers = 1;
 	while (i < argc)
 	{
-		if (ft_strcmp(argv[i], "--bench") == 0
-			|| (argv[i][0] == '-' && argv[i][1] == '-'))
+		if (argv[i][0] == '-' && argv[i][1] == '-')
 		{
-			parsing_numbers = 0;
 			i++;
 			continue ;
 		}
-		if (!check_num(argv[i]) || !check_minmax(argv[i]))
-			return (write(1, "Error\n", 6), 0);
-		if (parsing_numbers == 0)
-			return (write(1, "Error\n", 6), 0);
-		node = ft_lstnew(ft_atol(argv[i]));
-		if (!node)
-			return (0);
-		ft_lstadd_back(stack_a, node);
+		if (!add_node(argv[i], stack_a))
+			return (write(2, "Error\n", 6), 0);
 		count++;
 		i++;
 	}
-	index_error(count, *stack_a);
+	if (count > 1)
+		index_error(count, *stack_a);
 	return (1);
-}
-
-void	free_split(char **split)
-{
-	int	i;
-
-	if (!split)
-		return ;
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
 }
 
 int	for_split(char **argv, t_list **stack_a)
@@ -123,19 +114,17 @@ int	main(int argc, char **argv)
 	options = NULL;
 	if (argc == 1)
 		return (write(1, "Error\n", 6), 0);
-	if (argc == 2)
+	else if (argc == 2)
 	{
 		if (!for_split(argv, &stack_a))
 			return (0);
 	}
-	else
+	else if (argc > 2)
 	{
 		if (!parsestack(argc, argv, &stack_a))
 			return (0);
-		if (parseoptions(argc, argv, &options) == 3 || options->count > 2)
-			return (write(1, "Wrong options usage\n", 20), 0);
 	}
-	chooseandusealgo(&stack_a, &stack_b, &options);
+	complex(&stack_a, &stack_b, ft_lstsize(stack_a));
 	freeall(&stack_a, &stack_b, &options);
 	return (0);
 }
