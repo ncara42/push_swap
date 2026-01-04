@@ -6,24 +6,25 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 14:47:18 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/04 16:26:24 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int usealgo(enum e_option option, t_list **stack_a, t_list **stack_b)
+int	usealgo(enum e_option option, t_list **stack_a, t_list **stack_b)
 {
-    if (option == SIMPLE)
-        simple(stack_a, stack_b);
-    else if (option == MEDIUM)
-        medium(stack_a, stack_b);
-    else if (option == COMPLEX)
-        complex(stack_a, stack_b, ft_lstsize(*stack_a));
-    return (0);
+	if (option == SIMPLE)
+		simple(stack_a, stack_b);
+	else if (option == MEDIUM)
+		medium(stack_a, stack_b);
+	else if (option == COMPLEX)
+		complex(stack_a, stack_b, ft_lstsize(*stack_a));
+	return (0);
 }
 
-/*int	chooseandusealgo(t_list **stack_a, t_list **stack_b, t_options **options)
+/*int	chooseandusealgo(t_list **stack_a, t_list **stack_b,
+			t_options **options)
 {
 	size_t			i;
 	int				bench;
