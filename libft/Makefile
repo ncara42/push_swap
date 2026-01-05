@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 11:54:06 by ncaravac          #+#    #+#              #
-#    Updated: 2026/01/05 23:26:39 by admin            ###   ########.fr        #
+#    Updated: 2026/01/05 23:50:15 by admin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all: ${NAME}
 
 ${NAME}: ${OBJ}
 	@ar rcs ${NAME} ${OBJ}
-	@echo "Libft compiled!"
+	@echo "LIBFT COMPILED!"
 
 $(OBJS_DIR)/%.o: srcs/%.c Makefile includes/libft.h
 	@mkdir -p ${OBJS_DIR}

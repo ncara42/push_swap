@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/05 23:34:41 by admin            ###   ########.fr        #
+#    Updated: 2026/01/05 23:53:08 by admin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,31 +50,33 @@ OBJS = $(SRCS:srcs/%.c=$(OBJS_DIR)/%.o)
 all: $(NAME)
 
 $(NAME):  $(LIBFT) $(PRINTF) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+	@echo "PUSH_SWAP COMPILED!"
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 
 $(PRINTF):
-	make -C $(PRINTF_DIR)
+	@make -C $(PRINTF_DIR)
 
 debug: $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) -g -O0 $(CFLAGS) $(SRCS) -o $(DNAME)
+	@$(CC) -g -O0 $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(DNAME)
+	@echo "PUSH_SWAP DEBUG COMPILED!"
 
 $(OBJS_DIR)/%.o: srcs/%.c Makefile includes/push_swap.h
 	@mkdir -p ${OBJS_DIR}
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "Compiling: $<"
 
 clean:
-	rm -rf $(OBJS_DIR)
-	make -C $(LIBFT_DIR) clean
-	make -C $(PRINTF_DIR) clean
+	@rm -rf $(OBJS_DIR)
+	@make -C $(LIBFT_DIR) clean
+	@make -C $(PRINTF_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
-	make -C $(PRINTF_DIR) fclean
+	@rm -f $(NAME) $(DNAME)
+	@make -C $(LIBFT_DIR) fclean
+	@make -C $(PRINTF_DIR) fclean
 
 re : fclean all
 
