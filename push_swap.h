@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/05 19:41:59 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:24:21 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,14 @@ void			bench_medium(t_list **stack_a, t_list **stack_b, float d,
 					int adapt);
 void			bench_simple(t_list **stack_a, t_list **stack_b, float d,
 					int adapt);
-void			bench_complex(t_list **a, t_list **b, size_t size, float d,
-					int adapt);
+void			bench_complex(t_list **stack_a, t_list **stack_b, int len,
+					float d, t_stats **s, int adapt, int noelesgay);
+int				bench_complex_a_next(t_list **stack_a, t_list **stack_b,
+					int len, long pivot, t_stats **stats);
+void			bench_complex_b(t_list **stack_a, t_list **stack_b, int len,
+					float d, t_stats **stats, int adapt);
+int				bench_complex_b_next(t_list **stack_a, t_list **stack_b,
+					int len, long pivot, t_stats **stats);
 void			gettotalcount(t_stats **stats);
 
 // Movements

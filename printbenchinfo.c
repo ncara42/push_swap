@@ -6,7 +6,7 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:59:06 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 19:46:45 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:25:55 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	printbenchinfo(t_stats **stats, float d, t_optype opt)
 	else if ((*stats)->algo == MEDIUM)
 		write(1, "Medium / O(n√n)\n", 18);
 	else if ((*stats)->algo == COMPLEX)
-		write(1, "Complex / O(n log n)\n", 20);
+		write(1, "Complex / O(n log n)\n", 21);
 	else if ((*stats)->algo == ADAPTIVE)
 	{
 		write(1, "Adaptive / ", 11);

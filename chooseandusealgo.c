@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 19:28:33 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:23:58 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,11 @@ void	whichalgo(t_optype opt, int bench, t_list **a, t_list **b, int adapt)
 			medium(a, b);
 	}
 	else if (opt == COMPLEX)
-	{
-		/*
+	{	
 		if (bench)
-			bench_complex(a, b, ft_lstsize(*a), d, adapt);
+			bench_complex(a, b, ft_lstsize(*a), d, NULL, adapt, 1);
 		else
 			complex(a, b, ft_lstsize(*a));
-			*/
-		write(1, "Noel gay", 8);
 	}
 	else
 		calculateandusedisorderalgo(d, a, b, bench);
