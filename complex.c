@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 15:35:30 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:05:24 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 
 	if (len <= 3)
 	{
-		sort_three(stack_a, stack_b, len);
+		sort_three(stack_a, stack_b, len, 0, NULL);
 		return ;
 	}
 	arr = getsortedarr(*stack_a, len);
@@ -46,18 +46,18 @@ int	complex_a_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
 	{
 		if ((*stack_a)->content <= pivot)
 		{
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, 0);
 			pushed++;
 		}
 		else if ((*stack_a)->content > pivot)
 		{
-			ra(stack_a);
+			ra(stack_a, 0);
 			ra_count++;
 		}
 		i++;
 	}
 	while (ra_count-- > 0)
-		rra(stack_a);
+		rra(stack_a, 0);
 	return (pushed);
 }
 
@@ -70,7 +70,7 @@ void	complex_b(t_list **stack_a, t_list **stack_b, int len)
 	pushed = 0;
 	if (len <= 3)
 	{
-		sort_three_b(stack_a, stack_b, len);
+		sort_three_b(stack_a, stack_b, len, 0, NULL);
 		return ;
 	}
 	arr = getsortedarr(*stack_b, len);
@@ -96,17 +96,17 @@ int	complex_b_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
 	{
 		if ((*stack_b)->content >= pivot)
 		{
-			pa(stack_a, stack_b);
+			pa(stack_a, stack_b, 0);
 			pushed++;
 		}
 		else if ((*stack_b)->content < pivot)
 		{
-			rb(stack_b);
+			rb(stack_b, 0);
 			rb_count++;
 		}
 		i++;
 	}
 	while (rb_count-- > 0)
-		rrb(stack_b);
+		rrb(stack_b, 0);
 	return (pushed);
 }

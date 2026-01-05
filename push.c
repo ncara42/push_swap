@@ -6,13 +6,13 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 17:54:13 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/02 17:54:31 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/05 14:25:40 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb(t_list **stack_a, t_list **stack_b)
+void	pb(t_list **stack_a, t_list **stack_b, int bench)
 {
 	t_list	*tmp;
 
@@ -22,10 +22,11 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	*stack_a = tmp->next;
 	tmp->next = *stack_b;
 	*stack_b = tmp;
-	write(1, "pb\n", 3);
+	if (!bench)
+		write(1, "pb\n", 3);
 }
 
-void	pa(t_list **stack_a, t_list **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b, int bench)
 {
 	t_list	*tmp;
 
@@ -35,5 +36,6 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	*stack_b = tmp->next;
 	tmp->next = *stack_a;
 	*stack_a = tmp;
-	write(1, "pa\n", 3);
+	if (!bench)
+		write(1, "pa\n", 3);
 }

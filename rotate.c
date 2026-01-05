@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_a.c                                         :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 17:54:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 15:04:29 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/05 14:24:58 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_list **stack_a)
+void	ra(t_list **stack_a, int bench)
 {
 	t_list	*first;
 	t_list	*last;
@@ -24,10 +24,11 @@ void	ra(t_list **stack_a)
 	first->next = NULL;
 	last = ft_lstlast(*stack_a);
 	last->next = first;
-	write(1, "ra\n", 3);
+	if (!bench)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_list **stack_b)
+void	rb(t_list **stack_b, int bench)
 {
 	t_list	*first;
 	t_list	*last;
@@ -37,10 +38,11 @@ void	rb(t_list **stack_b)
 	first->next = NULL;
 	last = ft_lstlast(*stack_b);
 	last->next = first;
-	write(1, "rb\n", 3);
+	if (!bench)
+		write(1, "rb\n", 3);
 }
 
-void	rrb(t_list **stack_b)
+void	rrb(t_list **stack_b, int bench)
 {
 	t_list	*last;
 	t_list	*tmp;
@@ -54,10 +56,11 @@ void	rrb(t_list **stack_b)
 	last->next = NULL;
 	tmp->next = *stack_b;
 	*stack_b = tmp;
-	write(1, "rrb\n", 4);
+	if (!bench)
+		write(1, "rrb\n", 4);
 }
 
-void	rra(t_list **stack_a)
+void	rra(t_list **stack_a, int bench)
 {
 	t_list	*last;
 	t_list	*tmp;
@@ -73,5 +76,6 @@ void	rra(t_list **stack_a)
 	last->next = NULL;
 	tmp->next = *stack_a;
 	*stack_a = tmp;
-	write(1, "rra\n", 4);
+	if (!bench)
+		write(1, "rra\n", 4);
 }

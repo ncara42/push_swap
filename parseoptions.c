@@ -6,13 +6,13 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 00:53:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 14:39:27 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/05 17:34:48 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-enum e_option	whichoption(char *optionstr)
+t_optype	whichoption(char *optionstr)
 {
 	if ((ft_strcmp(optionstr, "bench")) == 0)
 		return (BENCH);
@@ -45,10 +45,10 @@ int	verifyoptions(t_options **options)
 	return (1);
 }
 
-int	getoptionsfromargv(int argc, char **argv, int *bench, enum e_option *algo)
+int	getoptionsfromargv(int argc, char **argv, int *bench, t_optype *algo)
 {
-	int				i;
-	enum e_option	opt;
+	int			i;
+	t_optype	opt;
 
 	i = 1;
 	while (i < argc)
@@ -76,7 +76,7 @@ int	getoptionsfromargv(int argc, char **argv, int *bench, enum e_option *algo)
 
 int	parseoptions(int argc, char **argv, t_options **options)
 {
-	enum e_option	algo;
+	t_optype	algo;
 	int				bench;
 	int				err;
 
@@ -86,7 +86,7 @@ int	parseoptions(int argc, char **argv, t_options **options)
 	if (!*options)
 		return (0);
 	(*options)->count = 0;
-	(*options)->options = malloc(2 * sizeof(enum e_option));
+	(*options)->options = malloc(2 * sizeof(t_optype));
 	if (!(*options)->options)
 		return (free(*options), 0);
 	err = getoptionsfromargv(argc, argv, &bench, &algo);

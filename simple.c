@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 15:33:45 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/05 17:43:29 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ void	simple(t_list **stack_a, t_list **stack_b)
 		if (pos_min <= nodes / 2)
 		{
 			while (pos_min--)
-				ra(stack_a);
+				ra(stack_a, 0);
 		}
 		else
 		{
 			while (nodes - pos_min++)
-				rra(stack_a);
+				rra(stack_a, 0);
 		}
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 0);
 	}
-	sort_three_a(stack_a);
+	sort_three_a(stack_a, 0, NULL);
 	while (*stack_b)
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, 0);
 }

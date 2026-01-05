@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/04 15:37:44 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:41:59 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 
-enum e_option
+typedef enum e_option
 {
 	BENCH,
 	ADAPTIVE,
@@ -26,7 +26,7 @@ enum e_option
 	MEDIUM,
 	COMPLEX,
 	UNKNOWN
-};
+}	t_optype;
 
 typedef struct s_list
 {
@@ -43,9 +43,26 @@ typedef struct s_chunks
 
 typedef struct s_options
 {
-	enum e_option	*options;
+	t_optype	*options;
 	int				count;
 }	t_options;
+
+typedef struct s_stats
+{
+	size_t			ra_count;
+	size_t			rb_count;
+	size_t			rr_count;
+	size_t			rra_count;
+	size_t			rrb_count;
+	size_t			rrr_count;
+	size_t			pa_count;
+	size_t			pb_count;
+	size_t			sa_count;
+	size_t			sb_count;
+	size_t			ss_count;
+	size_t			total_count;
+	t_optype		algo;
+}	t_stats;
 
 // Functions
 int				check_num(char *str);
@@ -67,29 +84,42 @@ long			*getsortedarr(t_list *stack, int len);
 t_chunks		*divideinchunks(t_list *stack_a);
 void			freechunks(t_chunks *chunks);
 void			bubblesort(long	*arr, size_t size);
-void			sort_three_a(t_list **stack_a);
-void			sort_three_top(t_list **stack, t_list **stack2);
-void			sort_three_top_next(t_list **stack, t_list **stack2);
-void			sort_three_top_next_next(t_list **stack, t_list **stack2);
-void			sort_three(t_list **stack_a, t_list **stack_b, int pushed);
-void			sort_three_b(t_list **stack_a, t_list **stack_b, int len);
+void			sort_three_a(t_list **stack_a, int bench, t_stats **stats);
+void			sort_three_top(t_list **stack, t_list **stack2,
+					int bench, t_stats **stats);
+void			sort_three_top_next(t_list **stack, t_list **stack2,
+					int bench, t_stats **stats);
+void			sort_three_top_next_next(t_list **stack, t_list **stack2,
+					int bench, t_stats **stats);
+void			sort_three(t_list **stack_a, t_list **stack_b, int pushed,
+					int bench, t_stats **stats);
+void			sort_three_b(t_list **stack_a, t_list **stack_b, int len,
+					int bench, t_stats **stats);
+void			ft_bzero(void *p, size_t i);
+void			ft_putnbr(int n);
 
 // Options parsing
 int				parseoptions(int argc, char **argv, t_options **options);
-enum e_option	whichoption(char *optionstr);
+t_optype		whichoption(char *optionstr);
 int				verifyoptions(t_options **options);
 int				parseoptions(int argc, char **argv, t_options **options);
-int				usealgo(enum e_option option, t_list **stack_a,
-					t_list **stack_b);
-int				chooseandusealgo(t_list **stack_a, t_options **options);
+void			chooseandusealgo(t_list **stack_a, t_list **stack_b,
+					t_options **options);
 float			index_error(int len, t_list *stack);
+void			whichalgo(t_optype opt, int bench, t_list **a, t_list **b,
+					int adapt);
 
 // Simple
 void			simple(t_list **stack_a, t_list **stack_b);
-
+int				get_min(t_list *stack_a);
 // Medium
 void			medium(t_list **stack_a, t_list **stack_b);
-// Complex
+void			moveandpushb(t_list **stack_a, t_list **stack_b, size_t index,
+					int bench, t_stats **stats);
+void			domediummoves(t_list **stack_a, t_list **stack_b,
+					t_chunks **chunks, int bench, t_stats **stats);
+
+	// Complex
 void			complex(t_list **stack_a, t_list **stack_b, int len);
 void			complex_b(t_list **stack_a, t_list **stack_b, int pushed);
 int				complex_a_next(t_list **stack_a, t_list **stack_b,
@@ -97,15 +127,25 @@ int				complex_a_next(t_list **stack_a, t_list **stack_b,
 int				complex_b_next(t_list **stack_a, t_list **stack_b,
 					int len, long pivot);
 
+// BENCH
+void			printbenchinfo(t_stats **stats, float d, t_optype opt);
+void			bench_medium(t_list **stack_a, t_list **stack_b, float d,
+					int adapt);
+void			bench_simple(t_list **stack_a, t_list **stack_b, float d,
+					int adapt);
+void			bench_complex(t_list **a, t_list **b, size_t size, float d,
+					int adapt);
+void			gettotalcount(t_stats **stats);
+
 // Movements
-void			rra(t_list **stack_a);
-void			rrb(t_list **stack_b);
-void			ra(t_list **stack_a);
-void			rb(t_list **stack_b);
-void			pb(t_list **stack_a, t_list **stack_b);
-void			pa(t_list **stack_a, t_list **stack_b);
-void			sa(t_list **stack_a);
-void			sb(t_list **stack_b);
-void			ss(t_list **stack_a, t_list **stack_b);
+void			rra(t_list **stack_a, int bench);
+void			rrb(t_list **stack_b, int bench);
+void			ra(t_list **stack_a, int bench);
+void			rb(t_list **stack_b, int bench);
+void			pb(t_list **stack_a, t_list **stack_b, int bench);
+void			pa(t_list **stack_a, t_list **stack_b, int bench);
+void			sa(t_list **stack_a, int bench);
+void			sb(t_list **stack_b, int bench);
+void			ss(t_list **stack_a, t_list **stack_b, int bench);
 
 #endif

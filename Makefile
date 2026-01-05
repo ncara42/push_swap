@@ -6,7 +6,7 @@
 #    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/04 15:30:00 by ncaravac         ###   ########.fr        #
+#    Updated: 2026/01/05 19:34:12 by vvan-ach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRCS = push_swap.c swap.c push.c rotate.c \
 	   ft_lstlast.c ft_lstadd_back.c ft_check_num.c \
 	   ft_atol.c sqrt.c simple.c medium.c complex.c \
 	   sort_three.c free.c bubblesort.c sort_three_a_b.c \
-	   divideinchunks.c ft_strlen.c parseoptions.c chooseandusealgo.c
+	   divideinchunks.c ft_strlen.c parseoptions.c chooseandusealgo.c \
+	   bench_medium.c bench_simple.c printbenchinfo.c ft_putnbr.c \
+	   ft_bzero.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/04 15:38:18 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:10:50 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,8 @@ int	main(int argc, char **argv)
 		if (!parsestack(argc, argv, &stack_a))
 			return (0);
 	}
-	complex(&stack_a, &stack_b, ft_lstsize(stack_a));
+	parseoptions(argc, argv, &options);
+	chooseandusealgo(&stack_a, &stack_b, &options);
 	freeall(&stack_a, &stack_b, &options);
 	return (0);
 }

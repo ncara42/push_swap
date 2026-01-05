@@ -1,17 +1,7 @@
 
-> OPTIONS;
-
-	> --bench
-	> --adaptive
-	> --simple
-	> --medium
-	> --complex
-
-		++ sistema de parsing de las opciones y del stack hacercho.
-		-- Funciones para elegir lo que pasa segun las opciones.
 
 
-
+!!!! FALTA EL RRR y el RR
 
 
 
@@ -19,12 +9,3 @@
 
 > NORMINETTE
 
-
-
-
-
-
-
-(que bestia noel, no queda mucho mas, yo haré las opciones si quieres,
- he arreglado un poco el codigo para norminette, y dividido las funciones,
- pero me queda algunas cosas por hacer, primero haré las opciones, y luego limpiamos todo)

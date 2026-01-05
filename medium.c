@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/04 15:35:12 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:17:13 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static ssize_t	getindex(long chunkvalue, t_list *stack_a)
 	return (-1);
 }
 
-void	moveandpushb(t_list **stack_a, t_list **stack_b, size_t index)
+void	moveandpushb(t_list **stack_a, t_list **stack_b, size_t index,
+			int bench, t_stats **stats)
 {
 	size_t	size;
 	size_t	i;
@@ -36,14 +37,37 @@ void	moveandpushb(t_list **stack_a, t_list **stack_b, size_t index)
 	i = 0;
 	if (index <= size / 2)
 		while (i++ < index)
-			ra(stack_a);
+		{
+			if (bench)
+			{
+				ra(stack_a, 1);
+				(*stats)->ra_count++;
+			}
+			else
+				ra(stack_a, 0);
+		}
 	else
 		while (i++ < size - index)
-			rra(stack_a);
-	pb(stack_a, stack_b);
+		{
+			if (bench)
+			{
+				rra(stack_a, 1);
+				(*stats)->rra_count++;
+			}
+			else
+				rra(stack_a, 0);
+		}
+	if (bench)
+	{
+		pb(stack_a, stack_b, 1);
+		(*stats)->pb_count++;
+	}
+	else
+		pb(stack_a, stack_b, 0);
 }
 
-void	domediummoves(t_list **stack_a, t_list **stack_b, t_chunks **chunks)
+void	domediummoves(t_list **stack_a, t_list **stack_b, t_chunks **chunks,
+			int bench, t_stats **stats)
 {
 	size_t	i;
 	size_t	j;
@@ -58,15 +82,23 @@ void	domediummoves(t_list **stack_a, t_list **stack_b, t_chunks **chunks)
 			if (ft_lstsize(*stack_a) > 3)
 			{
 				index = getindex((*chunks)->chunks[i][j], *stack_a);
-				moveandpushb(stack_a, stack_b, index);
+				moveandpushb(stack_a, stack_b, index, bench, stats);
 			}
 			j++;
 		}
 		i++;
 	}
-	sort_three_a(stack_a);
+	sort_three_a(stack_a, bench, stats);
 	while (*stack_b)
-		pa(stack_a, stack_b);
+	{
+		if (bench)
+		{
+			pa(stack_a, stack_b, 1);
+			(*stats)->pa_count++;
+		}
+		else
+			pa(stack_a, stack_b, 0);
+	}
 }
 
 void	medium(t_list **stack_a, t_list **stack_b)
@@ -82,7 +114,7 @@ void	medium(t_list **stack_a, t_list **stack_b)
 	chunksmx = divideinchunks(*stack_a);
 	if (!chunksmx)
 		return ;
-	domediummoves(stack_a, stack_b, &chunksmx);
+	domediummoves(stack_a, stack_b, &chunksmx, 0, NULL);
 	freechunks(chunksmx);
 	free(tmparr);
 }
