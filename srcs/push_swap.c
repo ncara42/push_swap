@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/05 22:56:11 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 00:07:10 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	parsestack(int argc, char **argv, t_list **stack_a)
 		count++;
 		i++;
 	}
-	if (count > 1)
+	if (count > 0)
 		index_error(count, *stack_a);
 	return (1);
 }
@@ -99,7 +99,8 @@ int	for_split(char **argv, t_list **stack_a)
 		ft_lstadd_back(stack_a, node);
 	}
 	free_split(split);
-	index_error(i, *stack_a);
+	if (count > 0)
+		index_error(i, *stack_a);
 	return (1);
 }
 
