@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/06 09:04:35 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 11:12:54 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,13 @@ int	main(int argc, char **argv)
 	}
 	parseoptions(argc, argv, &options);
 	adaptive(&stack_a, &stack_b, &options);
-	t_list *tmp = stack_a;
+    //complex(&stack_a, &stack_b, ft_lstsize(stack_a));
+	/*t_list *tmp = stack_a;
 	while (tmp)
 	{
 		printf("%ld\n", tmp->content);
 		tmp = tmp->next;
-	}
+	}*/
 	freeall(&stack_a, &stack_b, &options);
 	return (0);
 }

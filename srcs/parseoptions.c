@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 00:53:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 22:32:37 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 11:10:12 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	getoptionsfromargv(int argc, char **argv, int *bench, t_optype *algo)
 
 int	parseoptions(int argc, char **argv, t_options **options)
 {
-	t_optype	algo;
+	t_optype		algo;
 	int				bench;
 	int				err;
 

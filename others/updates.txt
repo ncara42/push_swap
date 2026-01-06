@@ -12,7 +12,7 @@
 
 // El bench se imprime cuando quiere (lo estoy mirando)
 // Si no se usan flags (--simple, medium, etc) no se imprimen
-                                               todos los movimientos
+                                               los movimientos
                                                (RARO)
 
 > OPTIMISATIONS

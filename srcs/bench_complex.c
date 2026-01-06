@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:49:03 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 09:02:50 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 10:29:45 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
 		stats = *s;
 	if (len <= 3)
 	{
-		sort_three(stack_a, stack_b, len, 0, NULL);
+		sort_three(stack_a, stack_b, len, 1, NULL);
 		return ;
 	}
 	arr = getsortedarr(*stack_a, len);

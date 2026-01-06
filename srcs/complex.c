@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 22:32:33 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 10:44:14 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	complex_a_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
 	i = 0;
 	pushed = 0;
 	ra_count = 0;
-	while (i < len)
+	while (i < len && *stack_a)
 	{
 		if ((*stack_a)->content <= pivot)
 		{
@@ -92,7 +92,7 @@ int	complex_b_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
 	i = 0;
 	rb_count = 0;
 	pushed = 0;
-	while (i < len)
+	while (i < len && *stack_b)
 	{
 		if ((*stack_b)->content >= pivot)
 		{
