@@ -6,14 +6,14 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:49:03 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 13:45:29 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:27:09 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
-			t_stats **s, int adapt, int noelesgay)
+			t_stats **s, int adapt, int print)
 {
 	long	pivot;
 	long	*arr;
@@ -34,7 +34,7 @@ void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
 	if (len <= 3)
 	{
 		sort_three(stack_a, stack_b, len, 1, &stats);
-		if (noelesgay)
+		if (print)
 		{
 			if (adapt)
 				stats->algo = ADAPTIVE;
@@ -57,7 +57,7 @@ void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
 		stats->algo = ADAPTIVE;
 	else
 		stats->algo = COMPLEX;
-	if (noelesgay)
+	if (print)
 	{
 		gettotalcount(&stats);
 		printbenchinfo(&stats, d, COMPLEX);

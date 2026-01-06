@@ -8,12 +8,14 @@
 // ARREGLADO: Da error si usamos un 0
 // ARREGLADO: Librerías y Makefiles ordenados
 // ARREGLADO: El medium no ordena correctamente
-              pero sigue dando muchas vueltas (lo dejamos para el final)
 
-// El bench se imprime cuando quiere (lo estoy mirando)
-// Si no se usan flags (--simple, medium, etc) no se imprimen
+// ARREGLADO: El bench se imprime cuando quiere (lo estoy mirando)
+// ARREGLADO: Si no se usan flags (--simple, medium, etc) no se imprimen
                                                los movimientos
                                                (RARO)
+
+>>> FALTA ADAPTAR MEDIUM A BENCH (OJO CON FUNCIONES CON MAS DE 5 PARAMETROS,
+                                luego vamos a tener un problema para dividir)
 
 > OPTIMISATIONS
 

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 13:22:21 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/06 19:23:22 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,7 @@ void	simple(t_list **stack_a, t_list **stack_b)
 		}
 		pb(stack_a, stack_b, 0);
 	}
-	if (ft_lstsize(*stack_a) >= 3)
-		sort_three_a(stack_a, 0, NULL);
-	else
-		if ((*stack_a)->content > (*stack_a)->next->content)
-			sa(stack_a, 0);
+	sort_three_a(stack_a, 0, NULL);
 	while (*stack_b)
 		pa(stack_a, stack_b, 0);
 }

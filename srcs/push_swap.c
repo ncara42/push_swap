@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/06 11:12:54 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 20:44:53 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	options = NULL;
 	if (argc == 1)
-		return (write(1, "Error\n", 6), 0);
+		return (write(2, "Error\n", 6), 0);
 	else if (argc == 2)
 	{
 		if (!for_split(argv, &stack_a))
@@ -121,9 +121,9 @@ int	main(int argc, char **argv)
 		if (!parsestack(argc, argv, &stack_a))
 			return (0);
 	}
-	parseoptions(argc, argv, &options);
-	adaptive(&stack_a, &stack_b, &options);
-    //complex(&stack_a, &stack_b, ft_lstsize(stack_a));
+	//parseoptions(argc, argv, &options);
+	//adaptive(&stack_a, &stack_b, &options);
+	medium(&stack_a, &stack_b);
 	/*t_list *tmp = stack_a;
 	while (tmp)
 	{

@@ -6,13 +6,13 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:11:20 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 13:04:32 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/06 19:56:25 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	gettotalcount(t_stats **stats)
+/*void	gettotalcount(t_stats **stats)
 {
 	size_t	total;
 
@@ -48,4 +48,4 @@ void	bench_medium(t_list **stack_a, t_list **stack_b, float d, int adapt)
 		stats->algo = MEDIUM;
 	gettotalcount(&stats);
 	printbenchinfo(&stats, d, MEDIUM);
-}
+}*/

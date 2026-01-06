@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/06 13:01:56 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/06 19:58:57 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ typedef enum e_option
 	COMPLEX,
 	BENCH
 }	t_optype;
-
-typedef struct s_chunks
-{
-	long	**chunks;
-	size_t	*sizes;
-	size_t	count;
-}	t_chunks;
 
 typedef struct s_options
 {
@@ -76,8 +69,6 @@ void			free_split(char **split);
 void			freeall(t_list **stack_a, t_list **stack_b,
 					t_options **options);
 long			*getsortedarr(t_list *stack, int len);
-t_chunks		*divideinchunks(t_list *stack_a);
-void			freechunks(t_chunks *chunks);
 void			bubblesort(long	*arr, size_t size);
 void			sort_three_a(t_list **stack_a, int bench, t_stats **stats);
 void			sort_three_top(t_list **stack, t_list **stack2,
@@ -107,12 +98,9 @@ void			whichalgo(t_optype opt, int bench, t_list **a, t_list **b,
 // Simple
 void			simple(t_list **stack_a, t_list **stack_b);
 int				get_min(t_list *stack_a);
+
 // Medium
 void			medium(t_list **stack_a, t_list **stack_b);
-void			moveandpushb(t_list **stack_a, t_list **stack_b, size_t index,
-					int bench, t_stats **stats);
-void			domediummoves(t_list **stack_a, t_list **stack_b,
-					t_chunks **chunks, int bench, t_stats **stats);
 
 	// Complex
 void			complex(t_list **stack_a, t_list **stack_b, int len);
@@ -124,12 +112,10 @@ int				complex_b_next(t_list **stack_a, t_list **stack_b,
 
 // BENCH
 void			printbenchinfo(t_stats **stats, float d, t_optype opt);
-void			bench_medium(t_list **stack_a, t_list **stack_b, float d,
-					int adapt);
 void			bench_simple(t_list **stack_a, t_list **stack_b, float d,
 					int adapt);
 void			bench_complex(t_list **stack_a, t_list **stack_b, int len,
-					float d, t_stats **s, int adapt, int noelesgay);
+					float d, t_stats **s, int adapt, int print);
 int				bench_complex_a_next(t_list **stack_a, t_list **stack_b,
 					int len, long pivot, t_stats **stats);
 void			bench_complex_b(t_list **stack_a, t_list **stack_b, int len,

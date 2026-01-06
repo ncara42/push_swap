@@ -6,56 +6,25 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 13:55:09 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/06 19:57:52 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
-
-/*void	calculateandusedisorderalgo(float d, t_list **stack_a, t_list **stack_b, int bench)
-{
-	if (d < 0.2)
-		whichalgo(SIMPLE, bench, stack_a, stack_b, 1);
-	else if (d >= 0.2 && d < 0.5)
-		whichalgo(MEDIUM, bench, stack_a, stack_b, 1);
-	else if (d >= 0.5)
-		whichalgo(COMPLEX, bench, stack_a, stack_b, 1);
-	return ;
-}*/
 
 void	whichalgo(t_optype opt, int bench, t_list **stack_a, t_list **stack_b, int adapt)
 {
 	float	d;
-	int		n;
 
-	n = ft_lstsize(*stack_a);
 	d = index_error(ft_lstsize(*stack_a), *stack_a);
-    if (opt == UNKNOWN)
+	if (opt == UNKNOWN)
 	{
-		if (n <= 5)
+		if (d < 0.2)
 			opt = SIMPLE;
-		else if (n <= 100)
-		{
-			if (d < 0.4)
-				opt = SIMPLE;
-			else
-				opt = MEDIUM;
-		}
-		else if (n <= 400)
-		{
-			if (d < 0.3)
-				opt = MEDIUM;
-			else
-				opt = COMPLEX;
-		}
-		else
-		{
-			if (d < 0.15)
-				opt = MEDIUM;
-			else
-				opt = COMPLEX;
-		}
+		else if (d < 0.5)
+			opt = MEDIUM;
+		else if (d >= 0.5)
+			opt = COMPLEX;
 	}
 	if (opt == SIMPLE)
 	{
@@ -66,10 +35,7 @@ void	whichalgo(t_optype opt, int bench, t_list **stack_a, t_list **stack_b, int 
 	}
 	else if (opt == MEDIUM)
 	{
-		if (bench)
-			bench_medium(stack_a, stack_b, d, adapt);
-		else
-			medium(stack_a, stack_b);
+		medium(stack_a, stack_b);
 	}
 	else if (opt == COMPLEX)
 	{
