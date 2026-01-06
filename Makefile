@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/05 23:53:08 by admin            ###   ########.fr        #
+#    Updated: 2026/01/06 07:09:55 by admin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRCS =	srcs/push_swap.c \
 		srcs/sort_three_a_b.c \
 		srcs/divideinchunks.c \
 		srcs/parseoptions.c\
-		srcs/chooseandusealgo.c\
+		srcs/adaptive.c\
 		srcs/bench_medium.c\
 		srcs/bench_simple.c\
 		srcs/printbenchinfo.c\

@@ -6,11 +6,12 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/06 00:07:10 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 09:04:35 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h> // Borrar lib
 
 float	index_error(int n, t_list *stack_a)
 {
@@ -40,8 +41,6 @@ int	add_node(char *argv, t_list **stack_a)
 {
 	t_list	*node;
 
-	if (!check_num(argv) || !check_minmax(argv))
-		return (0);
 	node = ft_lstnew(ft_atol(argv));
 	if (!node)
 		return (0);
@@ -54,6 +53,8 @@ int	parsestack(int argc, char **argv, t_list **stack_a)
 	int	i;
 	int	count;
 
+	if (!check_num(argv + 1) || !check_minmax(argv + 1))
+		return (write(2, "Error\n", 6), 0);
 	*stack_a = NULL;
 	i = 1;
 	count = 0;
@@ -84,13 +85,8 @@ int	for_split(char **argv, t_list **stack_a)
 	split = ft_split(argv[1], ' ');
 	if (!split)
 		return (0);
-	while (split[i])
-	{
-		if (!check_num(split[i]) || !check_minmax(split[i]))
-			return (free_split(split), write(1, "Error\n", 6), 0);
-		i++;
-	}
-	i = 0;
+	if (!check_num(split) || !check_minmax(split))
+		return (free_split(split), write(2, "Error\n", 6), 0);
 	while (split[i])
 	{
 		node = ft_lstnew(ft_atol(split[i++]));
@@ -99,7 +95,7 @@ int	for_split(char **argv, t_list **stack_a)
 		ft_lstadd_back(stack_a, node);
 	}
 	free_split(split);
-	if (count > 0)
+	if (i > 0)
 		index_error(i, *stack_a);
 	return (1);
 }
@@ -126,8 +122,13 @@ int	main(int argc, char **argv)
 			return (0);
 	}
 	parseoptions(argc, argv, &options);
-	chooseandusealgo(&stack_a, &stack_b, &options);
-	ft_printf("%s\n", "Val, marica");
+	adaptive(&stack_a, &stack_b, &options);
+	t_list *tmp = stack_a;
+	while (tmp)
+	{
+		printf("%ld\n", tmp->content);
+		tmp = tmp->next;
+	}
 	freeall(&stack_a, &stack_b, &options);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 19:49:52 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/05 22:43:18 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 08:24:50 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // PUSH_SWAP
 long	ft_atol(char *argv_char);
-int	check_minmax(char *str);
+int		check_minmax(char **argv);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif

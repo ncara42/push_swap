@@ -1,45 +1,69 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_check_num.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 16:22:28 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 22:42:04 by admin            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/libft.h"
+#include <stdio.h>
 
-int	check_minmax(char *str)
+int check_minmax(char **argv)
 {
+	int		i;
 	long	num;
 
-	if (!str)
-		return (0);
-	num = ft_atol(str);
-	if (num < INT_MIN || num > INT_MAX)
-		return (0);
-	return (1);
-}
-
-int	check_num(char *str)
-{
-	int	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (str[i] == '\0')
-		return (0);
-	while (str[i])
+	i = 1;
+	while (argv[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		num = ft_atol(argv[i]);
+		if (num < INT_MIN || num > INT_MAX)
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int	check_r(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = i + 1;
+		while (argv[j])
+		{
+			if (ft_strcmp(argv[i], argv[j]) == 0)
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int  check_num(char **argv)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			i++;
+			continue ;
+		}
+		j = 0;
+		if (argv[i][j] == '-' || argv[i][j] == '+')
+				j++;
+		if (argv[i][j] == '\0')
+			return (0);
+		while (argv[i][j])
+		{
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	if(!check_r(argv))
+		return (0);
 	return (1);
 }

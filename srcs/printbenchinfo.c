@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:59:06 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 23:10:03 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 07:59:05 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	printbenchinfo(t_stats **stats, float d, t_optype opt)
 {
 	ft_printf("%s", "[bench] disorder:     ");
 	ft_putnbr(d * 100);
+    ft_printf("%");
 	ft_printf("\n");
 	ft_printf("%s", "[bench] strategy:     ");
 	if ((*stats)->algo == SIMPLE)

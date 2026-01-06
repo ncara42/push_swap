@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/05 22:57:21 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 07:37:08 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct s_stats
 }	t_stats;
 
 // Functions
-int				check_num(char *str);
-int				check_minmax(char *str);
+int				check_num(char **argv);
+int				check_minmax(char **argv);
 int				ft_strcmp(char *s1, char *s2);
 char			**ft_split(char const *s, char c);
 t_list			*ft_lstnew(long value);
@@ -98,7 +98,7 @@ int				parseoptions(int argc, char **argv, t_options **options);
 t_optype		whichoption(char *optionstr);
 int				verifyoptions(t_options **options);
 int				parseoptions(int argc, char **argv, t_options **options);
-void			chooseandusealgo(t_list **stack_a, t_list **stack_b,
+void			adaptive(t_list **stack_a, t_list **stack_b,
 					t_options **options);
 float			index_error(int len, t_list *stack);
 void			whichalgo(t_optype opt, int bench, t_list **a, t_list **b,

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chooseandusealgo.c                                 :+:      :+:    :+:   */
+/*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 22:32:24 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 07:10:22 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	whichalgo(t_optype opt, int bench, t_list **a, t_list **b, int adapt)
 	return ;
 }
 
-void	chooseandusealgo(t_list **stack_a, t_list **stack_b,
+void	adaptive(t_list **stack_a, t_list **stack_b,
 						t_options **options)
 {
 	int				bench;

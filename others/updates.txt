@@ -1,0 +1,21 @@
+
+
+
+!!!! FALTA EL RRR y el RR ->>>> Lo dejaremos para el final
+
+// ARREGLADO: Da segfault con 2 numeros
+// ARREGLADO: No detecta duplicados, pero sí letras
+// ARREGLADO: Da error si usamos un 0
+// ARREGLADO: Librerías y Makefiles ordenados
+// ARREGLADO: El medium no ordena correctamente
+              pero sigue dando muchas vueltas (lo dejamos para el final)
+
+// El bench se imprime cuando quiere (lo estoy mirando)
+// Si no se usan flags (--simple, medium, etc) no se imprimen
+                                               todos los movimientos
+                                               (RARO)
+
+> OPTIMISATIONS
+
+> NORMINETTE
+

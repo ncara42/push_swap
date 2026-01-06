@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:49:03 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 22:32:09 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 09:02:50 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
 	long	*arr;
 	int		pushed;
 	t_stats	*stats;
-
+    (void)d; // Estoy debugeando, por eso casteo a void
+    (void)noelesgay;
 	if (!stack_a || !*stack_a)
 		return ;
 	if (!s || !*s)
@@ -48,11 +49,11 @@ void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
 		stats->algo = ADAPTIVE;
 	else
 		stats->algo = COMPLEX;
-	if (noelesgay)
+	/*if (noelesgay)
 	{
 		gettotalcount(&stats);
 		printbenchinfo(&stats, d, COMPLEX);
-	}
+	}*/
 }
 
 int	bench_complex_a_next(t_list **stack_a, t_list **stack_b, int len,
