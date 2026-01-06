@@ -19,6 +19,8 @@
 >>> BUS ERROR (./push_swap "")
     (ojo porque puede entrar en conflicto con las flags)
 >>>> ./push_swap 1 2 3 4 NO debería hacer nada
+>>>> ./push_swap (nada) NO debería dar error
+>>>> Incluir DOS DECIMALES en el % del bench (ej. 42.21%)
 
 > OPTIMISATIONS
 
