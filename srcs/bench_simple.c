@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 08:48:34 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 13:42:35 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,14 @@ void	bench_simple(t_list **stack_a, t_list **stack_b, float d, int adapt)
 		pb(stack_a, stack_b, 1);
 		stats->pb_count++;
 	}
-	sort_three_a(stack_a, 1, &stats);
+	if (ft_lstsize(*stack_a) >= 3)
+		sort_three_a(stack_a, 1, &stats);
+	else
+		if ((*stack_a)->content > (*stack_a)->next->content)
+		{
+			sa(stack_a, 1);
+			stats->sa_count++;
+		}
 	while (*stack_b)
 	{
 		pa(stack_a, stack_b, 1);

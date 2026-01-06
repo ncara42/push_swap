@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 11:09:55 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 13:55:09 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,36 @@
 
 void	whichalgo(t_optype opt, int bench, t_list **stack_a, t_list **stack_b, int adapt)
 {
-	float d;
+	float	d;
+	int		n;
 
+	n = ft_lstsize(*stack_a);
 	d = index_error(ft_lstsize(*stack_a), *stack_a);
     if (opt == UNKNOWN)
 	{
-		if (d < 0.2) opt = SIMPLE;
-		else if (d < 0.5) opt = MEDIUM;
-		else opt = COMPLEX;
+		if (n <= 5)
+			opt = SIMPLE;
+		else if (n <= 100)
+		{
+			if (d < 0.4)
+				opt = SIMPLE;
+			else
+				opt = MEDIUM;
+		}
+		else if (n <= 400)
+		{
+			if (d < 0.3)
+				opt = MEDIUM;
+			else
+				opt = COMPLEX;
+		}
+		else
+		{
+			if (d < 0.15)
+				opt = MEDIUM;
+			else
+				opt = COMPLEX;
+		}
 	}
 	if (opt == SIMPLE)
 	{
