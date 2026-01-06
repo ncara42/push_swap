@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 20:44:21 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 20:59:44 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int		get_n_chunks(int n)
 		else if (n <= 100)
 			return (5);
 		else if (n <= 500) // Si hay 500 numeros, quiero 20 chunks
-			return (20);
-	return (25); // Si hay más de 500 (cosa que no se evalua), puse 25 porque me daba un poco la gana, gay
+			return (9);
+	return (11); // Si hay más de 500 (cosa que no se evalua), puse 25 porque me daba un poco la gana, gay
 				// Vuelve a la linea 111
 }
 
