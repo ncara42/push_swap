@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:11:20 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 09:08:12 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 13:04:32 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	bench_medium(t_list **stack_a, t_list **stack_b, float d, int adapt)
 	long		*tmparr;
 	t_chunks	*chunksmx;
 	t_stats		*stats;
-    (void)d; // Estoy debugeando, por eso casteo a void
+	
 	if (!stack_a || !*stack_a)
 		return ;
 	stats = malloc(sizeof(t_stats));
@@ -46,6 +46,6 @@ void	bench_medium(t_list **stack_a, t_list **stack_b, float d, int adapt)
 		stats->algo = ADAPTIVE;
 	else
 		stats->algo = MEDIUM;
-	//gettotalcount(&stats);
-	//printbenchinfo(&stats, d, MEDIUM);
+	gettotalcount(&stats);
+	printbenchinfo(&stats, d, MEDIUM);
 }

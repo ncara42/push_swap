@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/06 07:09:55 by admin            ###   ########.fr        #
+#    Updated: 2026/01/06 12:57:21 by vvan-ach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,14 @@ DNAME = dpush_swap
 CC = cc
 CFLAGS = -Wextra -Werror -Wall
 INCLUDES = -I./includes -I$(LIBFT_DIR)/includes -I$(PRINTF_DIR)/includes
+
+ifeq ($(DEBUG), 1)
+	CFLAGS += -g -O0
+	BUILD_MSG = "Compiling debug:"
+else
+	CFLAGS += -O2
+	BUILD_MSG = "Compiling:"
+endif
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -59,14 +67,15 @@ $(LIBFT):
 $(PRINTF):
 	@make -C $(PRINTF_DIR)
 
-debug: $(OBJS) $(LIBFT) $(PRINTF)
-	@$(CC) -g -O0 $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(DNAME)
+debug: $(LIBFT) $(PRINTF)
+	make DEBUG=1 -B $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(DNAME)
 	@echo "PUSH_SWAP DEBUG COMPILED!"
 
 $(OBJS_DIR)/%.o: srcs/%.c Makefile includes/push_swap.h
-	@mkdir -p ${OBJS_DIR}
+	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo "Compiling: $<"
+	@echo "$(BUILD_MSG) $<"
 
 clean:
 	@rm -rf $(OBJS_DIR)

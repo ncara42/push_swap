@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 22:32:36 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 13:08:51 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ void	domediummoves(t_list **stack_a, t_list **stack_b, t_chunks **chunks,
 		}
 		i++;
 	}
-	sort_three_a(stack_a, bench, stats);
+	if (ft_lstsize(*stack_a) >= 3)
+		sort_three_a(stack_a, bench, stats);
 	while (*stack_b)
 	{
 		if (bench)
