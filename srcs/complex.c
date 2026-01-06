@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 10:44:14 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 00:10:32 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	complex(t_list **stack_a, t_list **stack_b, int len)
 		sort_three(stack_a, stack_b, len, 0, NULL);
 		return ;
 	}
-	arr = getsortedarr(*stack_a, len);
+	arr = array_sort(*stack_a, len);
 	if (!arr)
 		return ;
 	pivot = arr[len / 2];
@@ -73,7 +73,7 @@ void	complex_b(t_list **stack_a, t_list **stack_b, int len)
 		sort_three_b(stack_a, stack_b, len, 0, NULL);
 		return ;
 	}
-	arr = getsortedarr(*stack_b, len);
+	arr = array_sort(*stack_b, len);
 	if (!arr)
 		return ;
 	pivot = arr[len / 2];

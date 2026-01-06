@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 11:54:06 by ncaravac          #+#    #+#              #
-#    Updated: 2026/01/05 23:50:15 by admin            ###   ########.fr        #
+#    Updated: 2026/01/06 23:51:50 by admin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRC =	srcs/ft_bzero.c\
 		srcs/ft_lstadd_back.c\
 		srcs/ft_atol.c\
 		srcs/ft_check_num.c\
+		srcs/ft_bubblesort.c\
+		srcs/ft_array_sort.c
 
 OBJS_DIR = objs
 OBJ = ${SRC:srcs/%.c=${OBJS_DIR}/%.o}

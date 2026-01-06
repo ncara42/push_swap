@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:24:03 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/06 10:22:02 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 23:58:20 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
 	}
 }
 
-void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench, t_stats **stats)
+void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench,
+			t_stats **stats)
 {
 	if (len == 1)
 		if (bench)

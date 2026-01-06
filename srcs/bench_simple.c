@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 16:48:58 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 00:06:24 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void	bench_simple(t_list **stack_a, t_list **stack_b, float d, int adapt)
 		stats->algo = ADAPTIVE;
 	else
 		stats->algo = SIMPLE;
-	gettotalcount(&stats);
-	printbenchinfo(&stats, d, SIMPLE);
+	count_bench(&stats);
+	print_bench_info(&stats, d, SIMPLE);
 }

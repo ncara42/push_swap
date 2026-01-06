@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sqrt.c                                             :+:      :+:    :+:   */
+/*   get_totalcount.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 18:05:35 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/05 22:32:27 by admin            ###   ########.fr       */
+/*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/06 23:55:32 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-size_t	int_sqrt(size_t n)
+void	count_bench(t_stats **stats)
 {
-	size_t	x;
+	size_t	total;
 
-	x = 0;
-	while ((x + 1) * (x + 1) <= n)
-		x++;
-	return (x);
+	total = ((*stats)->ra_count + (*stats)->rb_count + (*stats)->rr_count +
+			(*stats)->rra_count + (*stats)->rrb_count + (*stats)->rrr_count +
+			(*stats)->pa_count + (*stats)->pb_count + (*stats)->sa_count +
+			(*stats)->sb_count + (*stats)->ss_count);
+	(*stats)->total_count = total;
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printbenchinfo.c                                   :+:      :+:    :+:   */
+/*   print_bench_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:59:06 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 16:54:14 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 23:56:27 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	printbenchinfo(t_stats **stats, float d, t_optype opt)
+void	print_bench_info(t_stats **stats, float d, t_optype opt)
 {
 	int percent = d * 100;
 	ft_printf("[bench] disorder:     %i %%\n", percent);
@@ -39,5 +39,4 @@ void	printbenchinfo(t_stats **stats, float d, t_optype opt)
 	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d rrb:  %d  rrr:  %d\n",
 			(*stats)->ra_count, (*stats)->rb_count, (*stats)->rr_count,
 			(*stats)->rra_count, (*stats)->rrb_count, (*stats)->rrr_count);
-
 }

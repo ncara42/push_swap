@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   divideinchunks.c                                   :+:      :+:    :+:   */
+/*   ft_array_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:42:03 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 19:55:49 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 23:52:01 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-long	*getsortedarr(t_list *stack, int len)
+long	*array_sort(t_list *stack, int len)
 {
 	long	*arr;
 	int		i;

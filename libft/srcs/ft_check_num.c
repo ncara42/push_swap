@@ -1,5 +1,4 @@
 #include "../includes/libft.h"
-#include <stdio.h>
 
 int check_minmax(char **argv)
 {
@@ -17,7 +16,7 @@ int check_minmax(char **argv)
 	return (1);
 }
 
-int	check_r(char **argv)
+int	check_dups(char **argv)
 {
 	int	i;
 	int	j;
@@ -63,7 +62,7 @@ int  check_num(char **argv)
 		}
 		i++;
 	}
-	if(!check_r(argv))
+	if(!check_dups(argv))
 		return (0);
 	return (1);
 }

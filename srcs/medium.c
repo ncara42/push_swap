@@ -6,22 +6,11 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 20:59:44 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 00:09:51 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	gettotalcount(t_stats **stats)
-{
-	size_t	total;
-
-	total = ((*stats)->ra_count + (*stats)->rb_count + (*stats)->rr_count +
-			(*stats)->rra_count + (*stats)->rrb_count + (*stats)->rrr_count +
-			(*stats)->pa_count + (*stats)->pb_count + (*stats)->sa_count +
-			(*stats)->sb_count + (*stats)->ss_count);
-	(*stats)->total_count = total;
-}
 
 int		get_n_chunks(int n)
 {
@@ -30,7 +19,7 @@ int		get_n_chunks(int n)
 		else if (n <= 50)
 			return (2);
 		else if (n <= 100)
-			return (5);
+			return (3);
 		else if (n <= 500) // Si hay 500 numeros, quiero 20 chunks
 			return (9);
 	return (11); // Si hay más de 500 (cosa que no se evalua), puse 25 porque me daba un poco la gana, gay
@@ -93,7 +82,7 @@ void	nearest_num(t_list **stack_a, t_list **stack_b, long *arr,
 	}
 	pb(stack_a, stack_b, 0);
     pivot = start + (end - start) / 2; // Esto es lo que me hizo la IA
-    if (*stack_b && (*stack_b)->next && (*stack_b)->content < arr[pivot]) // y esto
+    if (ft_lstsize(*stack_b) > 1 && (*stack_b)->content < arr[pivot]) // y esto
         rb(stack_b, 0);
 		// Baja a la linea 191, el codigo sigue ahí
 }
@@ -184,9 +173,10 @@ void	medium(t_list **stack_a, t_list **stack_b) // #1 Función main
 	long	*arr;
 	int		size;
 	size = ft_lstsize(*stack_a);
-	arr = getsortedarr(*stack_a, size);
+	arr = array_sort(*stack_a, size);
 	if (!arr)
 		return ;
 	get_chunks(stack_a, stack_b, arr, size); // #2 Función (linea 111) -> Voy a dividir chunks
 	pushing_to_a(stack_a, stack_b); // #8 Función (linea 158) -> Ya hice push a B, ahora toca hacer B->A
+	free(arr);
 }

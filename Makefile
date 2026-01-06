@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/06 12:57:21 by vvan-ach         ###   ########.fr        #
+#    Updated: 2026/01/07 00:11:07 by admin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,21 +36,18 @@ SRCS =	srcs/push_swap.c \
 		srcs/swap.c \
 		srcs/push.c \
 		srcs/rotate.c \
-		srcs/sqrt.c \
 		srcs/simple.c \
 		srcs/medium.c \
 		srcs/complex.c \
-		srcs/sort_three.c \
+		srcs/sort_three-v1.c \
+		srcs/sort_three-v2.c \
 		srcs/free.c \
-		srcs/bubblesort.c \
-		srcs/sort_three_a_b.c \
-		srcs/divideinchunks.c \
-		srcs/parseoptions.c\
+		srcs/parse_options.c\
 		srcs/adaptive.c\
-		srcs/bench_medium.c\
 		srcs/bench_simple.c\
-		srcs/printbenchinfo.c\
+		srcs/print_bench_info.c\
 		srcs/bench_complex.c\
+		srcs/count_bench.c
 
 OBJS_DIR = objs
 OBJS = $(SRCS:srcs/%.c=$(OBJS_DIR)/%.o)

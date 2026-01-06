@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 05:40:31 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/05 22:05:37 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/06 21:15:48 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 	size_t	words;
 
-	if (!s)
+	if (!s || !*s)
 		return (NULL);
 	words = count_words(s, c);
 	arr = (char **)malloc(sizeof(char *) * (words + 1));

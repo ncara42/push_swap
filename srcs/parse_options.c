@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parseoptions.c                                     :+:      :+:    :+:   */
+/*   parse_options.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 00:53:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 11:10:12 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 00:05:19 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_optype	whichoption(char *optionstr)
+t_optype	which_option(char *optionstr)
 {
 	if ((ft_strcmp(optionstr, "bench")) == 0)
 		return (BENCH);
@@ -27,7 +27,7 @@ t_optype	whichoption(char *optionstr)
 	return (UNKNOWN);
 }
 
-int	verifyoptions(t_options **options)
+int	verify_options(t_options **options)
 {
 	int	i;
 	int	algo_count;
@@ -45,7 +45,7 @@ int	verifyoptions(t_options **options)
 	return (1);
 }
 
-int	getoptionsfromargv(int argc, char **argv, int *bench, t_optype *algo)
+int	get_opts_from_argv(int argc, char **argv, int *bench, t_optype *algo)
 {
 	int			i;
 	t_optype	opt;
@@ -61,7 +61,7 @@ int	getoptionsfromargv(int argc, char **argv, int *bench, t_optype *algo)
 		}
 		else if (argv[i][0] == '-' && argv[i][1] == '-')
 		{
-			opt = whichoption(&argv[i][2]);
+			opt = which_option(&argv[i][2]);
 			if (opt != UNKNOWN && opt != BENCH)
 			{
 				if (*algo != UNKNOWN && *algo != opt)
@@ -74,7 +74,7 @@ int	getoptionsfromargv(int argc, char **argv, int *bench, t_optype *algo)
 	return (0);
 }
 
-int	parseoptions(int argc, char **argv, t_options **options)
+int	parse_options(int argc, char **argv, t_options **options)
 {
 	t_optype		algo;
 	int				bench;
@@ -89,7 +89,7 @@ int	parseoptions(int argc, char **argv, t_options **options)
 	(*options)->options = malloc(2 * sizeof(t_optype));
 	if (!(*options)->options)
 		return (free(*options), 0);
-	err = getoptionsfromargv(argc, argv, &bench, &algo);
+	err = get_opts_from_argv(argc, argv, &bench, &algo);
 	if (err)
 		return (err);
 	if (bench == 1)

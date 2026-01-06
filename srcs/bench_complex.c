@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:49:03 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 16:27:09 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 00:07:21 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
 				stats->algo = ADAPTIVE;
 			else
 				stats->algo = COMPLEX;
-			gettotalcount(&stats);
-			printbenchinfo(&stats, d, COMPLEX);
+			count_bench(&stats);
+			print_bench_info(&stats, d, COMPLEX);
 		}
 		return ;
 	}
-	arr = getsortedarr(*stack_a, len);
+	arr = array_sort(*stack_a, len);
 	if (!arr)
 		return ;
 	pivot = arr[len / 2];
@@ -59,8 +59,8 @@ void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
 		stats->algo = COMPLEX;
 	if (print)
 	{
-		gettotalcount(&stats);
-		printbenchinfo(&stats, d, COMPLEX);
+		count_bench(&stats);
+		print_bench_info(&stats, d, COMPLEX);
 	}
 }
 
@@ -111,7 +111,7 @@ void	bench_complex_b(t_list **stack_a, t_list **stack_b,
 		sort_three_b(stack_a, stack_b, len, 1, stats);
 		return ;
 	}
-	arr = getsortedarr(*stack_b, len);
+	arr = array_sort(*stack_b, len);
 	if (!arr)
 		return ;
 	pivot = arr[len / 2];

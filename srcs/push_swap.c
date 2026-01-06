@@ -6,14 +6,14 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/06 20:44:53 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 00:33:16 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h> // Borrar lib
 
-float	index_error(int n, t_list *stack_a)
+float	disorder_index(int n, t_list *stack_a)
 {
 	t_list	*tmp;
 	int		even_total;
@@ -48,7 +48,7 @@ int	add_node(char *argv, t_list **stack_a)
 	return (1);
 }
 
-int	parsestack(int argc, char **argv, t_list **stack_a)
+int	parse_params(int argc, char **argv, t_list **stack_a)
 {
 	int	i;
 	int	count;
@@ -71,11 +71,11 @@ int	parsestack(int argc, char **argv, t_list **stack_a)
 		i++;
 	}
 	if (count > 0)
-		index_error(count, *stack_a);
+		disorder_index(count, *stack_a);
 	return (1);
 }
 
-int	for_split(char **argv, t_list **stack_a)
+int	parse_split(char **argv, t_list **stack_a)
 {
 	char	**split;
 	t_list	*node;
@@ -96,7 +96,7 @@ int	for_split(char **argv, t_list **stack_a)
 	}
 	free_split(split);
 	if (i > 0)
-		index_error(i, *stack_a);
+		disorder_index(i, *stack_a);
 	return (1);
 }
 
@@ -113,23 +113,23 @@ int	main(int argc, char **argv)
 		return (write(2, "Error\n", 6), 0);
 	else if (argc == 2)
 	{
-		if (!for_split(argv, &stack_a))
+		if (!parse_split(argv, &stack_a))
 			return (0);
 	}
 	else if (argc > 2)
 	{
-		if (!parsestack(argc, argv, &stack_a))
+		if (!parse_params(argc, argv, &stack_a))
 			return (0);
 	}
-	//parseoptions(argc, argv, &options);
+	//parse_options(argc, argv, &options);
 	//adaptive(&stack_a, &stack_b, &options);
 	medium(&stack_a, &stack_b);
-	/*t_list *tmp = stack_a;
+	t_list *tmp = stack_a;
 	while (tmp)
 	{
 		printf("%ld\n", tmp->content);
 		tmp = tmp->next;
-	}*/
-	freeall(&stack_a, &stack_b, &options);
+	}
+	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }

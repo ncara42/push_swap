@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 19:49:52 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/06 08:24:50 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 00:32:10 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
+
+#ifndef INT_MAX
+# define INT_MAX 2147483647
+#endif
+
+#ifndef INT_MIN
+# define INT_MIN -2147483648
+#endif
 
 typedef struct s_list
 {
@@ -63,7 +70,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 // PART III
-t_list	*ft_lstnew(long value);
+t_list	*ft_lstnew(long content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
@@ -77,5 +84,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 long	ft_atol(char *argv_char);
 int		check_minmax(char **argv);
 int		ft_strcmp(char *s1, char *s2);
+void	bubblesort(long	*arr, size_t size);
+int		check_num(char **argv);
+long	*array_sort(t_list *stack, int len);
 
 #endif

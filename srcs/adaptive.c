@@ -6,17 +6,18 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 19:57:52 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 00:21:12 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	whichalgo(t_optype opt, int bench, t_list **stack_a, t_list **stack_b, int adapt)
+void	which_algo(t_optype opt, int bench, t_list **stack_a, t_list **stack_b,
+			int adapt)
 {
 	float	d;
 
-	d = index_error(ft_lstsize(*stack_a), *stack_a);
+	d = disorder_index(ft_lstsize(*stack_a), *stack_a);
 	if (opt == UNKNOWN)
 	{
 		if (d < 0.2)
@@ -73,5 +74,5 @@ void	adaptive(t_list **stack_a, t_list **stack_b,
 				choosenoption = (*options)->options[0];
 		}
 	}
-	whichalgo(choosenoption, bench, stack_a, stack_b, bench);
+	which_algo(choosenoption, bench, stack_a, stack_b, bench);
 }
