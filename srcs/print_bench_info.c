@@ -6,15 +6,15 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:59:06 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 17:36:48 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:09:18 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	print_bench_info(t_stats **stats, float d, t_optype opt)
+void	print_bench_info(t_stats **stats, t_optype opt)
 {
-	ft_printf("[bench] disorder:     %f%%\n", d);
+	ft_printf("[bench] disorder:     %f%%\n", (*stats)->di);
 	if ((*stats)->algo == SIMPLE)
 		ft_printf("[bench] strategy:     Simple / O(nˆ2)\n");
 	else if ((*stats)->algo == MEDIUM)

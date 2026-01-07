@@ -6,49 +6,39 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:49:03 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 00:07:21 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 20:34:21 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	bench_complex(t_list **stack_a, t_list **stack_b, int len, float d,
-			t_stats **s, int adapt, int print)
+void	bench_complex(t_list **stack_a, t_list **stack_b,
+			t_stats **stats, int print)
 {
 	long	pivot;
 	long	*arr;
 	int		pushed;
-	t_stats	*stats;
-	
+
 	if (!stack_a || !*stack_a)
 		return ;
-	if (!s || !*s)
+	if ((*stats)->sizea <= 3)
 	{
-		stats = malloc(sizeof(t_stats));
-		if (!stats)
-			return ;
-		ft_bzero(stats, sizeof(t_stats));
-	}
-	else
-		stats = *s;
-	if (len <= 3)
-	{
-		sort_three(stack_a, stack_b, len, 1, &stats);
+		sort_three(stack_a, stack_b, (*stats)->sizea, 1, stats);
 		if (print)
 		{
-			if (adapt)
+			if ((*stats)->isadaptive)
 				stats->algo = ADAPTIVE;
 			else
 				stats->algo = COMPLEX;
-			count_bench(&stats);
-			print_bench_info(&stats, d, COMPLEX);
+			count_bench(stats);
+			print_bench_info(stats, COMPLEX);
 		}
 		return ;
 	}
-	arr = array_sort(*stack_a, len);
+	arr = array_sort(*stack_a, (*stats)->sizea);
 	if (!arr)
 		return ;
-	pivot = arr[len / 2];
+	pivot = arr[(*stats)->sizea / 2];
 	free(arr);
 	pushed = bench_complex_a_next(stack_a, stack_b, len, pivot, &stats);
 	bench_complex(stack_a, stack_b, len - pushed, d, &stats, adapt, 0);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_three.c                                       :+:      :+:    :+:   */
+/*   sort_three-v1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 17:58:54 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 11:01:55 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 20:23:44 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	sort_three_top_next(t_list **stack, t_list **stack2,
 }
 
 void	sort_three_top_next_next(t_list **stack, t_list **stack2,
-			int bench, t_stats **stats)
+			t_stats **stats)
 {
 	long	first;
 	long	second;
@@ -92,7 +92,7 @@ void	sort_three_top_next_next(t_list **stack, t_list **stack2,
 	third = (*stack)->next->next->content;
 	if (first < second && second > third && first < third)
 	{
-		if (bench)
+		if ((*stats)->isbench)
 		{
 			pb(stack, stack2, 1);
 			sa(stack, 1);
@@ -110,7 +110,7 @@ void	sort_three_top_next_next(t_list **stack, t_list **stack2,
 	}
 	else if (first > second && second > third)
 	{
-		if (bench)
+		if ((*stats)->isbench)
 		{
 			sa(stack, 1);
 			pb(stack, stack2, 1);
@@ -133,7 +133,7 @@ void	sort_three_top_next_next(t_list **stack, t_list **stack2,
 }
 
 void	sort_three(t_list **stack, t_list **stack2, int pushed,
-		int bench, t_stats **stats)
+			t_stats **stats)
 {
 	if (pushed == 3 && ft_lstsize(*stack) == 3)
 		sort_three_a(stack, bench, stats);
@@ -143,7 +143,7 @@ void	sort_three(t_list **stack, t_list **stack2, int pushed,
 	{
 		if ((*stack)->content > (*stack)->next->content)
 		{
-			if (bench)
+			if ((*stats)->isbench)
 			{
 				sa(stack, 1);
 				(*stats)->sa_count++;

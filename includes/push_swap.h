@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 00:31:56 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 20:33:09 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef enum e_option
 typedef struct s_options
 {
 	t_optype	*options;
-	int				count;
+	int			count;
 }	t_options;
 
 typedef struct s_stats
@@ -50,6 +50,9 @@ typedef struct s_stats
 	size_t			ss_count;
 	size_t			total_count;
 	t_optype		algo;
+	int				isbench;
+	int				isadaptive;
+	float			di;
 }	t_stats;
 
 // Functions
@@ -65,17 +68,17 @@ size_t			ft_strlen(const char *str);
 void			free_split(char **split);
 void			free_all(t_list **stack_a, t_list **stack_b,
 					t_options **options);
-void			sort_three_a(t_list **stack_a, int bench, t_stats **stats);
+void			sort_three_a(t_list **stack_a, t_stats **stats);
 void			sort_three_top(t_list **stack, t_list **stack2,
-					int bench, t_stats **stats);
+					t_stats **stats);
 void			sort_three_top_next(t_list **stack, t_list **stack2,
-					int bench, t_stats **stats);
+					t_stats **stats);
 void			sort_three_top_next_next(t_list **stack, t_list **stack2,
-					int bench, t_stats **stats);
+					t_stats **stats);
 void			sort_three(t_list **stack_a, t_list **stack_b, int pushed,
-					int bench, t_stats **stats);
+					t_stats **stats);
 void			sort_three_b(t_list **stack_a, t_list **stack_b, int len,
-					int bench, t_stats **stats);
+					t_stats **stats);
 void			ft_bzero(void *p, size_t i);
 void			ft_putnbr(int n);
 
@@ -86,8 +89,8 @@ int				verify_options(t_options **options);
 void			adaptive(t_list **stack_a, t_list **stack_b,
 					t_options **options);
 float			disorder_index(int len, t_list *stack);
-void			which_algo(t_optype opt, int bench, t_list **a, t_list **b,
-					int adapt);
+void			which_algo(t_optype opt, t_list **a, t_list **b,
+					t_stats **stats);
 
 // Simple
 void			simple(t_list **stack_a, t_list **stack_b);

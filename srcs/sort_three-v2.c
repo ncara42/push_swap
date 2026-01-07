@@ -6,13 +6,13 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:24:03 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 16:08:09 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:27:02 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
+void	sort_three_a(t_list **stack_a, t_stats **stats)
 {
 	long	first;
 	long	second;
@@ -23,7 +23,7 @@ void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
 	third = (*stack_a)->next->next->content;
 	if (first > second && second < third && first < third)
 	{
-		if (bench)
+		if ((*stats)->isbench)
 		{
 			sa(stack_a, 1);
 			(*stats)->sa_count++;
@@ -33,7 +33,7 @@ void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
 	}
 	else if (first > second && second > third)
 	{
-		if (bench)
+		if ((*stats)->isbench)
 		{
 			sa(stack_a, 1);
 			rra(stack_a, 1);
@@ -48,7 +48,7 @@ void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
 	}
 	else if (first > second && second < third && first > third)
 	{
-		if (bench)
+		if ((*stats)->isbench)
 		{
 			ra(stack_a, 1);
 			(*stats)->ra_count++;
@@ -58,7 +58,7 @@ void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
 	}
 	else if (first < second && second > third && first < third)
 	{
-		if (bench)
+		if ((*stats)->isbench)
 		{
 			sa(stack_a, 1);
 			ra(stack_a, 1);
@@ -73,7 +73,7 @@ void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
 	}
 	else if (first < second && second > third && first > third)
 	{
-		if (bench)
+		if ((*stats)->isbench)
 		{
 			rra(stack_a, 1);
 			(*stats)->rra_count++;
@@ -83,7 +83,7 @@ void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
 	}
 }
 
-void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench,
+void	sort_three_b(t_list **stack_a, t_list **stack_b, int len,
 			t_stats **stats)
 {
 	if (len == 1 && bench)
@@ -97,7 +97,7 @@ void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench,
 	{
 		if ((*stack_b)->content < (*stack_b)->next->content)
 		{
-			if (bench)
+			if ((*stats)->isbench)
 			{
 				sb(stack_b, 1);
 				(*stats)->sb_count++;
@@ -105,7 +105,7 @@ void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench,
 			else
 				sb(stack_b, 0);
 		}
-		if (bench)
+		if ((*stats)->isbench)
 		{
 			pa(stack_a, stack_b, 1);
 			pa(stack_a, stack_b, 1);
@@ -121,7 +121,7 @@ void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench,
 	{
 		while (len--)
 		{
-			if (bench)
+			if ((*stats)->isbench)
 			{
 				pa(stack_a, stack_b, 1);
 				(*stats)->pa_count++;
@@ -129,6 +129,6 @@ void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench,
 			else
 				pa(stack_a, stack_b, 0);
 		}
-		sort_three_top(stack_a, stack_b, bench, stats);
+		sort_three_top(stack_a, stack_b, stats);
 	}
 }

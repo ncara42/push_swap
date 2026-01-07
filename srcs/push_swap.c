@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 17:37:47 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/07 19:47:34 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	parse_split(char **argv, t_list **stack_a)
 	i = 0;
 	split = ft_split(argv[1], ' ');
 	if (!split)
-		return (0);
+		return (write(1, "Error\n", 6), 0);
 	if (!check_num(split) || !check_minmax(split))
 		return (free_split(split), write(2, "Error\n", 6), 0);
 	while (split[i])
@@ -123,13 +123,6 @@ int	main(int argc, char **argv)
 	}
 	parse_options(argc, argv, &options);
 	adaptive(&stack_a, &stack_b, &options);
-	//medium(&stack_a, &stack_b);
-	/*t_list *tmp = stack_a;
-	while (tmp)
-	{
-		printf("%ld\n", tmp->content);
-		tmp = tmp->next;
-	}*/
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }
