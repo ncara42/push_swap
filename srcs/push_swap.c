@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 00:33:16 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 16:05:21 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h> // Borrar lib
+#include <stdio.h>
 
 float	disorder_index(int n, t_list *stack_a)
 {
@@ -124,12 +124,12 @@ int	main(int argc, char **argv)
 	//parse_options(argc, argv, &options);
 	//adaptive(&stack_a, &stack_b, &options);
 	medium(&stack_a, &stack_b);
-	t_list *tmp = stack_a;
+	/*t_list *tmp = stack_a;
 	while (tmp)
 	{
 		printf("%ld\n", tmp->content);
 		tmp = tmp->next;
-	}
+	}*/
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }

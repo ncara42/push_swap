@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_three_a_b.c                                   :+:      :+:    :+:   */
+/*   sort_three-v2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:24:03 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/06 23:58:20 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 16:08:09 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,13 @@ void	sort_three_a(t_list **stack_a, int bench, t_stats **stats)
 void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench,
 			t_stats **stats)
 {
-	if (len == 1)
-		if (bench)
-		{
-			pa(stack_a, stack_b, 1);
-			(*stats)->pa_count++;
-		}
-		else
-			pa(stack_a, stack_b, 0);
+	if (len == 1 && bench)
+	{
+		pa(stack_a, stack_b, 1);
+		(*stats)->pa_count++;
+	}
+	else if (len == 1 && !bench)
+		pa(stack_a, stack_b, 0);
 	else if (len == 2)
 	{
 		if ((*stack_b)->content < (*stack_b)->next->content)
@@ -112,7 +111,7 @@ void	sort_three_b(t_list **stack_a, t_list **stack_b, int len, int bench,
 			pa(stack_a, stack_b, 1);
 			(*stats)->pa_count += 2;
 		}
-		else 
+		else
 		{
 			pa(stack_a, stack_b, 0);
 			pa(stack_a, stack_b, 0);

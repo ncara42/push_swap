@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 19:49:52 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 00:32:10 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 15:53:18 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#ifndef INT_MAX
-# define INT_MAX 2147483647
-#endif
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
 
-#ifndef INT_MIN
-# define INT_MIN -2147483648
-#endif
+# ifndef INT_MIN
+#  define INT_MIN -2147483648
+# endif
 
 typedef struct s_list
 {

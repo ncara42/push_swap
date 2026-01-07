@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_num.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 15:51:09 by ncaravac          #+#    #+#             */
+/*   Updated: 2026/01/07 16:04:15 by ncaravac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/libft.h"
 
-int check_minmax(char **argv)
+int	check_minmax(char **argv)
 {
 	int		i;
 	long	num;
@@ -36,10 +48,10 @@ int	check_dups(char **argv)
 	return (1);
 }
 
-int  check_num(char **argv)
+int	check_num(char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (argv[i])
@@ -51,7 +63,7 @@ int  check_num(char **argv)
 		}
 		j = 0;
 		if (argv[i][j] == '-' || argv[i][j] == '+')
-				j++;
+			j++;
 		if (argv[i][j] == '\0')
 			return (0);
 		while (argv[i][j])
@@ -62,7 +74,7 @@ int  check_num(char **argv)
 		}
 		i++;
 	}
-	if(!check_dups(argv))
+	if (!check_dups(argv))
 		return (0);
 	return (1);
 }
