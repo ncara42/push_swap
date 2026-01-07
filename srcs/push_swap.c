@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 16:05:21 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/07 17:37:47 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 float	disorder_index(int n, t_list *stack_a)
 {
 	t_list	*tmp;
-	int		even_total;
-	int		errors;
+	float	even_total;
+	float	errors;
 	float	index;
 
 	even_total = (n * (n - 1)) / 2;
@@ -33,7 +33,7 @@ float	disorder_index(int n, t_list *stack_a)
 		}
 		stack_a = stack_a->next;
 	}
-	index = (float)errors / (float)even_total;
+	index = (errors * 100) / even_total;
 	return (index);
 }
 
@@ -121,9 +121,9 @@ int	main(int argc, char **argv)
 		if (!parse_params(argc, argv, &stack_a))
 			return (0);
 	}
-	//parse_options(argc, argv, &options);
-	//adaptive(&stack_a, &stack_b, &options);
-	medium(&stack_a, &stack_b);
+	parse_options(argc, argv, &options);
+	adaptive(&stack_a, &stack_b, &options);
+	//medium(&stack_a, &stack_b);
 	/*t_list *tmp = stack_a;
 	while (tmp)
 	{

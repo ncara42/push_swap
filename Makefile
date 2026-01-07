@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
+#    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/07 00:11:07 by admin            ###   ########.fr        #
+#    Updated: 2026/01/07 16:55:42 by ncaravac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,4 +86,4 @@ fclean: clean
 
 re : fclean all
 
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re

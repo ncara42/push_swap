@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
+#    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/18 08:08:58 by ncaravac          #+#    #+#              #
-#    Updated: 2026/01/05 23:50:09 by admin            ###   ########.fr        #
+#    Updated: 2026/01/07 17:32:19 by ncaravac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = srcs/ft_printf.c\
 	srcs/ft_putchar.c\
 	srcs/ft_puthex.c\
 	srcs/ft_putnbr.c\
+	srcs/ft_float.c\
 	srcs/ft_putptr.c\
 	srcs/ft_putstr.c\
 	srcs/ft_putunsigned.c

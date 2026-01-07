@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 06:36:21 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/05 23:29:06 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 17:31:38 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ftp_conversion(const char *format, int i, va_list args, int count)
 		count += ftp_putchar(va_arg(args, int));
 	else if (format[i] == 'd' || format[i] == 'i')
 		count += ftp_putnbr(va_arg(args, int));
+	else if (format[i] == 'f')
+		count += ftp_float(va_arg(args, double));
 	else if (format[i] == 's')
 		count += ftp_putstr(va_arg(args, char *));
 	else if (format[i] == 'p')

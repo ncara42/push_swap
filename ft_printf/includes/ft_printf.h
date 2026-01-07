@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 07:16:05 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/05 23:29:50 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 17:30:39 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_printf(const char *format, ...);
 int	ftp_putchar(char c);
 int	ftp_putstr(char *s);
 int	ftp_putnbr(int n);
+int	ftp_float(float nb);
 int	ftp_puthex(uintptr_t n, unsigned int upper);
 int	ftp_putptr(void *ptr);
 int	ftp_putunsigned(unsigned int n);
