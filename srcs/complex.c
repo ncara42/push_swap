@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 00:10:32 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/07 22:30:16 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	complex(t_list **stack_a, t_list **stack_b, int len)
+#include <stdio.h>
+void	complex(t_stacks s, int len)
 {
 	long	pivot;
 	long	*arr;
 	int		pushed;
-
+printf("Complex A: len %d\n", len); // Borra esto antes de entregar
 	if (len <= 3)
 	{
-		sort_three(stack_a, stack_b, len, 0, NULL);
+		sort_three(s, len, 0);
 		return ;
 	}
-	arr = array_sort(*stack_a, len);
+	arr = array_sort(*(s.stack_a), len);
 	if (!arr)
 		return ;
 	pivot = arr[len / 2];
 	free(arr);
-	pushed = complex_a_next(stack_a, stack_b, len, pivot);
-	complex(stack_a, stack_b, len - pushed);
-	complex_b(stack_a, stack_b, pushed);
+	pushed = complex_a_next(s, len, pivot);
+	complex(s, len - pushed);
+	complex_b(s, pushed);
 }
 
-int	complex_a_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
+int	complex_a_next(t_stacks s, int len, long pivot)
 {
 	int		i;
 	int		pushed;
@@ -42,48 +42,48 @@ int	complex_a_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
 	i = 0;
 	pushed = 0;
 	ra_count = 0;
-	while (i < len && *stack_a)
+	while (i < len && *(s.stack_a))
 	{
-		if ((*stack_a)->content <= pivot)
+		if ((*(s.stack_a))->content <= pivot)
 		{
-			pb(stack_a, stack_b, 0);
+			pb(s.stack_a, s.stack_b, 0);
 			pushed++;
 		}
-		else if ((*stack_a)->content > pivot)
+		else if ((*(s.stack_a))->content > pivot)
 		{
-			ra(stack_a, 0);
+			ra(s.stack_a, 0);
 			ra_count++;
 		}
 		i++;
 	}
 	while (ra_count-- > 0)
-		rra(stack_a, 0);
+		rra(s.stack_a, 0);
 	return (pushed);
 }
 
-void	complex_b(t_list **stack_a, t_list **stack_b, int len)
+void	complex_b(t_stacks s, int len)
 {
 	long	pivot;
 	long	*arr;
 	int		pushed;
-
+printf("Complex A: len %d\n", len); // Borra esto antes de entregar
 	pushed = 0;
 	if (len <= 3)
 	{
-		sort_three_b(stack_a, stack_b, len, 0, NULL);
+		sort_three_b(s, len, 0);
 		return ;
 	}
-	arr = array_sort(*stack_b, len);
+	arr = array_sort(*(s.stack_b), len);
 	if (!arr)
 		return ;
 	pivot = arr[len / 2];
 	free(arr);
-	pushed = complex_b_next(stack_a, stack_b, len, pivot);
-	complex(stack_a, stack_b, pushed);
-	complex_b(stack_a, stack_b, len - pushed);
+	pushed = complex_b_next(s, len, pivot);
+	complex(s, pushed);
+	complex_b(s, len - pushed);
 }
 
-int	complex_b_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
+int	complex_b_next(t_stacks s, int len, long pivot)
 {
 	int		i;
 	int		pushed;
@@ -92,21 +92,21 @@ int	complex_b_next(t_list **stack_a, t_list **stack_b, int len, long pivot)
 	i = 0;
 	rb_count = 0;
 	pushed = 0;
-	while (i < len && *stack_b)
+	while (i < len && *(s.stack_b))
 	{
-		if ((*stack_b)->content >= pivot)
+		if ((*(s.stack_b))->content >= pivot)
 		{
-			pa(stack_a, stack_b, 0);
+			pa(s.stack_a, s.stack_b, 0);
 			pushed++;
 		}
-		else if ((*stack_b)->content < pivot)
+		else if ((*(s.stack_b))->content < pivot)
 		{
-			rb(stack_b, 0);
+			rb(s.stack_b, 0);
 			rb_count++;
 		}
 		i++;
 	}
 	while (rb_count-- > 0)
-		rrb(stack_b, 0);
+		rrb(s.stack_b, 0);
 	return (pushed);
 }

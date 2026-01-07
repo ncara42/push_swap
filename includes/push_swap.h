@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 20:33:09 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:53:53 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef struct s_options
 	t_optype	*options;
 	int			count;
 }	t_options;
+
+typedef struct s_stacks
+{
+	t_list	**stack_a;
+	t_list	**stack_b;
+}	t_stacks;
 
 typedef struct s_stats
 {
@@ -69,15 +75,12 @@ void			free_split(char **split);
 void			free_all(t_list **stack_a, t_list **stack_b,
 					t_options **options);
 void			sort_three_a(t_list **stack_a, t_stats **stats);
-void			sort_three_top(t_list **stack, t_list **stack2,
+void			sort_three_top(t_stacks s, t_stats **stats);
+void			sort_three_top_next(t_stacks s, t_stats **stats);
+void			sort_three_top_next_next(t_stacks s, t_stats **stats);
+void			sort_three(t_stacks s, int pushed,
 					t_stats **stats);
-void			sort_three_top_next(t_list **stack, t_list **stack2,
-					t_stats **stats);
-void			sort_three_top_next_next(t_list **stack, t_list **stack2,
-					t_stats **stats);
-void			sort_three(t_list **stack_a, t_list **stack_b, int pushed,
-					t_stats **stats);
-void			sort_three_b(t_list **stack_a, t_list **stack_b, int len,
+void			sort_three_b(t_stacks s, int len,
 					t_stats **stats);
 void			ft_bzero(void *p, size_t i);
 void			ft_putnbr(int n);
@@ -86,10 +89,9 @@ void			ft_putnbr(int n);
 int				parse_options(int argc, char **argv, t_options **options);
 t_optype		which_option(char *optionstr);
 int				verify_options(t_options **options);
-void			adaptive(t_list **stack_a, t_list **stack_b,
-					t_options **options);
+void			adaptive(t_stacks s, t_options **options);
 float			disorder_index(int len, t_list *stack);
-void			which_algo(t_optype opt, t_list **a, t_list **b,
+void			which_algo(t_optype opt, t_stacks s,
 					t_stats **stats);
 
 // Simple
@@ -100,19 +102,17 @@ int				get_min(t_list *stack_a);
 void			medium(t_list **stack_a, t_list **stack_b);
 
 	// Complex
-void			complex(t_list **stack_a, t_list **stack_b, int len);
-void			complex_b(t_list **stack_a, t_list **stack_b, int pushed);
-int				complex_a_next(t_list **stack_a, t_list **stack_b,
-					int len, long pivot);
-int				complex_b_next(t_list **stack_a, t_list **stack_b,
-					int len, long pivot);
+void			complex(t_stacks s, int len);
+void			complex_b(t_stacks s, int pushed);
+int				complex_a_next(t_stacks s, int len, long pivot);
+int				complex_b_next(t_stacks s, int len, long pivot);
 
 // BENCH
 void			print_bench_info(t_stats **stats, float d, t_optype opt);
-void			bench_simple(t_list **stack_a, t_list **stack_b, float d,
+void			bench_simple(t_list **stack_a, t_list **stack_b,
 					int adapt);
-void			bench_complex(t_list **stack_a, t_list **stack_b, int len,
-					float d, t_stats **s, int adapt, int print);
+void			bench_complex(t_stacks s, int len,
+					float d, t_stats **stats, int adapt, int print);
 int				bench_complex_a_next(t_list **stack_a, t_list **stack_b,
 					int len, long pivot, t_stats **stats);
 void			bench_complex_b(t_list **stack_a, t_list **stack_b, int len,

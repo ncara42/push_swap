@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 19:47:34 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:59:42 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,29 +100,45 @@ int	parse_split(char **argv, t_list **stack_a)
 	return (1);
 }
 
+int	first_check(int argc, char **argv, t_stacks s)
+{
+	if (argc == 1)
+		return (write(2, "Error\n", 6), 0);
+	else if (argc == 2)
+	{
+		if (!parse_split(argv, s.stack_a))
+			return (0);
+	}
+	else if (argc > 2)
+	{
+		if (!parse_params(argc, argv, s.stack_a))
+			return (0);
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list		*stack_a;
 	t_list		*stack_b;
 	t_options	*options;
+	t_stacks	s;
 
 	stack_a = NULL;
 	stack_b = NULL;
+	s.stack_a = &stack_a;
+	s.stack_b = &stack_b;
 	options = NULL;
-	if (argc == 1)
-		return (write(2, "Error\n", 6), 0);
-	else if (argc == 2)
+	if (!first_check(argc, argv, s))
+		return (0);
+	//parse_options(argc, argv, &options);
+	//adaptive(s, &options);
+	complex(s, ft_lstsize(*s.stack_a));
+	while (s.stack_a)
 	{
-		if (!parse_split(argv, &stack_a))
-			return (0);
+		printf("%ld\n", (*s.stack_a)->content);
+		*s.stack_a = (*s.stack_a)->next;
 	}
-	else if (argc > 2)
-	{
-		if (!parse_params(argc, argv, &stack_a))
-			return (0);
-	}
-	parse_options(argc, argv, &options);
-	adaptive(&stack_a, &stack_b, &options);
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }

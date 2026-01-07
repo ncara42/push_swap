@@ -6,7 +6,7 @@
 #    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/07 16:55:42 by ncaravac         ###   ########.fr        #
+#    Updated: 2026/01/07 21:57:44 by ncaravac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,10 +43,6 @@ SRCS =	srcs/push_swap.c \
 		srcs/sort_three-v2.c \
 		srcs/free.c \
 		srcs/parse_options.c\
-		srcs/adaptive.c\
-		srcs/bench_simple.c\
-		srcs/print_bench_info.c\
-		srcs/bench_complex.c\
 		srcs/count_bench.c
 
 OBJS_DIR = objs

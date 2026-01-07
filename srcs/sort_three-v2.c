@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:24:03 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 20:27:02 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/07 22:14:44 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,38 +83,37 @@ void	sort_three_a(t_list **stack_a, t_stats **stats)
 	}
 }
 
-void	sort_three_b(t_list **stack_a, t_list **stack_b, int len,
-			t_stats **stats)
+void	sort_three_b(t_stacks s, int len, t_stats **stats)
 {
-	if (len == 1 && bench)
+	if (len == 1 && (*stats)->isbench)
 	{
-		pa(stack_a, stack_b, 1);
+		pa((s.stack_a), (s.stack_b), 1);
 		(*stats)->pa_count++;
 	}
-	else if (len == 1 && !bench)
-		pa(stack_a, stack_b, 0);
+	else if (len == 1 && !(*stats)->isbench)
+		pa((s.stack_a), (s.stack_b), 0);
 	else if (len == 2)
 	{
-		if ((*stack_b)->content < (*stack_b)->next->content)
+		if ((*(s.stack_b))->content < (*(s.stack_b))->next->content)
 		{
 			if ((*stats)->isbench)
 			{
-				sb(stack_b, 1);
+				sb((s.stack_b), 1);
 				(*stats)->sb_count++;
 			}
 			else
-				sb(stack_b, 0);
+				sb((s.stack_b), 0);
 		}
 		if ((*stats)->isbench)
 		{
-			pa(stack_a, stack_b, 1);
-			pa(stack_a, stack_b, 1);
+			pa((s.stack_a), (s.stack_b), 1);
+			pa((s.stack_a), (s.stack_b), 1);
 			(*stats)->pa_count += 2;
 		}
 		else
 		{
-			pa(stack_a, stack_b, 0);
-			pa(stack_a, stack_b, 0);
+			pa((s.stack_a), (s.stack_b), 0);
+			pa((s.stack_a), (s.stack_b), 0);
 		}
 	}
 	else if (len == 3)
@@ -123,12 +122,12 @@ void	sort_three_b(t_list **stack_a, t_list **stack_b, int len,
 		{
 			if ((*stats)->isbench)
 			{
-				pa(stack_a, stack_b, 1);
+				pa((s.stack_a), (s.stack_b), 1);
 				(*stats)->pa_count++;
 			}
 			else
-				pa(stack_a, stack_b, 0);
+				pa((s.stack_a), (s.stack_b), 0);
 		}
-		sort_three_top(stack_a, stack_b, stats);
+		sort_three_top(s, stats);
 	}
 }

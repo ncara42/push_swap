@@ -16,11 +16,16 @@
 
 >>> FALTA ADAPTAR MEDIUM A BENCH (OJO CON FUNCIONES CON MAS DE 5 PARAMETROS,
                                 luego vamos a tener un problema para dividir)
->>> BUS ERROR (./push_swap "")
-    (ojo porque puede entrar en conflicto con las flags)
->>>> ./push_swap 1 2 3 4 NO debería hacer nada
->>>> ./push_swap (nada) NO debería dar error
->>>> Incluir DOS DECIMALES en el % del bench (ej. 42.21%)
+
+>>> He quitado del makefile el 
+        srcs/adaptive.c\
+		srcs/bench_simple.c\
+		srcs/print_bench_info.c\
+		srcs/bench_complex.c\
+para que me dejara compilar y probar con complex, pero me da segfault en sort_three-v1 y v-2
+por (*stats)->isbench. Miratelo porfa. Nos queda esto y YA nen
+Los movimientos los imprime y todo bien, va bajando el stack A tranquilamente hasta que llega a <= 3, se mete en sort_three y peta.
+Entiendo q arreglar esto solucionaria el problema!!! :D siento irme pero no me quiero quedar toda la noche, manana vuelvo
 
 > OPTIMISATIONS
 

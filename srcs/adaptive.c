@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 20:33:52 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:57:04 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	which_algo(t_optype opt, t_list **stack_a, t_list **stack_b,
+void	which_algo(t_optype opt, t_stacks s,
 			t_stats **stats)
 {
 	if (opt == UNKNOWN)
@@ -26,27 +26,26 @@ void	which_algo(t_optype opt, t_list **stack_a, t_list **stack_b,
 	}
 	if (opt == SIMPLE)
 	{
-		if (bench)
-			bench_simple(stack_a, stack_b, stats);
+		if ((*stats)->isbench)
+			bench_simple(s.stack_a, s.stack_b, stats);
 		else
-			simple(stack_a, stack_b);
+			simple(s.stack_a, s.stack_b);
 	}
 	else if (opt == MEDIUM)
 	{
-		medium(stack_a, stack_b);
+		medium(s.stack_a, s.stack_b);
 	}
 	else if (opt == COMPLEX)
 	{
-		if (bench)
-			bench_complex(stack_a, stack_b, stats, 1);
+		if ((*stats)->isbench)
+			bench_complex(s, stats, 1);
 		else
-			complex(stack_a, stack_b);
+			complex(s, ft_lstsize(*s.stack_a));
 	}
 	return ;
 }
 
-void	adaptive(t_list **stack_a, t_list **stack_b,
-						t_options **options)
+void	adaptive(t_stacks s, t_options **options)
 {
 	int			bench;
 	t_optype	choosenoption;
@@ -57,7 +56,7 @@ void	adaptive(t_list **stack_a, t_list **stack_b,
 	if (!stats)
 		return ;
 	ft_bzero(stats, sizeof(t_stats));
-	stats->sizea = ft_lstsize(*stack_a);
+	stats->sizea = ft_lstsize(*s.stack_a);
 	stats->di = disorder_index(stats->sizea, *stack_a);
 	choosenoption = UNKNOWN;
 	if (!d)
@@ -85,5 +84,5 @@ void	adaptive(t_list **stack_a, t_list **stack_b,
 	}
 	else
 		stats->isadaptive = 1;
-	which_algo(choosenoption, stack_a, stack_b, &stats);
+	which_algo(choosenoption, s, &stats);
 }
