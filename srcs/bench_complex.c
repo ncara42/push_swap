@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bench_complex_new.c                                :+:      :+:    :+:   */
+/*   bench_complex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 01:42:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/08 01:53:43 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:30:09 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
 	{
 		count_bench(stats);
 		print_bench_info(stats, COMPLEX);
+		free(*stats);
 	}
 }
 

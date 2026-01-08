@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 23:58:29 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:30:21 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	bench_simple(t_stacks s, t_stats **stats)
 	int		nodes;
 	int		pos_min;
 
+	if (ft_lstsize(*s.stack_a) == 1)
+		return ;
 	while (ft_lstsize(*s.stack_a) > 3)
 	{
 		pos_min = get_min(*s.stack_a);
@@ -61,4 +63,5 @@ void	bench_simple(t_stacks s, t_stats **stats)
 		(*stats)->algo = SIMPLE;
 	count_bench(stats);
 	print_bench_info(stats, SIMPLE);
+	free(*stats);
 }

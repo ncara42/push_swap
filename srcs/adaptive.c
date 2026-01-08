@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/08 17:41:42 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:32:46 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,30 @@ void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 		if ((*stats)->isbench)
 			bench_simple(s, stats);
 		else
+		{
+			free(*stats);
 			simple(s.stack_a, s.stack_b);
+		}
 	}
 	else if (opt == MEDIUM)
 	{
 		if ((*stats)->isbench)
 			bench_medium(s, stats);
 		else
+		{
+			free(*stats);
 			medium(s);
+		}
 	}
 	else if (opt == COMPLEX)
 	{
 		if ((*stats)->isbench)
 			bench_complex(s, stats, ft_lstsize(*s.stack_a), 1);
 		else
+		{
+			free(*stats);
 			complex(s, ft_lstsize(*s.stack_a));
+		}
 	}
 	return ;
 }
@@ -60,7 +69,10 @@ void	adaptive(t_stacks s, t_options **options)
 	stats->sizea = ft_lstsize(*s.stack_a);
 	stats->di = disorder_index(stats->sizea, *s.stack_a);
 	if (!stats->di)
+	{
+		free(stats);
 		return ;
+	}
 	if (*options)
 	{
 		if ((*options)->count == 2)
@@ -71,7 +83,7 @@ void	adaptive(t_stacks s, t_options **options)
 			else
 				choosenoption = (*options)->options[1];
 		}
-		else
+		else if ((*options)->count == 1)
 		{
 			if ((*options)->options[0] == BENCH)
 			{

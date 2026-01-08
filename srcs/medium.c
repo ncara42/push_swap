@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:32:15 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/08 00:48:46 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:13:16 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,8 @@ void	medium(t_stacks s)
 	int		size;
 
 	size = ft_lstsize(*s.stack_a);
+	if (size == 1)
+		return ;
 	arr = array_sort(*s.stack_a, size);
 	if (!arr)
 		return ;

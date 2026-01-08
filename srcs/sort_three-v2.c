@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:24:03 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 23:44:32 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:09:04 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	sort_three_a(t_list **stack_a, t_stats **stats)
 		bench = 0;
 	else
 		bench = (*stats)->isbench;
+	if (!(*stack_a)->next || !(*stack_a)->next->next)
+		return ;
 	first = (*stack_a)->content;
 	second = (*stack_a)->next->content;
 	third = (*stack_a)->next->next->content;

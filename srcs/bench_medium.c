@@ -6,7 +6,7 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 23:28:36 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/08 00:48:55 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:30:03 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void	bench_medium(t_stacks s, t_stats **stats)
 	free(arr);
 	count_bench(stats);
 	print_bench_info(stats, MEDIUM);
+	free(*stats);
 }
