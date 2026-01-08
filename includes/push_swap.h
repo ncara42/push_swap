@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 21:53:53 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/08 01:15:53 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_stacks
 {
 	t_list	**stack_a;
 	t_list	**stack_b;
+	int		start;
+	int		end;
 }	t_stacks;
 
 typedef struct s_stats
@@ -55,6 +57,7 @@ typedef struct s_stats
 	size_t			sb_count;
 	size_t			ss_count;
 	size_t			total_count;
+	size_t			sizea;
 	t_optype		algo;
 	int				isbench;
 	int				isadaptive;
@@ -99,26 +102,26 @@ void			simple(t_list **stack_a, t_list **stack_b);
 int				get_min(t_list *stack_a);
 
 // Medium
-void			medium(t_list **stack_a, t_list **stack_b);
+void			medium(t_stacks s);
+void			pushing_to_a(t_stacks s, int bench, t_stats **stats);
+void			get_chunks(t_stacks s, long *arr, int bench, t_stats **stats);
 
-	// Complex
+// Complex
 void			complex(t_stacks s, int len);
 void			complex_b(t_stacks s, int pushed);
 int				complex_a_next(t_stacks s, int len, long pivot);
 int				complex_b_next(t_stacks s, int len, long pivot);
 
 // BENCH
-void			print_bench_info(t_stats **stats, float d, t_optype opt);
-void			bench_simple(t_list **stack_a, t_list **stack_b,
-					int adapt);
-void			bench_complex(t_stacks s, int len,
-					float d, t_stats **stats, int adapt, int print);
-int				bench_complex_a_next(t_list **stack_a, t_list **stack_b,
-					int len, long pivot, t_stats **stats);
-void			bench_complex_b(t_list **stack_a, t_list **stack_b, int len,
-					float d, t_stats **stats, int adapt);
-int				bench_complex_b_next(t_list **stack_a, t_list **stack_b,
-					int len, long pivot, t_stats **stats);
+void			print_bench_info(t_stats **stats, t_optype opt);
+void			bench_simple(t_stacks s, t_stats **stats);
+void			bench_medium(t_stacks s, t_stats **stats);
+void			bench_complex(t_stacks s, t_stats **stats, int len, int print);
+int				bench_complex_a_next(t_stacks s, int len, long pivot,
+					t_stats **stats);
+void			bench_complex_b(t_stacks s, int len, t_stats **stats);
+int				bench_complex_b_next(t_stacks s, int len, long pivot,
+					t_stats **stats);
 void			count_bench(t_stats **stats);
 
 // Movements

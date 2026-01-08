@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:51:09 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 16:04:15 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/08 02:07:41 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,14 @@ int	check_minmax(char **argv)
 	int		i;
 	long	num;
 
-	i = 1;
+	i = 0;
 	while (argv[i])
 	{
+		if (argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			i++;
+			continue ;
+		}
 		num = ft_atol(argv[i]);
 		if (num < INT_MIN || num > INT_MAX)
 			return (0);
@@ -52,8 +57,10 @@ int	check_num(char **argv)
 {
 	int	i;
 	int	j;
+	int	numbers;
 
 	i = 0;
+	numbers = 0;
 	while (argv[i])
 	{
 		if (argv[i][0] == '-' && argv[i][1] == '-')
@@ -72,8 +79,11 @@ int	check_num(char **argv)
 				return (0);
 			j++;
 		}
+		numbers++;
 		i++;
 	}
+	if (numbers == 0)
+		return (0);
 	if (!check_dups(argv))
 		return (0);
 	return (1);

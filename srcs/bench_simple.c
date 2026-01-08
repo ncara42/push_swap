@@ -6,26 +6,26 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 21:57:03 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/07 23:58:29 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	bench_simple(t_list **stack_a, t_list **stack_b, t_stats **stats)
+void	bench_simple(t_stacks s, t_stats **stats)
 {
 	int		nodes;
 	int		pos_min;
 
-	while (ft_lstsize(*stack_a) > 3)
+	while (ft_lstsize(*s.stack_a) > 3)
 	{
-		pos_min = get_min(*stack_a);
-		nodes = ft_lstsize(*stack_a);
+		pos_min = get_min(*s.stack_a);
+		nodes = ft_lstsize(*s.stack_a);
 		if (pos_min <= nodes / 2)
 		{
 			while (pos_min--)
 			{
-				ra(stack_a, 1);
+				ra(s.stack_a, 1);
 				(*stats)->ra_count++;
 			}
 		}
@@ -33,29 +33,29 @@ void	bench_simple(t_list **stack_a, t_list **stack_b, t_stats **stats)
 		{
 			while (nodes - pos_min++)
 			{
-				rra(stack_a, 1);
+				rra(s.stack_a, 1);
 				(*stats)->rra_count++;
 			}
 		}
-		pb(stack_a, stack_b, 1);
+		pb(s.stack_a, s.stack_b, 1);
 		(*stats)->pb_count++;
 	}
-	if (ft_lstsize(*stack_a) >= 3)
-		sort_three_a(stack_a, stats);
+	if (ft_lstsize(*s.stack_a) >= 3)
+		sort_three_a(s.stack_a, stats);
 	else
 	{
-		if ((*stack_a)->content > (*stack_a)->next->content)
+		if ((*s.stack_a)->content > (*s.stack_a)->next->content)
 		{
-			sa(stack_a, 1);
+			sa(s.stack_a, 1);
 			(*stats)->sa_count++;
 		}
 	}
-	while (*stack_b)
+	while (*s.stack_b)
 	{
-		pa(stack_a, stack_b, 1);
+		pa(s.stack_a, s.stack_b, 1);
 		(*stats)->pa_count++;
 	}
-	if (adapt)
+	if ((*stats)->isadaptive)
 		(*stats)->algo = ADAPTIVE;
 	else
 		(*stats)->algo = SIMPLE;

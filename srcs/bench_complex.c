@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bench_complex.c                                    :+:      :+:    :+:   */
+/*   bench_complex_new.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 19:49:03 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 21:53:00 by ncaravac         ###   ########.fr       */
+/*   Created: 2026/01/08 01:42:01 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/08 01:53:43 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	bench_complex(t_stacks s,
-			t_stats **stats, int print)
+void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
 {
 	long	pivot;
 	long	*arr;
@@ -21,41 +20,40 @@ void	bench_complex(t_stacks s,
 
 	if (!s.stack_a || !*s.stack_a)
 		return ;
-	if ((*stats)->sizea <= 3)
+	if (len <= 3)
 	{
-		sort_three(s, (*stats)->sizea, stats);
+		sort_three(s, len, 0);
 		if (print)
 		{
 			if ((*stats)->isadaptive)
-				stats->algo = ADAPTIVE;
+				(*stats)->algo = ADAPTIVE;
 			else
-				stats->algo = COMPLEX;
+				(*stats)->algo = COMPLEX;
 			count_bench(stats);
 			print_bench_info(stats, COMPLEX);
 		}
 		return ;
 	}
-	arr = array_sort(*s.stack_a, (*stats)->sizea);
+	arr = array_sort(*(s.stack_a), len);
 	if (!arr)
 		return ;
-	pivot = arr[(*stats)->sizea / 2];
+	pivot = arr[len / 2];
 	free(arr);
-	pushed = bench_complex_a_next(s, len, pivot, &stats);
-	bench_complex(s, len - pushed, d, &stats, adapt, 0);
-	bench_complex_b(s, pushed, d, &stats, adapt);
-	if (adapt)
-		stats->algo = ADAPTIVE;
+	pushed = bench_complex_a_next(s, len, pivot, stats);
+	bench_complex(s, stats, len - pushed, 0);
+	bench_complex_b(s, pushed, stats);
+	if ((*stats)->isadaptive)
+		(*stats)->algo = ADAPTIVE;
 	else
-		stats->algo = COMPLEX;
+		(*stats)->algo = COMPLEX;
 	if (print)
 	{
-		count_bench(&stats);
-		print_bench_info(&stats, d, COMPLEX);
+		count_bench(stats);
+		print_bench_info(stats, COMPLEX);
 	}
 }
 
-int	bench_complex_a_next(t_stacks s, int len,
-			long pivot, t_stats **stats)
+int	bench_complex_a_next(t_stacks s, int len, long pivot, t_stats **stats)
 {
 	int		i;
 	int		pushed;
@@ -64,15 +62,15 @@ int	bench_complex_a_next(t_stacks s, int len,
 	i = 0;
 	pushed = 0;
 	ra_count = 0;
-	while (i < len)
+	while (i < len && *(s.stack_a))
 	{
-		if ((*s.stack_a)->content <= pivot)
+		if ((*(s.stack_a))->content <= pivot)
 		{
 			pb(s.stack_a, s.stack_b, 1);
 			(*stats)->pb_count++;
 			pushed++;
 		}
-		else if ((*s.stack_a)->content > pivot)
+		else if ((*(s.stack_a))->content > pivot)
 		{
 			ra(s.stack_a, 1);
 			(*stats)->ra_count++;
@@ -82,14 +80,13 @@ int	bench_complex_a_next(t_stacks s, int len,
 	}
 	while (ra_count-- > 0)
 	{
-		rra(s.stack_a, 1);
+		rra(s.stack_a, 0);
 		(*stats)->rra_count++;
 	}
 	return (pushed);
 }
 
-void	bench_complex_b(t_stacks s,
-			int len, float d, t_stats **stats, int adapt)
+void	bench_complex_b(t_stacks s, int len, t_stats **stats)
 {
 	long	pivot;
 	long	*arr;
@@ -101,35 +98,34 @@ void	bench_complex_b(t_stacks s,
 		sort_three_b(s, len, stats);
 		return ;
 	}
-	arr = array_sort(*s.stack_b, len);
+	arr = array_sort(*(s.stack_b), len);
 	if (!arr)
 		return ;
 	pivot = arr[len / 2];
 	free(arr);
 	pushed = bench_complex_b_next(s, len, pivot, stats);
-	bench_complex(s, pushed, d, stats, adapt, 0);
-	bench_complex_b(s, len - pushed, d, stats, adapt);
+	bench_complex(s, stats, pushed, 0);
+	bench_complex_b(s, len - pushed, stats);
 }
 
-int	bench_complex_b_next(t_stacks s, int len,
-			long pivot, t_stats **stats)
+int	bench_complex_b_next(t_stacks s, int len, long pivot, t_stats **stats)
 {
-	int		i;
-	int		pushed;
-	int		rb_count;
+	int	i;
+	int	pushed;
+	int	rb_count;
 
 	i = 0;
 	rb_count = 0;
 	pushed = 0;
-	while (i < len)
+	while (i < len && *(s.stack_b))
 	{
-		if ((*s.stack_b)->content >= pivot)
+		if ((*(s.stack_b))->content >= pivot)
 		{
 			pa(s.stack_a, s.stack_b, 1);
 			(*stats)->pa_count++;
 			pushed++;
 		}
-		else if ((*s.stack_b)->content < pivot)
+		else if ((*(s.stack_b))->content < pivot)
 		{
 			rb(s.stack_b, 1);
 			(*stats)->rb_count++;

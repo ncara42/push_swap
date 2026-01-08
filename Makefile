@@ -6,7 +6,7 @@
 #    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/07 21:57:44 by ncaravac         ###   ########.fr        #
+#    Updated: 2026/01/08 01:56:53 by vvan-ach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,12 @@ SRCS =	srcs/push_swap.c \
 		srcs/sort_three-v2.c \
 		srcs/free.c \
 		srcs/parse_options.c\
-		srcs/count_bench.c
+		srcs/count_bench.c \
+		srcs/adaptive.c \
+		srcs/bench_simple.c \
+		srcs/bench_medium.c \
+		srcs/bench_complex.c \
+		srcs/print_bench_info.c
 
 OBJS_DIR = objs
 OBJS = $(SRCS:srcs/%.c=$(OBJS_DIR)/%.o)

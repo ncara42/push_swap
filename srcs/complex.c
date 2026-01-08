@@ -6,18 +6,19 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 22:30:16 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/08 02:09:59 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h>
+
 void	complex(t_stacks s, int len)
 {
 	long	pivot;
 	long	*arr;
 	int		pushed;
-printf("Complex A: len %d\n", len); // Borra esto antes de entregar
+
 	if (len <= 3)
 	{
 		sort_three(s, len, 0);
@@ -66,7 +67,7 @@ void	complex_b(t_stacks s, int len)
 	long	pivot;
 	long	*arr;
 	int		pushed;
-printf("Complex A: len %d\n", len); // Borra esto antes de entregar
+
 	pushed = 0;
 	if (len <= 3)
 	{
@@ -85,9 +86,9 @@ printf("Complex A: len %d\n", len); // Borra esto antes de entregar
 
 int	complex_b_next(t_stacks s, int len, long pivot)
 {
-	int		i;
-	int		pushed;
-	int		rb_count;
+	int	i;
+	int	pushed;
+	int	rb_count;
 
 	i = 0;
 	rb_count = 0;

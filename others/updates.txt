@@ -8,24 +8,25 @@
 // ARREGLADO: Da error si usamos un 0
 // ARREGLADO: Librerías y Makefiles ordenados
 // ARREGLADO: El medium no ordena correctamente
-
 // ARREGLADO: El bench se imprime cuando quiere (lo estoy mirando)
 // ARREGLADO: Si no se usan flags (--simple, medium, etc) no se imprimen
-                                               los movimientos
-                                               (RARO)
+// ARREGLADO: ADAPTAR MEDIUM A BENCH
 
->>> FALTA ADAPTAR MEDIUM A BENCH (OJO CON FUNCIONES CON MAS DE 5 PARAMETROS,
-                                luego vamos a tener un problema para dividir)
 
->>> He quitado del makefile el 
-        srcs/adaptive.c\
-		srcs/bench_simple.c\
-		srcs/print_bench_info.c\
-		srcs/bench_complex.c\
-para que me dejara compilar y probar con complex, pero me da segfault en sort_three-v1 y v-2
-por (*stats)->isbench. Miratelo porfa. Nos queda esto y YA nen
-Los movimientos los imprime y todo bien, va bajando el stack A tranquilamente hasta que llega a <= 3, se mete en sort_three y peta.
-Entiendo q arreglar esto solucionaria el problema!!! :D siento irme pero no me quiero quedar toda la noche, manana vuelvo
+MIRATE EL SORT_THREE_A (hace un segfault cuando es llamado y que el stack solo
+						tiene 2 numeros, en el simple y el complex. Hay que
+						modificarlo un poco)
+
+
+He arreglado todo el codigo excepte el sort_three_a, he cambiado totalmente el
+bench_complex, he hecho el bench_medium, tambien he arreglado los problemas de
+contador del bench, he arreglado que cuando solo haces ./push_swap --simple
+sin numeros iba hasta el algoritmo y daba segfault. ya no hay ninguna funcion
+de mas de 4 argumentos.
+
+Falta poco nene, falta poco...
+
+
 
 > OPTIMISATIONS
 

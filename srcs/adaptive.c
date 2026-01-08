@@ -6,14 +6,13 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 21:57:04 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/07 23:58:46 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	which_algo(t_optype opt, t_stacks s,
-			t_stats **stats)
+void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 {
 	if (opt == UNKNOWN)
 	{
@@ -27,18 +26,21 @@ void	which_algo(t_optype opt, t_stacks s,
 	if (opt == SIMPLE)
 	{
 		if ((*stats)->isbench)
-			bench_simple(s.stack_a, s.stack_b, stats);
+			bench_simple(s, stats);
 		else
 			simple(s.stack_a, s.stack_b);
 	}
 	else if (opt == MEDIUM)
 	{
-		medium(s.stack_a, s.stack_b);
+		if ((*stats)->isbench)
+			bench_medium(s, stats);
+		else
+			medium(s);
 	}
 	else if (opt == COMPLEX)
 	{
 		if ((*stats)->isbench)
-			bench_complex(s, stats, 1);
+			bench_complex(s, stats, ft_lstsize(*s.stack_a), 1);
 		else
 			complex(s, ft_lstsize(*s.stack_a));
 	}
@@ -47,9 +49,7 @@ void	which_algo(t_optype opt, t_stacks s,
 
 void	adaptive(t_stacks s, t_options **options)
 {
-	int			bench;
 	t_optype	choosenoption;
-	float		d;
 	t_stats		*stats;
 
 	stats = malloc(sizeof(t_stats));
@@ -57,9 +57,9 @@ void	adaptive(t_stacks s, t_options **options)
 		return ;
 	ft_bzero(stats, sizeof(t_stats));
 	stats->sizea = ft_lstsize(*s.stack_a);
-	stats->di = disorder_index(stats->sizea, *stack_a);
+	stats->di = disorder_index(stats->sizea, *s.stack_a);
 	choosenoption = UNKNOWN;
-	if (!d)
+	if (!stats->di)
 		return ;
 	if (*options)
 	{

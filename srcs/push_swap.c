@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 21:59:42 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/08 02:09:36 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	parse_split(char **argv, t_list **stack_a)
 		return (write(1, "Error\n", 6), 0);
 	if (!check_num(split) || !check_minmax(split))
 		return (free_split(split), write(2, "Error\n", 6), 0);
+	*stack_a = NULL;
 	while (split[i])
 	{
 		node = ft_lstnew(ft_atol(split[i++]));
@@ -95,24 +96,64 @@ int	parse_split(char **argv, t_list **stack_a)
 		ft_lstadd_back(stack_a, node);
 	}
 	free_split(split);
-	if (i > 0)
-		disorder_index(i, *stack_a);
+	return (1);
+}
+
+int	is_number(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	if (s[i] == '\0')
+		return (0);
+	while (s[i])
+	{
+		if (!(s[i] >= '0' && s[i] <= '9'))
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
 int	first_check(int argc, char **argv, t_stacks s)
 {
-	if (argc == 1)
+	int	i;
+	int	nb_count;
+
+	i = 1;
+	nb_count = 0;
+	if (argc < 2)
 		return (write(2, "Error\n", 6), 0);
-	else if (argc == 2)
+	while (i < argc)
 	{
-		if (!parse_split(argv, s.stack_a))
-			return (0);
+		if (argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			i++;
+			continue ;
+		}
+		if (!is_number(argv[i]))
+			return (write(2, "Error\n", 6), 0);
+		nb_count++;
+		i++;
 	}
-	else if (argc > 2)
+	if (nb_count < 2)
+		return (write(2, "Error\n", 6), 0);
+	i = 1;
+	*s.stack_a = NULL;
+	while (i < argc)
 	{
-		if (!parse_params(argc, argv, s.stack_a))
-			return (0);
+		if (argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			i++;
+			continue ;
+		}
+		if (!add_node(argv[i], s.stack_a))
+			return (write(2, "Error\n", 6), 0);
+		i++;
 	}
 	return (1);
 }
@@ -131,14 +172,8 @@ int	main(int argc, char **argv)
 	options = NULL;
 	if (!first_check(argc, argv, s))
 		return (0);
-	//parse_options(argc, argv, &options);
-	//adaptive(s, &options);
-	complex(s, ft_lstsize(*s.stack_a));
-	while (s.stack_a)
-	{
-		printf("%ld\n", (*s.stack_a)->content);
-		*s.stack_a = (*s.stack_a)->next;
-	}
+	parse_options(argc, argv, &options);
+	adaptive(s, &options);
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }
