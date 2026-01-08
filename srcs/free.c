@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:14:20 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 00:05:27 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/08 17:37:30 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ void	free_all(t_list **stack_a, t_list **stack_b, t_options **options)
 	*stack_a = NULL;
 	free_list(*stack_b);
 	*stack_b = NULL;
-	if (*options)
+	if (options && *options)
 	{
 		free((*options)->options);
 		free(*options);
+		*options = NULL;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/08 02:09:36 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:38:53 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,61 +99,19 @@ int	parse_split(char **argv, t_list **stack_a)
 	return (1);
 }
 
-int	is_number(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	if (s[i] == '-' || s[i] == '+')
-		i++;
-	if (s[i] == '\0')
-		return (0);
-	while (s[i])
-	{
-		if (!(s[i] >= '0' && s[i] <= '9'))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int	first_check(int argc, char **argv, t_stacks s)
 {
-	int	i;
-	int	nb_count;
-
-	i = 1;
-	nb_count = 0;
-	if (argc < 2)
+	if (argc == 1)
 		return (write(2, "Error\n", 6), 0);
-	while (i < argc)
+	else if (argc == 2)
 	{
-		if (argv[i][0] == '-' && argv[i][1] == '-')
-		{
-			i++;
-			continue ;
-		}
-		if (!is_number(argv[i]))
-			return (write(2, "Error\n", 6), 0);
-		nb_count++;
-		i++;
+		if (!parse_split(argv, s.stack_a))
+			return (0);
 	}
-	if (nb_count < 2)
-		return (write(2, "Error\n", 6), 0);
-	i = 1;
-	*s.stack_a = NULL;
-	while (i < argc)
+	else if (argc > 2)
 	{
-		if (argv[i][0] == '-' && argv[i][1] == '-')
-		{
-			i++;
-			continue ;
-		}
-		if (!add_node(argv[i], s.stack_a))
-			return (write(2, "Error\n", 6), 0);
-		i++;
+		if (!parse_params(argc, argv, s.stack_a))
+			return (0);
 	}
 	return (1);
 }

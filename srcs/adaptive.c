@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 23:58:46 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:41:42 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	adaptive(t_stacks s, t_options **options)
 	t_optype	choosenoption;
 	t_stats		*stats;
 
+	choosenoption = UNKNOWN;
 	stats = malloc(sizeof(t_stats));
 	if (!stats)
 		return ;
 	ft_bzero(stats, sizeof(t_stats));
 	stats->sizea = ft_lstsize(*s.stack_a);
 	stats->di = disorder_index(stats->sizea, *s.stack_a);
-	choosenoption = UNKNOWN;
 	if (!stats->di)
 		return ;
 	if (*options)

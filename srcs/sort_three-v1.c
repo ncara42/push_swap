@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 17:58:54 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 23:17:12 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:45:20 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,18 @@ void	sort_three_top_next(t_stacks s, t_stats **stats)
 	long	first;
 	long	second;
 	long	third;
+	int		bench;
 
+	if (!stats || !*stats)
+		bench = 0;
+	else
+		bench = (*stats)->isbench;
 	first = (*(s.stack_a))->content;
 	second = (*(s.stack_a))->next->content;
 	third = (*(s.stack_a))->next->next->content;
 	if (first > second && second < third && first < third)
 	{
-		if ((*stats)->isbench)
+		if (bench)
 		{
 			sa(s.stack_a, 1);
 			(*stats)->sa_count++;
@@ -39,7 +44,7 @@ void	sort_three_top_next(t_stacks s, t_stats **stats)
 	}
 	else if (first > second && second < third && first > third)
 	{
-		if ((*stats)->isbench)
+		if (bench)
 		{
 			sa(s.stack_a, 1);
 			pb(s.stack_a, s.stack_b, 1);
@@ -59,7 +64,7 @@ void	sort_three_top_next(t_stacks s, t_stats **stats)
 	}
 	else if (first < second && second > third && first > third)
 	{
-		if ((*stats)->isbench)
+		if (bench)
 		{
 			pb(s.stack_a, s.stack_b, 1);
 			sa(s.stack_a, 1);
@@ -151,7 +156,7 @@ void	sort_three(t_stacks s, int pushed, t_stats **stats)
 	{
 		if ((*(s.stack_a))->content > (*(s.stack_a))->next->content)
 		{
-			if ((*stats)->isbench)
+			if (bench) // Usa la variable segura
 			{
 				sa(s.stack_a, 1);
 				(*stats)->sa_count++;
