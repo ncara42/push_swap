@@ -3,14 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 01:41:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/08 20:32:46 by vvan-ach         ###   ########.fr       */
+/*   Created: 2026/01/09 19:12:07 by vvan-ach          #+#    #+#             */
+/*   Updated: 2026/01/09 19:16:11 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	run_simple(t_stacks s, t_stats **stats)
+{
+	if ((*stats)->isbench)
+		bench_simple(s, stats);
+	else
+	{
+		free(*stats);
+		simple(s.stack_a, s.stack_b);
+	}
+}
+
+static void	run_medium(t_stacks s, t_stats **stats)
+{
+	if ((*stats)->isbench)
+		bench_medium(s, stats);
+	else
+	{
+		free(*stats);
+		medium(s);
+	}
+}
+
+static void	run_complex(t_stacks s, t_stats **stats)
+{
+	int	size;
+
+	size = ft_lstsize(*s.stack_a);
+	if ((*stats)->isbench)
+		bench_complex(s, stats, size, 1);
+	else
+	{
+		free(*stats);
+		complex(s, size);
+	}
+}
 
 void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 {
@@ -24,35 +60,11 @@ void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 			opt = COMPLEX;
 	}
 	if (opt == SIMPLE)
-	{
-		if ((*stats)->isbench)
-			bench_simple(s, stats);
-		else
-		{
-			free(*stats);
-			simple(s.stack_a, s.stack_b);
-		}
-	}
+		run_simple(s, stats);
 	else if (opt == MEDIUM)
-	{
-		if ((*stats)->isbench)
-			bench_medium(s, stats);
-		else
-		{
-			free(*stats);
-			medium(s);
-		}
-	}
+		run_medium(s, stats);
 	else if (opt == COMPLEX)
-	{
-		if ((*stats)->isbench)
-			bench_complex(s, stats, ft_lstsize(*s.stack_a), 1);
-		else
-		{
-			free(*stats);
-			complex(s, ft_lstsize(*s.stack_a));
-		}
-	}
+		run_complex(s, stats);
 	return ;
 }
 
@@ -65,7 +77,7 @@ void	adaptive(t_stacks s, t_options **options)
 	stats = malloc(sizeof(t_stats));
 	if (!stats)
 		return ;
-	ft_bzero(stats, sizeof(t_stats));
+	ft_bzero(stats, sizeof(t_stacks));
 	stats->sizea = ft_lstsize(*s.stack_a);
 	stats->di = disorder_index(stats->sizea, *s.stack_a);
 	if (!stats->di)
@@ -74,26 +86,7 @@ void	adaptive(t_stacks s, t_options **options)
 		return ;
 	}
 	if (*options)
-	{
-		if ((*options)->count == 2)
-		{
-			stats->isbench = 1;
-			if ((*options)->options[0] != BENCH)
-				choosenoption = (*options)->options[0];
-			else
-				choosenoption = (*options)->options[1];
-		}
-		else if ((*options)->count == 1)
-		{
-			if ((*options)->options[0] == BENCH)
-			{
-				stats->isbench = 1;
-				stats->isadaptive = 1;
-			}
-			else
-				choosenoption = (*options)->options[0];
-		}
-	}
+		select_option(&choosenoption, stats, *options);
 	else
 		stats->isadaptive = 1;
 	which_algo(choosenoption, s, &stats);

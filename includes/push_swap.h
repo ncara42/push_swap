@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/08 01:15:53 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/09 19:14:24 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void			sort_three_b(t_stacks s, int len,
 					t_stats **stats);
 void			ft_bzero(void *p, size_t i);
 void			ft_putnbr(int n);
-
+int				select_option(t_optype *opt, t_stats *st, t_options *o);
 // Options parsing
 int				parse_options(int argc, char **argv, t_options **options);
 t_optype		which_option(char *optionstr);

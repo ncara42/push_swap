@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 00:53:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/07 00:05:19 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/09 19:16:36 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,29 @@ int	get_opts_from_argv(int argc, char **argv, int *bench, t_optype *algo)
 		i++;
 	}
 	return (0);
+}
+
+int	select_option(t_optype *opt, t_stats *st, t_options *o)
+{
+	if (o->count == 2)
+	{
+		st->isbench = 1;
+		if (o->options[0] != BENCH)
+			*opt = o->options[0];
+		else
+			*opt = o->options[1];
+	}
+	else if (o->count == 1)
+	{
+		if (o->options[0] == BENCH)
+		{
+			st->isbench = 1;
+			st->isadaptive = 1;
+		}
+		else
+			*opt = o->options[0];
+	}
+	return (1);
 }
 
 int	parse_options(int argc, char **argv, t_options **options)

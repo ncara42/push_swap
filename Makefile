@@ -6,7 +6,7 @@
 #    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/08 01:56:53 by vvan-ach         ###   ########.fr        #
+#    Updated: 2026/01/09 19:15:26 by vvan-ach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,11 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 LDFLAGS = -I./includes -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf
 
 SRCS =	srcs/push_swap.c \
+		srcs/disorder_index.c \
 		srcs/swap.c \
 		srcs/push.c \
 		srcs/rotate.c \
+		srcs/reverse_rotate.c \
 		srcs/simple.c \
 		srcs/medium.c \
 		srcs/complex.c \

@@ -6,36 +6,12 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/08 17:38:53 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:26:11 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h>
-
-float	disorder_index(int n, t_list *stack_a)
-{
-	t_list	*tmp;
-	float	even_total;
-	float	errors;
-	float	index;
-
-	even_total = (n * (n - 1)) / 2;
-	errors = 0;
-	while (stack_a && stack_a->next)
-	{
-		tmp = stack_a->next;
-		while (tmp)
-		{
-			if (stack_a->content > tmp->content)
-				errors++;
-			tmp = tmp->next;
-		}
-		stack_a = stack_a->next;
-	}
-	index = (errors * 100) / even_total;
-	return (index);
-}
 
 int	add_node(char *argv, t_list **stack_a)
 {

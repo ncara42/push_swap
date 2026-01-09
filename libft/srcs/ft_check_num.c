@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:51:09 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/08 16:30:15 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:17:20 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,27 @@ int	check_dups(char **argv)
 	return (1);
 }
 
+static int	is_valid_number(char *str)
+{
+	int	j;
+
+	j = 0;
+	if (str[j] == '-' || str[j] == '+')
+		j++;
+	if (str[j] == '\0')
+		return (0);
+	while (str[j])
+	{
+		if (!(str[j] >= '0' && str[j] <= '9'))
+			return (0);
+		j++;
+	}
+	return (1);
+}
+
 int	check_num(char **argv)
 {
 	int	i;
-	int	j;
 	int	numbers;
 
 	i = 0;
@@ -68,23 +85,12 @@ int	check_num(char **argv)
 			i++;
 			continue ;
 		}
-		j = 0;
-		if (argv[i][j] == '-' || argv[i][j] == '+')
-			j++;
-		if (argv[i][j] == '\0')
+		if (!is_valid_number(argv[i]))
 			return (0);
-		while (argv[i][j])
-		{
-			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
-				return (0);
-			j++;
-		}
 		numbers++;
 		i++;
 	}
-	if (numbers == 0)
-		return (0);
-	if (!check_dups(argv))
+	if (numbers == 0 || !check_dups(argv))
 		return (0);
 	return (1);
 }

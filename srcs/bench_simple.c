@@ -6,16 +6,55 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/08 20:30:21 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:23:43 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+static void	do_ra(t_list **a, int *pos, t_stats *st)
+{
+	while ((*pos)-- > 0)
+	{
+		ra(a, 1);
+		st->ra_count++;
+	}
+}
+
+static void	do_rra(t_list **a, int nodes, int *pos, t_stats *st)
+{
+	while (nodes - (*pos)++ > 0)
+	{
+		rra(a, 1);
+		st->rra_count++;
+	}
+}
+
+static void	push_min(t_stacks s, int pos_min, int nodes, t_stats *st)
+{
+	if (pos_min <= nodes / 2)
+		do_ra(s.stack_a, &pos_min, st);
+	else
+		do_rra(s.stack_a, nodes, &pos_min, st);
+	pb(s.stack_a, s.stack_b, 1);
+	st->pb_count++;
+}
+
+static void	sort_small_a(t_list **a, t_stats **stats)
+{
+	if (ft_lstsize(*a) >= 3)
+		sort_three_a(a, stats);
+	else if ((*a)->content > (*a)->next->content)
+	{
+		sa(a, 1);
+		(*stats)->sa_count++;
+	}
+}
+
 void	bench_simple(t_stacks s, t_stats **stats)
 {
-	int		nodes;
-	int		pos_min;
+	int	nodes;
+	int	pos_min;
 
 	if (ft_lstsize(*s.stack_a) == 1)
 		return ;
@@ -23,35 +62,9 @@ void	bench_simple(t_stacks s, t_stats **stats)
 	{
 		pos_min = get_min(*s.stack_a);
 		nodes = ft_lstsize(*s.stack_a);
-		if (pos_min <= nodes / 2)
-		{
-			while (pos_min--)
-			{
-				ra(s.stack_a, 1);
-				(*stats)->ra_count++;
-			}
-		}
-		else
-		{
-			while (nodes - pos_min++)
-			{
-				rra(s.stack_a, 1);
-				(*stats)->rra_count++;
-			}
-		}
-		pb(s.stack_a, s.stack_b, 1);
-		(*stats)->pb_count++;
+		push_min(s, pos_min, nodes, *stats);
 	}
-	if (ft_lstsize(*s.stack_a) >= 3)
-		sort_three_a(s.stack_a, stats);
-	else
-	{
-		if ((*s.stack_a)->content > (*s.stack_a)->next->content)
-		{
-			sa(s.stack_a, 1);
-			(*stats)->sa_count++;
-		}
-	}
+	sort_small_a(s.stack_a, stats);
 	while (*s.stack_b)
 	{
 		pa(s.stack_a, s.stack_b, 1);

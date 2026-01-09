@@ -6,7 +6,7 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 01:42:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/08 20:30:09 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:47:56 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
 		return ;
 	if (len <= 3)
 	{
-		sort_three(s, len, 0);
+		sort_three(s, len, stats);
 		if (print)
 		{
 			if ((*stats)->isadaptive)
@@ -81,7 +81,7 @@ int	bench_complex_a_next(t_stacks s, int len, long pivot, t_stats **stats)
 	}
 	while (ra_count-- > 0)
 	{
-		rra(s.stack_a, 0);
+		rra(s.stack_a, 1);
 		(*stats)->rra_count++;
 	}
 	return (pushed);
