@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:59:26 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 16:59:27 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/10 23:18:01 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,9 @@ void	bench_medium_pushing_to_a(t_stacks s, int bench, t_stats **stats)
 		{
 			while (max_pos-- > 0)
 			{
+				rb(s.stack_b);
 				if (bench)
-				{
-					rb(s.stack_b, 1);
 					(*stats)->rb_count++;
-				}
-				else
-					rb(s.stack_b, 0);
 			}
 		}
 		else
@@ -39,22 +35,14 @@ void	bench_medium_pushing_to_a(t_stacks s, int bench, t_stats **stats)
 			max_pos = size - max_pos;
 			while (max_pos--)
 			{
+				rrb(s.stack_b);
 				if (bench)
-				{
-					rrb(s.stack_b, 1);
 					(*stats)->rrb_count++;
-				}
-				else
-					rrb(s.stack_b, 0);
 			}
 		}
+		pa(s.stack_a, s.stack_b);
 		if (bench)
-		{
-			pa(s.stack_a, s.stack_b, 1);
 			(*stats)->pa_count++;
-		}
-		else
-			pa(s.stack_a, s.stack_b, 0);
 	}
 }
 
@@ -73,13 +61,9 @@ void	bench_medium_nearest_num(t_stacks s, long *arr, int bench,
 	{
 		while (top-- > 0)
 		{
+			ra(s.stack_a);
 			if (bench)
-			{
-				ra(s.stack_a, 1);
 				(*stats)->ra_count++;
-			}
-			else
-				ra(s.stack_a, 0);
 		}
 	}
 	else
@@ -87,32 +71,20 @@ void	bench_medium_nearest_num(t_stacks s, long *arr, int bench,
 		bottom = size - bottom;
 		while (bottom-- > 0)
 		{
+			rra(s.stack_a);
 			if (bench)
-			{
-				rra(s.stack_a, 1);
 				(*stats)->rra_count++;
-			}
-			else
-				rra(s.stack_a, 0);
 		}
 	}
+	pb(s.stack_a, s.stack_b);
 	if (bench)
-	{
-		pb(s.stack_a, s.stack_b, 1);
 		(*stats)->pb_count++;
-	}
-	else
-		pb(s.stack_a, s.stack_b, 0);
 	pivot = s.start + (s.end - s.start) / 2;
 	if (ft_lstsize(*s.stack_b) > 1 && (*s.stack_b)->content < arr[pivot])
 	{
+		rb(s.stack_b);
 		if (bench)
-		{
-			rb(s.stack_b, 1);
 			(*stats)->rb_count++;
-		}
-		else
-			rb(s.stack_b, 0);
 	}
 }
 

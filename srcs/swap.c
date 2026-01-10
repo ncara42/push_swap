@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 02:21:05 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/06 10:21:09 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 23:11:58 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,21 @@ static void	swap(t_list **stack)
 	*stack = second;
 }
 
-void	sa(t_list **stack_a, int bench)
+void	sa(t_list **stack_a)
 {
 	swap(stack_a);
-	if (!bench)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
-void	sb(t_list **stack_b, int bench)
+void	sb(t_list **stack_b)
 {
 	swap(stack_b);
-	if (!bench)
-		write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
-void	ss(t_list **stack_a, t_list **stack_b, int bench)
+void	ss(t_list **stack_a, t_list **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
-	if (!bench)
-		write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }

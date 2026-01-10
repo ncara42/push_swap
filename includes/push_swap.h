@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 05:55:38 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 23:26:20 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,14 +149,14 @@ int				bench_complex_b_next(t_stacks s, int len, long pivot,
 void			count_bench(t_stats **stats);
 
 // Movements
-void			rra(t_list **stack_a, int bench);
-void			rrb(t_list **stack_b, int bench);
-void			ra(t_list **stack_a, int bench);
-void			rb(t_list **stack_b, int bench);
-void			pb(t_list **stack_a, t_list **stack_b, int bench);
-void			pa(t_list **stack_a, t_list **stack_b, int bench);
-void			sa(t_list **stack_a, int bench);
-void			sb(t_list **stack_b, int bench);
-void			ss(t_list **stack_a, t_list **stack_b, int bench);
+void			rra(t_list **stack_a);
+void			rrb(t_list **stack_b);
+void			ra(t_list **stack_a);
+void			rb(t_list **stack_b);
+void			pb(t_list **stack_a, t_list **stack_b);
+void			pa(t_list **stack_a, t_list **stack_b);
+void			sa(t_list **stack_a);
+void			sb(t_list **stack_b);
+void			ss(t_list **stack_a, t_list **stack_b);
 
 #endif

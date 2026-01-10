@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 05:56:37 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 23:13:46 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ void	simple(t_list **stack_a, t_list **stack_b)
 		if (pos_min <= nodes / 2)
 		{
 			while (pos_min--)
-				ra(stack_a, 0);
+				ra(stack_a);
 		}
 		else
 		{
 			while (nodes - pos_min++)
-				rra(stack_a, 0);
+				rra(stack_a);
 		}
-		pb(stack_a, stack_b, 0);
+		pb(stack_a, stack_b);
 	}
 	if (ft_lstsize(*stack_a) == 2)
-		sa(stack_a, 0);
+		sa(stack_a);
 	else
 		sort_three_a(stack_a, NULL, 0);
 	while (*stack_b)
-		pa(stack_a, stack_b, 0);
+		pa(stack_a, stack_b);
 }

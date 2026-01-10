@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 17:58:54 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 17:22:05 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 23:25:42 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void	sort_three_top_next(t_stacks s, t_stats **stats, t_fst *fst, int bench)
 	if (fst->first > fst->second && fst->second < fst->third
 		&& fst->first < fst->third)
 	{
-		sa(s.stack_a, bench);
+		sa(s.stack_a);
 		if (bench)
 			(*stats)->sa_count++;
 	}
 	else if (fst->first > fst->second && fst->second < fst->third
 		&& fst->first > fst->third)
 	{
-		sa(s.stack_a, bench);
-		pb(s.stack_a, s.stack_b, bench);
-		sa(s.stack_a, bench);
-		pa(s.stack_a, s.stack_b, bench);
+		sa(s.stack_a);
+		pb(s.stack_a, s.stack_b);
+		sa(s.stack_a);
+		pa(s.stack_a, s.stack_b);
 		if (bench)
 		{
 			(*stats)->sa_count += 2;
@@ -47,10 +47,10 @@ void	sort_three_top_next(t_stacks s, t_stats **stats, t_fst *fst, int bench)
 	else if (fst->first < fst->second && fst->second > fst->third
 		&& fst->first > fst->third)
 	{
-		pb(s.stack_a, s.stack_b, bench);
-		sa(s.stack_a, bench);
-		pa(s.stack_a, s.stack_b, bench);
-		sa(s.stack_a, bench);
+		pb(s.stack_a, s.stack_b);
+		sa(s.stack_a);
+		pa(s.stack_a, s.stack_b);
+		sa(s.stack_a);
 		if (bench)
 		{
 			(*stats)->pb_count++;
@@ -66,9 +66,9 @@ void	sort_three_top_next_next(t_stacks s, t_stats **stats, t_fst *fst,
 	if (fst->first < fst->second && fst->second > fst->third
 		&& fst->first < fst->third)
 	{
-		pb(s.stack_a, s.stack_b, bench);
-		sa(s.stack_a, bench);
-		pa(s.stack_a, s.stack_b, bench);
+		pb(s.stack_a, s.stack_b);
+		sa(s.stack_a);
+		pa(s.stack_a, s.stack_b);
 		if (bench)
 		{
 			(*stats)->pb_count++;
@@ -79,11 +79,11 @@ void	sort_three_top_next_next(t_stacks s, t_stats **stats, t_fst *fst,
 	else if (fst->first > fst->second
 		&& fst->second > fst->third)
 	{
-		sa(s.stack_a, bench);
-		pb(s.stack_a, s.stack_b, bench);
-		sa(s.stack_a, bench);
-		pa(s.stack_a, s.stack_b, bench);
-		sa(s.stack_a, bench);
+		sa(s.stack_a);
+		pb(s.stack_a, s.stack_b);
+		sa(s.stack_a);
+		pa(s.stack_a, s.stack_b);
+		sa(s.stack_a);
 		if (bench)
 		{
 			(*stats)->sa_count += 3;
@@ -110,13 +110,9 @@ void	sort_three(t_stacks s, int pushed, t_stats **stats)
 	{
 		if ((*(s.stack_a))->content > (*(s.stack_a))->next->content)
 		{
+			sa(s.stack_a);
 			if (bench)
-			{
-				sa(s.stack_a, 1);
 				(*stats)->sa_count++;
-			}
-			else
-				sa(s.stack_a, 0);
 		}
 	}
 }

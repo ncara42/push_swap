@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:59:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 16:59:12 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/10 23:15:05 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ void	nearest_num(t_stacks s, long *arr)
 	if (top <= size - bottom)
 	{
 		while (top-- > 0)
-			ra(s.stack_a, 0);
+			ra(s.stack_a);
 	}
 	else
 	{
 		bottom = size - bottom;
 		while (bottom-- > 0)
-			rra(s.stack_a, 0);
+			rra(s.stack_a);
 	}
-	pb(s.stack_a, s.stack_b, 0);
+	pb(s.stack_a, s.stack_b);
 	pivot = s.start + (s.end - s.start) / 2;
 	if (ft_lstsize(*s.stack_b) > 1 && (*s.stack_b)->content < arr[pivot])
-		rb(s.stack_b, 0);
+		rb(s.stack_b);
 }
 
 int	in_range(t_list *stack_a, long *arr, int start, int end)
@@ -84,15 +84,15 @@ void	pushing_to_a(t_stacks s)
 		if (max_pos <= size / 2)
 		{
 			while (max_pos-- > 0)
-				rb(s.stack_b, 0);
+				rb(s.stack_b);
 		}
 		else
 		{
 			max_pos = size - max_pos;
 			while (max_pos--)
-				rrb(s.stack_b, 0);
+				rrb(s.stack_b);
 		}
-		pa(s.stack_a, s.stack_b, 0);
+		pa(s.stack_a, s.stack_b);
 	}
 }
 

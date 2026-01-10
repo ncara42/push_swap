@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 06:13:43 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 23:18:38 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,18 @@ int	complex_a_next(t_stacks s, int len, long pivot)
 	{
 		if ((*(s.stack_a))->content <= pivot)
 		{
-			pb(s.stack_a, s.stack_b, 0);
+			pb(s.stack_a, s.stack_b);
 			pushed++;
 		}
 		else if ((*(s.stack_a))->content > pivot)
 		{
-			ra(s.stack_a, 0);
+			ra(s.stack_a);
 			ra_count++;
 		}
 		i++;
 	}
 	while (ra_count-- > 0)
-		rra(s.stack_a, 0);
+		rra(s.stack_a);
 	return (pushed);
 }
 
@@ -97,17 +97,17 @@ int	complex_b_next(t_stacks s, int len, long pivot)
 	{
 		if ((*(s.stack_b))->content >= pivot)
 		{
-			pa(s.stack_a, s.stack_b, 0);
+			pa(s.stack_a, s.stack_b);
 			pushed++;
 		}
 		else if ((*(s.stack_b))->content < pivot)
 		{
-			rb(s.stack_b, 0);
+			rb(s.stack_b);
 			rb_count++;
 		}
 		i++;
 	}
 	while (rb_count-- > 0)
-		rrb(s.stack_b, 0);
+		rrb(s.stack_b);
 	return (pushed);
 }

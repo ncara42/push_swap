@@ -6,13 +6,13 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:18:10 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/09 18:24:48 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 23:26:50 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rrb(t_list **stack_b, int bench)
+void	rrb(t_list **stack_b)
 {
 	t_list	*last;
 	t_list	*tmp;
@@ -26,11 +26,10 @@ void	rrb(t_list **stack_b, int bench)
 	last->next = NULL;
 	tmp->next = *stack_b;
 	*stack_b = tmp;
-	if (!bench)
-		write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }
 
-void	rra(t_list **stack_a, int bench)
+void	rra(t_list **stack_a)
 {
 	t_list	*last;
 	t_list	*tmp;
@@ -46,14 +45,12 @@ void	rra(t_list **stack_a, int bench)
 	last->next = NULL;
 	tmp->next = *stack_a;
 	*stack_a = tmp;
-	if (!bench)
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b, int print)
+void	rrr(t_list **stack_a, t_list **stack_b)
 {
-	rra(stack_a, 0);
-	rrb(stack_b, 0);
-	if (print)
-		write(1, "rrr\n", 4);
+	rra(stack_a);
+	rrb(stack_b);
+	write(1, "rrr\n", 4);
 }

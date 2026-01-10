@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 01:42:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 06:00:23 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 23:23:49 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ int	bench_complex_a_next(t_stacks s, int len, long pivot, t_stats **stats)
 	{
 		if ((*(s.stack_a))->content <= pivot)
 		{
-			pb(s.stack_a, s.stack_b, 1);
+			pb(s.stack_a, s.stack_b);
 			(*stats)->pb_count++;
 			pushed++;
 		}
 		else if ((*(s.stack_a))->content > pivot)
 		{
-			ra(s.stack_a, 1);
+			ra(s.stack_a);
 			(*stats)->ra_count++;
 			ra_count++;
 		}
@@ -81,7 +81,7 @@ int	bench_complex_a_next(t_stacks s, int len, long pivot, t_stats **stats)
 	}
 	while (ra_count-- > 0)
 	{
-		rra(s.stack_a, 1);
+		rra(s.stack_a);
 		(*stats)->rra_count++;
 	}
 	return (pushed);
@@ -122,13 +122,13 @@ int	bench_complex_b_next(t_stacks s, int len, long pivot, t_stats **stats)
 	{
 		if ((*(s.stack_b))->content >= pivot)
 		{
-			pa(s.stack_a, s.stack_b, 1);
+			pa(s.stack_a, s.stack_b);
 			(*stats)->pa_count++;
 			pushed++;
 		}
 		else if ((*(s.stack_b))->content < pivot)
 		{
-			rb(s.stack_b, 1);
+			rb(s.stack_b);
 			(*stats)->rb_count++;
 			rb_count++;
 		}
@@ -136,7 +136,7 @@ int	bench_complex_b_next(t_stacks s, int len, long pivot, t_stats **stats)
 	}
 	while (rb_count-- > 0)
 	{
-		rrb(s.stack_b, 1);
+		rrb(s.stack_b);
 		(*stats)->rrb_count++;
 	}
 	return (pushed);

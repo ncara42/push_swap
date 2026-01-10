@@ -6,13 +6,13 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 17:54:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/09 18:19:00 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 23:26:35 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ra(t_list **stack_a, int bench)
+void	ra(t_list **stack_a)
 {
 	t_list	*first;
 	t_list	*last;
@@ -24,11 +24,10 @@ void	ra(t_list **stack_a, int bench)
 	first->next = NULL;
 	last = ft_lstlast(*stack_a);
 	last->next = first;
-	if (!bench)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	rb(t_list **stack_b, int bench)
+void	rb(t_list **stack_b)
 {
 	t_list	*first;
 	t_list	*last;
@@ -38,14 +37,12 @@ void	rb(t_list **stack_b, int bench)
 	first->next = NULL;
 	last = ft_lstlast(*stack_b);
 	last->next = first;
-	if (!bench)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
-void	rr(t_list **stack_a, t_list **stack_b, int print)
+void	rr(t_list **stack_a, t_list **stack_b)
 {
-	ra(stack_a, 0);
-	rb(stack_b, 0);
-	if (print)
-		write(1, "rr\n", 3);
+	ra(stack_a);
+	rb(stack_b);
+	write(1, "rr\n", 3);
 }
