@@ -3,96 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   sort_three-v2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:24:03 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/08 20:09:04 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:15:19 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_three_a(t_list **stack_a, t_stats **stats)
+void	sort_three_a(t_list **stack_a, t_stats **stats, int bench)
 {
-	long	first;
-	long	second;
-	long	third;
-	int		bench;
-
+	t_fst	fst;
 	if (!stats || !*stats)
-		bench = 0;
-	else
-		bench = (*stats)->isbench;
+    	return ;
+
 	if (!(*stack_a)->next || !(*stack_a)->next->next)
 		return ;
-	first = (*stack_a)->content;
-	second = (*stack_a)->next->content;
-	third = (*stack_a)->next->next->content;
-	if (first > second && second < third && first < third)
+	fst.first = (*stack_a)->content;
+	fst.second = (*stack_a)->next->content;
+	fst.third = (*stack_a)->next->next->content;
+	if (fst.first > fst.second && fst.second < fst.third
+		&& fst.first < fst.third)
 	{
-		if (bench)
-		{
-			sa(stack_a, 1);
-			(*stats)->sa_count++;
-		}
-		else
-			sa(stack_a, 0);
+		sa(stack_a, bench);
+		(*stats)->sa_count++;
 	}
-	else if (first > second && second > third)
+	else if (fst.first > fst.second && fst.second > fst.third)
 	{
-		if (bench)
-		{
-			sa(stack_a, 1);
-			rra(stack_a, 1);
-			(*stats)->sa_count++;
-			(*stats)->rra_count++;
-		}
-		else
-		{
-			sa(stack_a, 0);
-			rra(stack_a, 0);
-		}
+		sa(stack_a, bench);
+		rra(stack_a, bench);
+		(*stats)->sa_count++;
+		(*stats)->rra_count++;
 	}
-	else if (first > second && second < third && first > third)
+	else if (fst.first > fst.second && fst.second < fst.third
+		&& fst.first > fst.third)
 	{
-		if (bench)
-		{
-			ra(stack_a, 1);
-			(*stats)->ra_count++;
-		}
-		else
-			ra(stack_a, 0);
+		ra(stack_a, bench);
+		(*stats)->ra_count++;
 	}
-	else if (first < second && second > third && first < third)
+	else if (fst.first < fst.second && fst.second > fst.third
+		&& fst.first < fst.third)
 	{
-		if (bench)
-		{
-			sa(stack_a, 1);
-			ra(stack_a, 1);
-			(*stats)->sa_count++;
-			(*stats)->ra_count++;
-		}
-		else
-		{
-			sa(stack_a, 0);
-			ra(stack_a, 0);
-		}
+		sa(stack_a, bench);
+		ra(stack_a, bench);
+		(*stats)->sa_count++;
+		(*stats)->ra_count++;
 	}
-	else if (first < second && second > third && first > third)
+	else if (fst.first < fst.second && fst.second > fst.third
+		&& fst.first > fst.third)
 	{
-		if (bench)
-		{
-			rra(stack_a, 1);
-			(*stats)->rra_count++;
-		}
-		else
-			rra(stack_a, 0);
+		rra(stack_a, bench);
+		(*stats)->rra_count++;
 	}
 }
 
 void	sort_three_b(t_stacks s, int len, t_stats **stats)
 {
-	int	bench;
+	t_fst	fst;
+	int		bench;
 
 	if (!stats || !*stats)
 		bench = 0;
@@ -141,6 +110,6 @@ void	sort_three_b(t_stacks s, int len, t_stats **stats)
 			else
 				pa((s.stack_a), (s.stack_b), 0);
 		}
-		sort_three_top(s, stats);
+		sort_three_top(s, stats, &fst, bench);
 	}
 }

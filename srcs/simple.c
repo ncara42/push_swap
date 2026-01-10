@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/08 20:17:51 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 05:56:37 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	simple(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_a) == 2)
 		sa(stack_a, 0);
 	else
-		sort_three_a(stack_a, NULL);
+		sort_three_a(stack_a, NULL, 0);
 	while (*stack_b)
 		pa(stack_a, stack_b, 0);
 }

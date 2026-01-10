@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-int get_n_chunks(int n)
+int	get_n_chunks(int n)
 {
 	if (n <= 5)
 		return (1);
@@ -13,9 +13,9 @@ int get_n_chunks(int n)
 	return (11);
 }
 
-int get_top_pos(t_list *stack_a, long *arr, int start, int end)
+int	get_top_pos(t_list *stack_a, long *arr, int start, int end)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (stack_a)
@@ -28,10 +28,10 @@ int get_top_pos(t_list *stack_a, long *arr, int start, int end)
 	return (-1);
 }
 
-int get_bottom_pos(t_list *stack_a, long *arr, int start, int end)
+int	get_bottom_pos(t_list *stack_a, long *arr, int start, int end)
 {
-	int i;
-	int bottom;
+	int	i;
+	int	bottom;
 
 	i = 0;
 	bottom = -1;
@@ -47,10 +47,10 @@ int get_bottom_pos(t_list *stack_a, long *arr, int start, int end)
 
 void	get_chunks(t_stacks s, long *arr)
 {
-	int chunks;
-	int total_size;
-	int size;
-	int i;
+	int	chunks;
+	int	total_size;
+	int	size;
+	int	i;
 
 	total_size = ft_lstsize(*s.stack_a);
 	chunks = get_n_chunks(total_size);

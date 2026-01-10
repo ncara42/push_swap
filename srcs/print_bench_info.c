@@ -6,12 +6,12 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:59:06 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 04:06:27 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 04:27:46 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
+
 void	print_bench_info(t_stats **stats, t_optype opt)
 {
 	ft_printf("[bench] disorder:     %f%%\n", (*stats)->di);
@@ -32,7 +32,11 @@ void	print_bench_info(t_stats **stats, t_optype opt)
 			ft_printf("O(n log n)\n");
 	}
 	ft_printf("[bench] total_ops:    %d\n", (*stats)->total_count);
-    ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n", (*stats)->sa_count, (*stats)->sb_count, (*stats)->ss_count, (*stats)->pa_count, (*stats)->pb_count);
-	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d rrb:  %d  rrr:  %d\n", (*stats)->ra_count, (*stats)->rb_count, (*stats)->rr_count, (*stats)->rra_count,
-    (*stats)->rrb_count, (*stats)->rrr_count);
+	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
+		(*stats)->sa_count, (*stats)->sb_count, (*stats)->ss_count,
+		(*stats)->pa_count, (*stats)->pb_count);
+	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  "
+		"rra:  %d rrb:  %d  rrr:  %d\n",
+		(*stats)->ra_count, (*stats)->rb_count, (*stats)->rr_count,
+		(*stats)->rra_count, (*stats)->rrb_count, (*stats)->rrr_count);
 }

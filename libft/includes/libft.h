@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 19:49:52 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/07 15:53:18 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/10 05:07:29 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_list
+{
+	long			content;
+	struct s_list	*next;
+}	t_list;
+
 # ifndef INT_MAX
 #  define INT_MAX 2147483647
 # endif
@@ -25,11 +31,13 @@
 #  define INT_MIN -2147483648
 # endif
 
-typedef struct s_list
+typedef struct check_flags
 {
-	long			content;
-	struct s_list	*next;
-}	t_list;
+	int	bench;
+	int	simple;
+	int	medium;
+	int	complex;
+}	t_flags;
 
 // PART I
 int		ft_atoi(const char *str);
@@ -87,5 +95,6 @@ int		ft_strcmp(char *s1, char *s2);
 void	bubblesort(long	*arr, size_t size);
 int		check_num(char **argv);
 long	*array_sort(t_list *stack, int len);
+int		check_flags(int argc, char **argv, t_flags flags);
 
 #endif

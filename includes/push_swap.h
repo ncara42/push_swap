@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 04:00:40 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 05:55:38 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,6 @@ typedef enum e_option
 	BENCH
 }	t_optype;
 
-typedef struct check_options
-{
-	int	bench;
-	int	simple;
-	int	medium;
-	int	complex;
-}	c_options;
-
 typedef struct s_options
 {
 	t_optype	*options;
@@ -53,24 +45,31 @@ typedef struct s_stacks
 
 typedef struct s_stats
 {
-	int			ra_count;
-	int			rb_count;
-	int			rr_count;
-	int			rra_count;
-	int			rrb_count;
-	int			rrr_count;
-	int			pa_count;
-	int			pb_count;
-	int			sa_count;
-	int			sb_count;
-	int			ss_count;
-	int			total_count;
+	size_t			ra_count;
+	size_t			rb_count;
+	size_t			rr_count;
+	size_t			rra_count;
+	size_t			rrb_count;
+	size_t			rrr_count;
+	size_t			pa_count;
+	size_t			pb_count;
+	size_t			sa_count;
+	size_t			sb_count;
+	size_t			ss_count;
+	size_t			total_count;
 	size_t			sizea;
 	t_optype		algo;
 	int				isbench;
 	int				isadaptive;
 	float			di;
 }	t_stats;
+
+typedef struct s_fst
+{
+	long	first;
+	long	second;
+	long	third;
+}	t_fst;
 
 // Functions
 int				ft_strcmp(char *s1, char *s2);
@@ -85,10 +84,14 @@ size_t			ft_strlen(const char *str);
 void			free_split(char **split);
 void			free_all(t_list **stack_a, t_list **stack_b,
 					t_options **options);
-void			sort_three_a(t_list **stack_a, t_stats **stats);
-void			sort_three_top(t_stacks s, t_stats **stats);
-void			sort_three_top_next(t_stacks s, t_stats **stats);
-void			sort_three_top_next_next(t_stacks s, t_stats **stats);
+void			sort_three_a(t_list **stack_a, t_stats **stats,
+					int bench);
+void			sort_three_top(t_stacks s, t_stats **stats, t_fst *fst,
+					int bench);
+void			sort_three_top_next(t_stacks s, t_stats **stats, t_fst *fst,
+					int bench);
+void			sort_three_top_next_next(t_stacks s, t_stats **stats,
+					t_fst *fst, int bench);
 void			sort_three(t_stacks s, int pushed,
 					t_stats **stats);
 void			sort_three_b(t_stacks s, int len,
@@ -120,7 +123,6 @@ int				get_max_pos(t_list *stack_b);
 int				get_n_chunks(int n);
 int				in_range(t_list *stack_a, long *arr, int start, int end);
 void			nearest_num(t_stacks s, long *arr);
-
 
 // Complex
 void			complex(t_stacks s, int len);

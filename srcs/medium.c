@@ -2,10 +2,10 @@
 
 void	nearest_num(t_stacks s, long *arr)
 {
-	int top;
-	int bottom;
-	int size;
-	int pivot;
+	int	top;
+	int	bottom;
+	int	size;
+	int	pivot;
 
 	top = get_top_pos(*s.stack_a, arr, s.start, s.end);
 	bottom = get_bottom_pos(*s.stack_a, arr, s.start, s.end);
@@ -19,15 +19,15 @@ void	nearest_num(t_stacks s, long *arr)
 	{
 		bottom = size - bottom;
 		while (bottom-- > 0)
-				rra(s.stack_a, 0);
+			rra(s.stack_a, 0);
 	}
 	pb(s.stack_a, s.stack_b, 0);
 	pivot = s.start + (s.end - s.start) / 2;
 	if (ft_lstsize(*s.stack_b) > 1 && (*s.stack_b)->content < arr[pivot])
-	rb(s.stack_b, 0);
+		rb(s.stack_b, 0);
 }
 
-int in_range(t_list *stack_a, long *arr, int start, int end)
+int	in_range(t_list *stack_a, long *arr, int start, int end)
 {
 	while (stack_a)
 	{
@@ -38,11 +38,11 @@ int in_range(t_list *stack_a, long *arr, int start, int end)
 	return (0);
 }
 
-int get_max_pos(t_list *stack_b)
+int	get_max_pos(t_list *stack_b)
 {
-	int pos;
-	int max_pos;
-	int max_val;
+	int	pos;
+	int	max_pos;
+	int	max_val;
 
 	pos = 0;
 	max_pos = 0;
@@ -62,8 +62,8 @@ int get_max_pos(t_list *stack_b)
 
 void	pushing_to_a(t_stacks s)
 {
-    int max_pos;
-    int size;
+	int	max_pos;
+	int	size;
 
 	while (*s.stack_b)
 	{
@@ -80,7 +80,7 @@ void	pushing_to_a(t_stacks s)
 			while (max_pos--)
 				rrb(s.stack_b, 0);
 		}
-	pa(s.stack_a, s.stack_b, 0);
+		pa(s.stack_a, s.stack_b, 0);
 	}
 }
 

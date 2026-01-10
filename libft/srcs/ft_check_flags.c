@@ -1,0 +1,23 @@
+#include "../includes/libft.h"
+
+int	check_flags(int argc, char **argv, t_flags flags)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc && argv[i][0] == '-')
+	{
+		if (ft_strcmp(argv[i], "--bench") == 0 && !flags.bench)
+			flags.bench = 1;
+		else if (ft_strcmp(argv[i], "--simple") == 0 && !flags.simple)
+			flags.simple = 1;
+		else if (ft_strcmp(argv[i], "--medium") == 0 && !flags.medium)
+			flags.medium = 1;
+		else if (ft_strcmp(argv[i], "--complex") == 0 && !flags.complex)
+			flags.complex = 1;
+		else
+			return (-1);
+		i++;
+	}
+	return (i);
+}

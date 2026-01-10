@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 03:36:48 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 04:47:03 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,15 @@ int	add_node(char *argv, t_list **stack_a)
 	return (1);
 }
 
-int check_options(int argc, char **argv, c_options options)
-{
-	int i = 1;
-
-	while (i < argc && argv[i][0] == '-')
-	{
-		if (ft_strcmp(argv[i], "--bench") == 0 && !options.bench)
-			options.bench = 1;
-		else if (ft_strcmp(argv[i], "--simple") == 0 && !options.simple)
-			options.simple = 1;
-		else if (ft_strcmp(argv[i], "--medium") == 0 && !options.medium)
-			options.medium = 1;
-		else if (ft_strcmp(argv[i], "--complex") == 0 && !options.complex)
-			options.complex = 1;
-		else
-			return (-1);
-		i++;
-	}
-	return (i);
-}
-
 int	parse_params(int argc, char **argv, t_list **stack_a)
 {
-	int	i;
-	int	count;
-	c_options options = {0};
-	
+	int			i;
+	int			count;
+	t_flags		flags;
+
+	flags = (t_flags){0};
 	*stack_a = NULL;
-	i = (check_options(argc, argv, options));
+	i = (check_flags(argc, argv, flags));
 	if (i == -1 || i > 3)
 		return (0);
 	if (!check_num(argv + i) || !check_minmax(argv + i))
@@ -127,11 +107,11 @@ int	main(int argc, char **argv)
 		return (0);
 	parse_options(argc, argv, &options);
 	adaptive(s, &options);
-	/*while (stack_a)
+	while (stack_a)
 	{
 		printf("%ld\n", stack_a->content);
 		stack_a = stack_a->next;
-	}*/
+	}
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }

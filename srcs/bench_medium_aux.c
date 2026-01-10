@@ -107,10 +107,10 @@ void	bench_medium_nearest_num(t_stacks s, long *arr, int bench,
 void	bench_medium_get_chunks(t_stacks s, long *arr, int bench,
 			t_stats **stats)
 {
-	int chunks;
-	int total_size;
-	int size;
-	int i;
+	int	chunks;
+	int	total_size;
+	int	size;
+	int	i;
 
 	total_size = ft_lstsize(*s.stack_a);
 	chunks = get_n_chunks(total_size);

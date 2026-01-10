@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench_simple.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/09 18:23:43 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 05:55:01 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	push_min(t_stacks s, int pos_min, int nodes, t_stats *st)
 static void	sort_small_a(t_list **a, t_stats **stats)
 {
 	if (ft_lstsize(*a) >= 3)
-		sort_three_a(a, stats);
+		sort_three_a(a, stats, 1);
 	else if ((*a)->content > (*a)->next->content)
 	{
 		sa(a, 1);
