@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 07:16:05 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 16:01:48 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:54:20 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	ftp_puthex(uintptr_t n, unsigned int upper);
 int	ftp_putptr(void *ptr);
 int	ftp_putunsigned(unsigned int n);
 int	ftp_print_loop(int count, int i, va_list args, const char *format);
-int	ftp_conversion(const char *format, int i, va_list *args, int count);
+int	ftp_conversion(const char *format, int i, va_list args, int count);
 
 #endif

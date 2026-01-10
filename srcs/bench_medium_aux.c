@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bench_medium_aux.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/10 16:59:26 by ncaravac          #+#    #+#             */
+/*   Updated: 2026/01/10 16:59:27 by ncaravac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	bench_medium_pushing_to_a(t_stacks s, int bench, t_stats **stats)
