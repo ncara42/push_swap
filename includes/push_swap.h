@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 03:12:56 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 04:00:40 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ typedef struct s_stacks
 
 typedef struct s_stats
 {
-	size_t			ra_count;
-	size_t			rb_count;
-	size_t			rr_count;
-	size_t			rra_count;
-	size_t			rrb_count;
-	size_t			rrr_count;
-	size_t			pa_count;
-	size_t			pb_count;
-	size_t			sa_count;
-	size_t			sb_count;
-	size_t			ss_count;
-	size_t			total_count;
+	int			ra_count;
+	int			rb_count;
+	int			rr_count;
+	int			rra_count;
+	int			rrb_count;
+	int			rrr_count;
+	int			pa_count;
+	int			pb_count;
+	int			sa_count;
+	int			sb_count;
+	int			ss_count;
+	int			total_count;
 	size_t			sizea;
 	t_optype		algo;
 	int				isbench;
