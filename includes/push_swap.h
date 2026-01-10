@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 01:46:22 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 03:12:56 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef enum e_option
 	COMPLEX,
 	BENCH
 }	t_optype;
+
+typedef struct check_options
+{
+	int	bench;
+	int	simple;
+	int	medium;
+	int	complex;
+}	c_options;
 
 typedef struct s_options
 {

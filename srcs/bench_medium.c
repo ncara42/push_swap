@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 23:28:36 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 01:39:51 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 02:40:16 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	bench_medium(t_stacks s, t_stats **stats)
 	bench_medium_get_chunks(s, arr, 1, stats);
 	bench_medium_pushing_to_a(s, 1, stats);
 	free(arr);
+    if ((*stats)->isadaptive)
+		(*stats)->algo = ADAPTIVE;
+	else
+		(*stats)->algo = MEDIUM;
 	count_bench(stats);
 	print_bench_info(stats, MEDIUM);
 	free(*stats);

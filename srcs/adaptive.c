@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:12:07 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 01:22:28 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 02:20:11 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 {
 	if (opt == UNKNOWN)
 	{
-		if ((*stats)->di < 0.2)
+		if ((*stats)->di < 20)
 			opt = SIMPLE;
-		else if ((*stats)->di < 0.5)
+		else if ((*stats)->di < 50)
 			opt = MEDIUM;
-		else if ((*stats)->di >= 0.5)
+		else if ((*stats)->di >= 50)
 			opt = COMPLEX;
 	}
 	if (opt == SIMPLE)
