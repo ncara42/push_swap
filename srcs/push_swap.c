@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 23:05:58 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 23:43:14 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	first_check(int argc, char **argv, t_stacks s)
 {
 	if (argc == 1)
 		return (write(2, "Error\n", 6), 0);
-	else if (argc == 3)
+	else if (argc == 3 || argc == 4)
 	{
 		if (!parse_split(argc, argv, s.stack_a))
 			return (0);
