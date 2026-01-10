@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Push Swap",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/dpush_swap",
+            "args": ["--complex", "--complex", "9 8 7 6 5 4 3 2 1 0"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "targetArchitecture": "arm64",
+        }
+    ]
+}

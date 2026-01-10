@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 23:43:14 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 23:57:25 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	parse_split(int argc, char **argv, t_list **stack_a)
 	if (!check_num(split) || !check_minmax(split))
 		return (free_split(split), write(2, "Error\n", 6), 0);
 	*stack_a = NULL;
+    i = 0;
 	while (split[i])
 	{
 		node = ft_lstnew(ft_atol(split[i++]));
@@ -113,11 +114,11 @@ int	main(int argc, char **argv)
 		return (0);
 	parse_options(argc, argv, &options);
 	adaptive(s, &options);
-	/*while (*s.stack_a)
+	while (*s.stack_a)
 	{
 		printf("%ld\n", (*s.stack_a)->content);
 		*s.stack_a = (*s.stack_a)->next;
-	}*/
+	}
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }
