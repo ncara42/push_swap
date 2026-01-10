@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 17:58:54 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 16:05:17 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 17:22:05 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	sort_three_top_next(t_stacks s, t_stats **stats, t_fst *fst, int bench)
 		&& fst->first < fst->third)
 	{
 		sa(s.stack_a, bench);
-		(*stats)->sa_count++;
+		if (bench)
+			(*stats)->sa_count++;
 	}
 	else if (fst->first > fst->second && fst->second < fst->third
 		&& fst->first > fst->third)
@@ -36,9 +37,12 @@ void	sort_three_top_next(t_stacks s, t_stats **stats, t_fst *fst, int bench)
 		pb(s.stack_a, s.stack_b, bench);
 		sa(s.stack_a, bench);
 		pa(s.stack_a, s.stack_b, bench);
-		(*stats)->sa_count += 2;
-		(*stats)->pb_count++;
-		(*stats)->pa_count++;
+		if (bench)
+		{
+			(*stats)->sa_count += 2;
+			(*stats)->pb_count++;
+			(*stats)->pa_count++;
+		}
 	}
 	else if (fst->first < fst->second && fst->second > fst->third
 		&& fst->first > fst->third)
@@ -47,9 +51,12 @@ void	sort_three_top_next(t_stacks s, t_stats **stats, t_fst *fst, int bench)
 		sa(s.stack_a, bench);
 		pa(s.stack_a, s.stack_b, bench);
 		sa(s.stack_a, bench);
-		(*stats)->pb_count++;
-		(*stats)->sa_count += 2;
-		(*stats)->pa_count++;
+		if (bench)
+		{
+			(*stats)->pb_count++;
+			(*stats)->sa_count += 2;
+			(*stats)->pa_count++;
+		}
 	}
 }
 

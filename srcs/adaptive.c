@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:12:07 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 16:27:02 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 17:27:23 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ void	adaptive(t_stacks s, t_options **options)
 	ft_bzero(stats, sizeof(t_stats));
 	stats->sizea = ft_lstsize(*s.stack_a);
 	stats->di = disorder_index(stats->sizea, *s.stack_a);
-	if (!stats->di)
-	{
-		free(stats);
-		return ;
-	}
+	// if (!stats->di)
+	// {
+	// 	free(stats);
+	// 	return ;
+	// }
 	if (*options)
 		select_option(&choosenoption, stats, *options);
 	else
