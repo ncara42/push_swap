@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:54:19 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 19:14:54 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/11 00:07:17 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,8 @@ void	print_bench_strategy(t_stats *s, t_optype opt)
 	write(2, "\n", 1);
 }
 
-void	print_bench_info(t_stats **stats, t_optype opt)
+void	print_each_amounts(t_stats *s)
 {
-	t_stats	*s;
-
-	if (!stats || !*stats)
-		return ;
-	s = *stats;
-	print_disorder(s);
-	print_bench_strategy(s, opt);
 	write(2, "[bench] sa:  ", 13);
 	ft_putnbr_fd(s->sa_count, 2);
 	write(2, "  sb:  ", 7);
@@ -85,4 +78,16 @@ void	print_bench_info(t_stats **stats, t_optype opt)
 	write(2, "  rrr:  ", 8);
 	ft_putnbr_fd(s->rrr_count, 2);
 	write(2, "\n", 1);
+}
+
+void	print_bench_info(t_stats **stats, t_optype opt)
+{
+	t_stats	*s;
+
+	if (!stats || !*stats)
+		return ;
+	s = *stats;
+	print_disorder(s);
+	print_bench_strategy(s, opt);
+	print_each_amounts(s);
 }
