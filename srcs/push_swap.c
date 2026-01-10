@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 23:57:25 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 00:03:36 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,6 @@ int	main(int argc, char **argv)
 		return (0);
 	parse_options(argc, argv, &options);
 	adaptive(s, &options);
-	while (*s.stack_a)
-	{
-		printf("%ld\n", (*s.stack_a)->content);
-		*s.stack_a = (*s.stack_a)->next;
-	}
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }
