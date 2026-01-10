@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:12:07 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 03:55:02 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 16:27:02 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ static void	run_complex(t_stacks s, t_stats **stats)
 
 void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 {
-	if (opt == UNKNOWN)
+	if (opt == UNKNOWN || opt == ADAPTIVE)
 	{
+		(*stats)->isadaptive = 1;
 		if ((*stats)->di < 20)
 			opt = SIMPLE;
 		else if ((*stats)->di < 50)
@@ -77,7 +78,7 @@ void	adaptive(t_stacks s, t_options **options)
 	stats = malloc(sizeof(t_stats));
 	if (!stats)
 		return ;
-	ft_bzero(stats, sizeof(t_stacks));
+	ft_bzero(stats, sizeof(t_stats));
 	stats->sizea = ft_lstsize(*s.stack_a);
 	stats->di = disorder_index(stats->sizea, *s.stack_a);
 	if (!stats->di)
