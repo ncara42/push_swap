@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 18:31:45 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/10 23:05:58 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,20 @@ int	parse_params(int argc, char **argv, t_list **stack_a)
 	return (1);
 }
 
-int	parse_split(char **argv, t_list **stack_a)
+int	parse_split(int argc, char **argv, t_list **stack_a)
 {
 	char	**split;
 	t_list	*node;
 	int		i;
 
-	i = 0;
-	split = ft_split(argv[1], ' ');
+    t_flags		flags;
+
+    i = 0;
+	flags = (t_flags){0};
+	i = (check_flags(argc, argv, flags));
+	if (i == -1 || i > 3)
+		return (0);
+	split = ft_split(argv[i], ' ');
 	if (!split)
 		return (write(1, "Error\n", 6), 0);
 	if (!check_num(split) || !check_minmax(split))
@@ -78,9 +84,9 @@ int	first_check(int argc, char **argv, t_stacks s)
 {
 	if (argc == 1)
 		return (write(2, "Error\n", 6), 0);
-	else if (argc == 2)
+	else if (argc == 3)
 	{
-		if (!parse_split(argv, s.stack_a))
+		if (!parse_split(argc, argv, s.stack_a))
 			return (0);
 	}
 	else if (argc > 2)
