@@ -3,40 +3,86 @@
 /*                                                        :::      ::::::::   */
 /*   print_bench_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 14:59:06 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 04:27:46 by admin            ###   ########.fr       */
+/*   Created: 2026/01/10 18:54:19 by ncaravac          #+#    #+#             */
+/*   Updated: 2026/01/10 19:14:54 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+void	print_disorder(t_stats *s)
+{
+	int	whole;
+	int	decimal;
+
+	whole = (int)s->di;
+	decimal = (int)(s->di * 100) % 100;
+	if (decimal < 0)
+		decimal *= -1;
+	write(2, "[bench] disorder:  ", 19);
+	ft_putnbr_fd(whole, 2);
+	write(2, ".", 1);
+	if (decimal < 10)
+		write(2, "0", 1);
+	ft_putnbr_fd(decimal, 2);
+	write(2, "%\n", 2);
+}
+
+void	print_bench_strategy(t_stats *s, t_optype opt)
+{
+	if (s->algo == SIMPLE)
+		write(2, "[bench] strategy:  Simple / O(n^2)\n", 35);
+	else if (s->algo == MEDIUM)
+		write(2, "[bench] strategy:  Medium / O(n√n)\n", 37);
+	else if (s->algo == COMPLEX)
+		write(2, "[bench] strategy:  Complex / O(n log n)\n", 40);
+	else if (s->algo == ADAPTIVE)
+	{
+		write(2, "[bench] strategy:  Adaptive / ", 30);
+		if (opt == SIMPLE)
+			write(2, "O(n^2)\n", 8);
+		else if (opt == MEDIUM)
+			write(2, "O(n√n)\n", 9);
+		else if (opt == COMPLEX)
+			write(2, "O(n log n)\n", 11);
+	}
+	write(2, "[bench] total_ops:  ", 20);
+	ft_putnbr_fd(s->total_count, 2);
+	write(2, "\n", 1);
+}
+
 void	print_bench_info(t_stats **stats, t_optype opt)
 {
-	ft_printf("[bench] disorder:     %f%%\n", (*stats)->di);
-	if ((*stats)->algo == SIMPLE)
-		ft_printf("[bench] strategy:     Simple / O(nˆ2)\n");
-	else if ((*stats)->algo == MEDIUM)
-		ft_printf("[bench] strategy:     Medium / O(n√n)\n");
-	else if ((*stats)->algo == COMPLEX)
-		ft_printf("[bench] strategy:     Complex / O(n log n)\n");
-	else if ((*stats)->algo == ADAPTIVE)
-	{
-		ft_printf("[bench] strategy:     Adaptive / ");
-		if (opt == SIMPLE)
-			ft_printf("O(nˆ2)\n");
-		else if (opt == MEDIUM)
-			ft_printf("O(n√n)\n");
-		else if (opt == COMPLEX)
-			ft_printf("O(n log n)\n");
-	}
-	ft_printf("[bench] total_ops:    %d\n", (*stats)->total_count);
-	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
-		(*stats)->sa_count, (*stats)->sb_count, (*stats)->ss_count,
-		(*stats)->pa_count, (*stats)->pb_count);
-	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  "
-		"rra:  %d rrb:  %d  rrr:  %d\n",
-		(*stats)->ra_count, (*stats)->rb_count, (*stats)->rr_count,
-		(*stats)->rra_count, (*stats)->rrb_count, (*stats)->rrr_count);
+	t_stats	*s;
+
+	if (!stats || !*stats)
+		return ;
+	s = *stats;
+	print_disorder(s);
+	print_bench_strategy(s, opt);
+	write(2, "[bench] sa:  ", 13);
+	ft_putnbr_fd(s->sa_count, 2);
+	write(2, "  sb:  ", 7);
+	ft_putnbr_fd(s->sb_count, 2);
+	write(2, "  ss:  ", 7);
+	ft_putnbr_fd(s->ss_count, 2);
+	write(2, "  pa:  ", 7);
+	ft_putnbr_fd(s->pa_count, 2);
+	write(2, "  pb:  ", 7);
+	ft_putnbr_fd(s->pb_count, 2);
+	write(2, "\n[bench] ra:  ", 14);
+	ft_putnbr_fd(s->ra_count, 2);
+	write(2, "  rb:  ", 7);
+	ft_putnbr_fd(s->rb_count, 2);
+	write(2, "  rr:  ", 7);
+	ft_putnbr_fd(s->rr_count, 2);
+	write(2, "  rra:  ", 8);
+	ft_putnbr_fd(s->rra_count, 2);
+	write(2, "  rrb:  ", 8);
+	ft_putnbr_fd(s->rrb_count, 2);
+	write(2, "  rrr:  ", 8);
+	ft_putnbr_fd(s->rrr_count, 2);
+	write(2, "\n", 1);
 }

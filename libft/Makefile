@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
+#    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 11:54:06 by ncaravac          #+#    #+#              #
-#    Updated: 2026/01/10 04:46:39 by admin            ###   ########.fr        #
+#    Updated: 2026/01/10 18:48:59 by ncaravac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRC =	srcs/ft_bzero.c\
 		srcs/ft_strcmp.c\
 		srcs/ft_lstnew.c\
 		srcs/ft_putnbr.c\
+		srcs/ft_putnbr_fd.c\
+		srcs/ft_putchar_fd.c\
 		srcs/ft_lstsize.c\
 		srcs/ft_lstlast.c\
 		srcs/ft_lstadd_back.c\

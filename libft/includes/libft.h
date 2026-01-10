@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 19:49:52 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 05:07:29 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/10 18:47:10 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct check_flags
 	int	simple;
 	int	medium;
 	int	complex;
+	int	adaptive;
 }	t_flags;
 
 // PART I
@@ -96,5 +97,7 @@ void	bubblesort(long	*arr, size_t size);
 int		check_num(char **argv);
 long	*array_sort(t_list *stack, int len);
 int		check_flags(int argc, char **argv, t_flags flags);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
 
 #endif

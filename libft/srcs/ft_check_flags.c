@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:59:36 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 16:59:36 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:18:34 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	check_flags(int argc, char **argv, t_flags flags)
 		else if (ft_strcmp(argv[i], "--medium") == 0 && !flags.medium)
 			flags.medium = 1;
 		else if (ft_strcmp(argv[i], "--complex") == 0 && !flags.complex)
+			flags.complex = 1;
+		else if (ft_strcmp(argv[i], "--adaptive") == 0 && !flags.adaptive)
 			flags.complex = 1;
 		else
 			return (-1);
