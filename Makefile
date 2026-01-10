@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
+#    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/09 19:15:26 by vvan-ach         ###   ########.fr        #
+#    Updated: 2026/01/10 01:40:49 by admin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,8 @@ SRCS =	srcs/push_swap.c \
 		srcs/bench_simple.c \
 		srcs/bench_medium.c \
 		srcs/bench_complex.c \
+		srcs/bench_medium_aux.c \
+		srcs/medium_aux.c \
 		srcs/print_bench_info.c
 
 OBJS_DIR = objs

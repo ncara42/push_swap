@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/09 18:26:11 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:52:45 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,11 @@ int	main(int argc, char **argv)
 		return (0);
 	parse_options(argc, argv, &options);
 	adaptive(s, &options);
+	while (stack_a)
+	{
+		printf("%ld\n", stack_a->content);
+		stack_a = stack_a->next;
+	}
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }

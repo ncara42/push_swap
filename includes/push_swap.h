@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/09 19:14:24 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:46:22 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void			sort_three_b(t_stacks s, int len,
 void			ft_bzero(void *p, size_t i);
 void			ft_putnbr(int n);
 int				select_option(t_optype *opt, t_stats *st, t_options *o);
+
 // Options parsing
 int				parse_options(int argc, char **argv, t_options **options);
 t_optype		which_option(char *optionstr);
@@ -103,8 +104,15 @@ int				get_min(t_list *stack_a);
 
 // Medium
 void			medium(t_stacks s);
-void			pushing_to_a(t_stacks s, int bench, t_stats **stats);
-void			get_chunks(t_stacks s, long *arr, int bench, t_stats **stats);
+void			pushing_to_a(t_stacks s);
+void			get_chunks(t_stacks s, long *arr);
+int				get_top_pos(t_list *stack_a, long *arr, int start, int end);
+int				get_bottom_pos(t_list *stack_a, long *arr, int start, int end);
+int				get_max_pos(t_list *stack_b);
+int				get_n_chunks(int n);
+int				in_range(t_list *stack_a, long *arr, int start, int end);
+void			nearest_num(t_stacks s, long *arr);
+
 
 // Complex
 void			complex(t_stacks s, int len);
@@ -112,10 +120,16 @@ void			complex_b(t_stacks s, int pushed);
 int				complex_a_next(t_stacks s, int len, long pivot);
 int				complex_b_next(t_stacks s, int len, long pivot);
 
-// BENCH
+// Bench
 void			print_bench_info(t_stats **stats, t_optype opt);
 void			bench_simple(t_stacks s, t_stats **stats);
 void			bench_medium(t_stacks s, t_stats **stats);
+void			bench_medium_get_chunks(t_stacks s, long *arr, int bench,
+					t_stats **stats);
+void			bench_medium_nearest_num(t_stacks s, long *arr, int bench,
+					t_stats **stats);
+void			bench_medium_pushing_to_a(t_stacks s, int bench,
+					t_stats **stats);
 void			bench_complex(t_stacks s, t_stats **stats, int len, int print);
 int				bench_complex_a_next(t_stacks s, int len, long pivot,
 					t_stats **stats);
