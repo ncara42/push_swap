@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_three-v2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:24:03 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 23:30:14 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 02:53:24 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,6 @@ void	sort_three_a(t_list **stack_a, t_stats **stats, int bench)
 {
 	t_fst	fst;
 
-	if (!stats || !*stats || !*stack_a || !(*stack_a)->next
-		|| !(*stack_a)->next->next)
-		return ;
 	fst.first = (*stack_a)->content;
 	fst.second = (*stack_a)->next->content;
 	fst.third = (*stack_a)->next->next->content;
