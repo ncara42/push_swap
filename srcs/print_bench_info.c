@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:54:19 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 00:07:17 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:56:11 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_disorder(t_stats *s)
 {
 	int	whole;
 	int	decimal;
-
+	
 	whole = (int)s->di;
 	decimal = (int)(s->di * 100) % 100;
 	if (decimal < 0)

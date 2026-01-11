@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:24:03 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 04:56:34 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 17:33:07 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	sort_three_a(t_list **stack_a, t_stats **stats, int bench)
 {
 	t_fst	fst;
 
+	if (ft_lstsize(*stack_a) == 1)
+		return ;
 	fst.first = (*stack_a)->content;
 	fst.second = (*stack_a)->next->content;
 	fst.third = (*stack_a)->next->next->content;

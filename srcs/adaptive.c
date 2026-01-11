@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:12:07 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/11 00:04:46 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 17:22:09 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 	if (opt == UNKNOWN || opt == ADAPTIVE)
 	{
 		(*stats)->isadaptive = 1;
-		if ((*stats)->di < 20)
+		if ((*stats)->di == 0)
+			opt = UNKNOWN;
+		else if ((*stats)->di < 20)
 			opt = SIMPLE;
 		else if ((*stats)->di < 50)
 			opt = MEDIUM;
@@ -66,6 +68,12 @@ void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 		run_medium(s, stats);
 	else if (opt == COMPLEX)
 		run_complex(s, stats);
+	else
+	{
+		if ((*stats)->isbench)
+			print_bench_info(stats, SIMPLE);
+		free(*stats);
+	}
 	return ;
 }
 
@@ -81,11 +89,6 @@ void	adaptive(t_stacks s, t_options **options)
 	ft_bzero(stats, sizeof(t_stats));
 	stats->sizea = ft_lstsize(*s.stack_a);
 	stats->di = disorder_index(stats->sizea, *s.stack_a);
-	if (!stats->di)
-	{
-		free(stats);
-		return ;
-	}
 	if (*options)
 		select_option(&choosenoption, stats, *options);
 	else

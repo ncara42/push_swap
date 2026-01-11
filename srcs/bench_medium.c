@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 23:28:36 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 04:26:09 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 17:54:17 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,20 @@ void	bench_medium(t_stacks s, t_stats **stats)
 {
 	long	*arr;
 	int		size;
+	float	desorden;
 
 	size = ft_lstsize(*s.stack_a);
+	if (size == 1)
+	{
+		print_bench_info(stats, MEDIUM);
+		return ;
+	}
+	desorden = disorder_index(size, *s.stack_a);
+	if (desorden == 0)
+	{
+		print_bench_info(stats, MEDIUM);
+		return ;
+	}
 	arr = array_sort(*s.stack_a, size);
 	if (!arr)
 		return ;

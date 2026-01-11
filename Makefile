@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/11 04:57:20 by admin            ###   ########.fr        #
+#    Updated: 2026/01/11 16:33:14 by vvan-ach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wextra -Werror -Wall
 INCLUDES = -I./includes -I$(LIBFT_DIR)/includes -I$(PRINTF_DIR)/includes
 
 ifeq ($(DEBUG), 1)
-	CFLAGS += -g -O0
+	CFLAGS += -ggdb3
 	BUILD_MSG = "Compiling debug:"
 else
 	CFLAGS += -O2
@@ -58,14 +58,14 @@ OBJS = $(SRCS:srcs/%.c=$(OBJS_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME):  $(LIBFT) $(OBJS)
+$(NAME):  libft $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 	@echo "PUSH_SWAP COMPILED!"
 
-$(LIBFT):
+libft: 
 	@make -C $(LIBFT_DIR)
 
-debug: $(LIBFT)
+debug: libft #$(LIBFT)
 	make DEBUG=1 -B $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(DNAME)
 	@echo "PUSH_SWAP DEBUG COMPILED!"
@@ -85,4 +85,4 @@ fclean: clean
 
 re : fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft

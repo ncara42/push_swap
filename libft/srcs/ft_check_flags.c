@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:59:36 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 04:27:37 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 16:17:12 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_flags(int argc, char **argv, t_flags flags)
 
 	f = 0;
 	i = 1;
-	while (i < argc && argv[i][0] == '-')
+	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
 	{
 		if (ft_strcmp(argv[i], "--bench") == 0 && !flags.bench)
 			flags.bench = 1;

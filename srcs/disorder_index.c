@@ -6,7 +6,7 @@
 /*   By: vvan-ach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:25:43 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/09 18:26:00 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:58:08 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ float	disorder_index(int n, t_list *stack_a)
 	float	errors;
 	float	index;
 
+	if (n == 1)
+		return (0);
 	even_total = (n * (n - 1)) / 2;
 	errors = 0;
 	while (stack_a && stack_a->next)

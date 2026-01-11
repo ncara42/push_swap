@@ -27,6 +27,10 @@ de mas de 4 argumentos.
 Falta poco nene, falta poco...
 
 
+./push_swap --simple 0 1 2 3 
+
+./push_swap --complex 0 1 2 3
+
 
 > OPTIMISATIONS
 

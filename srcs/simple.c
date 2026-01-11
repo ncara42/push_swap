@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 23:13:46 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 18:01:25 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ int	get_min(t_list *stack_a)
 
 void	simple(t_list **stack_a, t_list **stack_b)
 {
-	int	nodes;
-	int	pos_min;
+	int		nodes;
+	int		pos_min;
+	float	disorder;
 
+	disorder = disorder_index(ft_lstsize(*stack_a), *stack_a);
 	while (ft_lstsize(*stack_a) > 3)
 	{
 		pos_min = get_min(*stack_a);
@@ -57,7 +59,9 @@ void	simple(t_list **stack_a, t_list **stack_b)
 		}
 		pb(stack_a, stack_b);
 	}
-	if (ft_lstsize(*stack_a) == 2)
+	if (disorder == 0.00)
+		return ;
+	else if (ft_lstsize(*stack_a) == 2)
 		sa(stack_a);
 	else
 		sort_three_a(stack_a, NULL, 0);

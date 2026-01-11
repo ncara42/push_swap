@@ -6,13 +6,13 @@
 #    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 11:54:06 by ncaravac          #+#    #+#              #
-#    Updated: 2026/01/10 18:48:59 by ncaravac         ###   ########.fr        #
+#    Updated: 2026/01/11 16:34:57 by vvan-ach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fPIC
+CFLAGS = -Wall -Werror -Wextra -fPIC -ggdb3
 INCLUDES = -I./includes
 
 SRC =	srcs/ft_bzero.c\
@@ -42,7 +42,7 @@ ${NAME}: ${OBJ}
 	@echo "LIBFT COMPILED!"
 
 $(OBJS_DIR)/%.o: srcs/%.c Makefile includes/libft.h
-	@mkdir -p ${OBJS_DIR}
+	mkdir -p $(OBJS_DIR)
 	@${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
 	@echo "Compiling: $<"
 

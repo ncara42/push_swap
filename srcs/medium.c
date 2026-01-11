@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:59:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 23:15:05 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 17:52:42 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,14 @@ void	medium(t_stacks s)
 {
 	long	*arr;
 	int		size;
+	float	desorden;
 
 	size = ft_lstsize(*s.stack_a);
+	if (size == 1)
+		return ;
+	desorden = disorder_index(size, *s.stack_a);
+	if (desorden == 0)
+		return ;
 	arr = array_sort(*s.stack_a, size);
 	if (!arr)
 		return ;

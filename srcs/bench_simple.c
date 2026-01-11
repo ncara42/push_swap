@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 23:32:27 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 17:40:22 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ void	bench_simple(t_stacks s, t_stats **stats)
 	int	pos_min;
 
 	if (ft_lstsize(*s.stack_a) == 1)
+	{
+		print_bench_info(stats, SIMPLE);
 		return ;
+	}
 	while (ft_lstsize(*s.stack_a) > 3)
 	{
 		pos_min = get_min(*s.stack_a);
