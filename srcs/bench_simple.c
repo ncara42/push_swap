@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench_simple.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/11 17:40:22 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 19:45:35 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	push_min(t_stacks s, int pos_min, int nodes, t_stats *st)
 	st->pb_count++;
 }
 
-static void	sort_small_a(t_list **a, t_stats **stats)
+static void	sort_small_a(t_stacks s, t_list **a, t_stats **stats)
 {
 	if (ft_lstsize(*a) >= 3)
 		sort_three_a(a, stats, 1);
@@ -49,6 +49,15 @@ static void	sort_small_a(t_list **a, t_stats **stats)
 		sa(a);
 		(*stats)->sa_count++;
 	}
+	while (*s.stack_b)
+	{
+		pa(s.stack_a, s.stack_b);
+		(*stats)->pa_count++;
+	}
+	if ((*stats)->isadaptive)
+		(*stats)->algo = ADAPTIVE;
+	else
+		(*stats)->algo = SIMPLE;
 }
 
 void	bench_simple(t_stacks s, t_stats **stats)
@@ -67,16 +76,7 @@ void	bench_simple(t_stacks s, t_stats **stats)
 		nodes = ft_lstsize(*s.stack_a);
 		push_min(s, pos_min, nodes, *stats);
 	}
-	sort_small_a(s.stack_a, stats);
-	while (*s.stack_b)
-	{
-		pa(s.stack_a, s.stack_b);
-		(*stats)->pa_count++;
-	}
-	if ((*stats)->isadaptive)
-		(*stats)->algo = ADAPTIVE;
-	else
-		(*stats)->algo = SIMPLE;
+	sort_small_a(s, s.stack_a, stats);
 	count_bench(stats);
 	print_bench_info(stats, SIMPLE);
 	free(*stats);

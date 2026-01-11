@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench_medium.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 23:28:36 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/11 17:54:17 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 19:47:05 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	bench_medium(t_stacks s, t_stats **stats)
 {
 	long	*arr;
 	int		size;
-	float	desorden;
 
 	size = ft_lstsize(*s.stack_a);
 	if (size == 1)
@@ -24,12 +23,8 @@ void	bench_medium(t_stacks s, t_stats **stats)
 		print_bench_info(stats, MEDIUM);
 		return ;
 	}
-	desorden = disorder_index(size, *s.stack_a);
-	if (desorden == 0)
-	{
-		print_bench_info(stats, MEDIUM);
-		return ;
-	}
+	if (disorder_index(size, *s.stack_a) == 0)
+		return (print_bench_info(stats, MEDIUM));
 	arr = array_sort(*s.stack_a, size);
 	if (!arr)
 		return ;

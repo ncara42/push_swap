@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:16:56 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/11 18:12:41 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/11 19:38:00 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	complex(t_stacks s, int len)
 	long	pivot;
 	long	*arr;
 	int		pushed;
+
 	if (disorder_index(ft_lstsize(*s.stack_a), *s.stack_a) == 0)
 		return ;
 	if (len <= 3)
