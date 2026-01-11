@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 03:48:13 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 04:18:09 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	parse_params(int argc, char **argv, t_list **stack_a)
 	*stack_a = NULL;
 	i = (check_flags(argc, argv, flags));
 	if (i == -1 || i > 3)
-		return (0);
+		return (write(2, "Error\n", 6), 0);
 	if (!check_num(argv + i) || !check_minmax(argv + i))
 		return (write(2, "Error\n", 6), 0);
 	count = 0;
