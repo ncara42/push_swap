@@ -6,12 +6,12 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/dpush_swap",
-            "args": ["--medium", "64", "12", "87", "3", "45", "91", "22", "56", "78", "9", "34", "67", "15", "80", "2"],
+            "args": ["--medium", "'  5 '", "22"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb",
+            "MIMode": "gdb",
             "targetArchitecture": "arm64",
         }
     ]

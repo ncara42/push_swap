@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_num.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:51:09 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 03:58:03 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 18:46:33 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,20 @@ static int	is_valid_number(char *str)
 	int	j;
 
 	j = 0;
+	while (str[j] == ' ' || (str[j] >= 9 && str[j] <= 13) || str[j] == 39)
+		j++;
 	if (str[j] == '-' || str[j] == '+')
 		j++;
 	if (str[j] == '\0')
 		return (0);
 	while (str[j])
 	{
-		if (!(str[j] >= '0' && str[j] <= '9'))
+		if ((str[j] >= '0' && str[j] <= '9'))
+			j++;
+		else if (str[j] == ' ' || (str[j] >= 9 && str[j] <= 13) || str[j] == 39)
+			j++;
+		else
 			return (0);
-		j++;
 	}
 	return (1);
 }
