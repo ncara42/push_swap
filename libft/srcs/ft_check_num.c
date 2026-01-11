@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:51:09 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 00:52:15 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 03:39:48 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	check_minmax(char **argv)
 	return (1);
 }
 
-int	check_dups(char **argv)
+int check_dups(char **argv)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
 	while (argv[i])
@@ -39,9 +39,7 @@ int	check_dups(char **argv)
 		j = i + 1;
 		while (argv[j])
 		{
-			if (argv[i][0] == '+' || argv[i][0] != '+')
-				if (ft_strcmp(argv[i] + 1, argv[j]) == 0
-				|| ft_strcmp(argv[i], argv[j]) == 0)
+			if (ft_atol(argv[i]) == ft_atol(argv[j]))
 				return (0);
 			j++;
 		}
