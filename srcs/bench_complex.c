@@ -6,34 +6,36 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 01:42:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/10 23:23:49 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 03:54:56 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
+void	restore_b_stack(t_list **stack_b, int rb_count, t_stats **stats)
+{
+	while (rb_count-- > 0)
+	{
+		rrb(stack_b);
+		(*stats)->rrb_count++;
+	}
+}
+
+void	restore_a_stack(t_list **stack_a, int ra_count, t_stats **stats)
+{
+	while (ra_count-- > 0)
+	{
+		rra(stack_a);
+		(*stats)->rra_count++;
+	}
+}
+
+void	bench_complex_next(t_stacks s, t_stats **stats, int len, int print)
 {
 	long	pivot;
 	long	*arr;
 	int		pushed;
 
-	if (!s.stack_a || !*s.stack_a)
-		return ;
-	if (len <= 3)
-	{
-		sort_three(s, len, stats);
-		if (print)
-		{
-			if ((*stats)->isadaptive)
-				(*stats)->algo = ADAPTIVE;
-			else
-				(*stats)->algo = COMPLEX;
-			count_bench(stats);
-			print_bench_info(stats, COMPLEX);
-		}
-		return ;
-	}
 	arr = array_sort(*(s.stack_a), len);
 	if (!arr)
 		return ;
@@ -52,6 +54,27 @@ void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
 		print_bench_info(stats, COMPLEX);
 		free(*stats);
 	}
+}
+
+void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
+{
+	if (!s.stack_a || !*s.stack_a)
+		return ;
+	if (len <= 3)
+	{
+		sort_three(s, len, stats);
+		if (print)
+		{
+			if ((*stats)->isadaptive)
+				(*stats)->algo = ADAPTIVE;
+			else
+				(*stats)->algo = COMPLEX;
+			count_bench(stats);
+			print_bench_info(stats, COMPLEX);
+		}
+		return ;
+	}
+	bench_complex_next(s, stats, len, print);
 }
 
 int	bench_complex_a_next(t_stacks s, int len, long pivot, t_stats **stats)
@@ -79,11 +102,7 @@ int	bench_complex_a_next(t_stacks s, int len, long pivot, t_stats **stats)
 		}
 		i++;
 	}
-	while (ra_count-- > 0)
-	{
-		rra(s.stack_a);
-		(*stats)->rra_count++;
-	}
+	restore_a_stack(s.stack_a, ra_count, stats);
 	return (pushed);
 }
 
@@ -134,10 +153,6 @@ int	bench_complex_b_next(t_stacks s, int len, long pivot, t_stats **stats)
 		}
 		i++;
 	}
-	while (rb_count-- > 0)
-	{
-		rrb(s.stack_b);
-		(*stats)->rrb_count++;
-	}
+	restore_b_stack(s.stack_b, rb_count, stats);
 	return (pushed);
 }

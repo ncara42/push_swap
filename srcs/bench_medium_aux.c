@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   bench_medium_aux.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:59:26 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 23:18:01 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 03:59:33 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	rotate_to_max(t_list **stack_b, int max_pos, int size, t_stats **stats)
+{
+	if (max_pos <= size / 2)
+	{
+		while (max_pos-- > 0)
+		{
+			rb(stack_b);
+			if (stats && *stats)
+				(*stats)->rb_count++;
+		}
+	}
+	else
+	{
+		max_pos = size - max_pos;
+		while (max_pos-- > 0)
+		{
+			rrb(stack_b);
+			if (stats && *stats)
+				(*stats)->rrb_count++;
+		}
+	}
+}
 
 void	bench_medium_pushing_to_a(t_stacks s, int bench, t_stats **stats)
 {
@@ -21,25 +44,7 @@ void	bench_medium_pushing_to_a(t_stacks s, int bench, t_stats **stats)
 	{
 		max_pos = get_max_pos(*s.stack_b);
 		size = ft_lstsize(*s.stack_b);
-		if (max_pos <= size / 2)
-		{
-			while (max_pos-- > 0)
-			{
-				rb(s.stack_b);
-				if (bench)
-					(*stats)->rb_count++;
-			}
-		}
-		else
-		{
-			max_pos = size - max_pos;
-			while (max_pos--)
-			{
-				rrb(s.stack_b);
-				if (bench)
-					(*stats)->rrb_count++;
-			}
-		}
+		rotate_to_max(s.stack_b, max_pos, size, stats);
 		pa(s.stack_a, s.stack_b);
 		if (bench)
 			(*stats)->pa_count++;
@@ -51,31 +56,11 @@ void	bench_medium_nearest_num(t_stacks s, long *arr, int bench,
 {
 	int	top;
 	int	bottom;
-	int	size;
 	int	pivot;
 
 	top = get_top_pos(*s.stack_a, arr, s.start, s.end);
 	bottom = get_bottom_pos(*s.stack_a, arr, s.start, s.end);
-	size = ft_lstsize(*s.stack_a);
-	if (top <= size - bottom)
-	{
-		while (top-- > 0)
-		{
-			ra(s.stack_a);
-			if (bench)
-				(*stats)->ra_count++;
-		}
-	}
-	else
-	{
-		bottom = size - bottom;
-		while (bottom-- > 0)
-		{
-			rra(s.stack_a);
-			if (bench)
-				(*stats)->rra_count++;
-		}
-	}
+	rotate_to_nearest(s.stack_a, top, bottom, stats);
 	pb(s.stack_a, s.stack_b);
 	if (bench)
 		(*stats)->pb_count++;
@@ -85,6 +70,33 @@ void	bench_medium_nearest_num(t_stacks s, long *arr, int bench,
 		rb(s.stack_b);
 		if (bench)
 			(*stats)->rb_count++;
+	}
+}
+
+void	rotate_to_nearest(t_list **stack_a, int top, int bottom,
+			t_stats **stats)
+{
+	int	size;
+
+	size = ft_lstsize(*stack_a);
+	if (top <= size - bottom)
+	{
+		while (top-- > 0)
+		{
+			ra(stack_a);
+			if (stats && *stats)
+				(*stats)->ra_count++;
+		}
+	}
+	else
+	{
+		bottom = size - bottom;
+		while (bottom-- > 0)
+		{
+			rra(stack_a);
+			if (stats && *stats)
+				(*stats)->rra_count++;
+		}
 	}
 }
 

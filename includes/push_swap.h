@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 00:57:45 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 04:00:48 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ int				get_max_pos(t_list *stack_b);
 int				get_n_chunks(int n);
 int				in_range(t_list *stack_a, long *arr, int start, int end);
 void			nearest_num(t_stacks s, long *arr);
+void			rotate_to_nearest(t_list **stack_a, int top, int bottom,
+					t_stats **stats);
 
 // Complex
 void			complex(t_stacks s, int len);
