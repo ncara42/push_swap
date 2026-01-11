@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:45:46 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/11 18:01:25 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 18:14:00 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	simple(t_list **stack_a, t_list **stack_b)
 {
 	int		nodes;
 	int		pos_min;
-	float	disorder;
 
-	disorder = disorder_index(ft_lstsize(*stack_a), *stack_a);
+	if (disorder_index(ft_lstsize(*stack_a), *stack_a) == 0)
+		return ;
 	while (ft_lstsize(*stack_a) > 3)
 	{
 		pos_min = get_min(*stack_a);
@@ -59,9 +59,7 @@ void	simple(t_list **stack_a, t_list **stack_b)
 		}
 		pb(stack_a, stack_b);
 	}
-	if (disorder == 0.00)
-		return ;
-	else if (ft_lstsize(*stack_a) == 2)
+	if (ft_lstsize(*stack_a) == 2)
 		sa(stack_a);
 	else
 		sort_three_a(stack_a, NULL, 0);
