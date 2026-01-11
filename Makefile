@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/11 04:49:20 by admin            ###   ########.fr        #
+#    Updated: 2026/01/11 04:57:20 by admin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,18 +36,20 @@ SRCS =	srcs/push_swap.c \
 		srcs/rotate.c \
 		srcs/reverse_rotate.c \
 		srcs/simple.c \
+		srcs/bench_simple.c \
 		srcs/medium.c \
+		srcs/bench_medium.c \
+		srcs/bench_medium_aux.c \
 		srcs/complex.c \
+		srcs/bench_complex.c \
+		srcs/bench_complex_aux.c \
 		srcs/sort_three-v1.c \
 		srcs/sort_three-v2.c \
+		srcs/sort_moves.c \
 		srcs/free.c \
 		srcs/parse_options.c\
 		srcs/count_bench.c \
 		srcs/adaptive.c \
-		srcs/bench_simple.c \
-		srcs/bench_medium.c \
-		srcs/bench_complex.c \
-		srcs/bench_medium_aux.c \
 		srcs/medium_aux.c \
 		srcs/print_bench_info.c
 

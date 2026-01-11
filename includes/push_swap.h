@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 04:47:27 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 04:59:50 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ void			sort_three(t_stacks s, int pushed,
 					t_stats **stats);
 void			sort_three_b(t_stacks s, int len,
 					t_stats **stats);
+void			sort_moves_b(t_stacks s, t_stats **stats, int bench);
+void			sort_moves_a(t_list **stack_a, t_stats **stats, t_fst fst,
+					int bench);
+void			sort_moves_a_next(t_list **stack_a, t_stats **stats, t_fst fst,
+					int bench);
 void			ft_bzero(void *p, size_t i);
 void			ft_putnbr(int n);
 int				select_option(t_optype *opt, t_stats *st, t_options *o);
@@ -130,6 +135,10 @@ void			complex(t_stacks s, int len);
 void			complex_b(t_stacks s, int pushed);
 int				complex_a_next(t_stacks s, int len, long pivot);
 int				complex_b_next(t_stacks s, int len, long pivot);
+void			restore_b_stack(t_list **stack_b, int rb_count,
+					t_stats **stats);
+void			restore_a_stack(t_list **stack_a, int rb_count,
+					t_stats **stats);
 
 // Bench
 void			print_bench_info(t_stats **stats, t_optype opt);
