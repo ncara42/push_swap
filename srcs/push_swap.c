@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 00:14:16 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/11 00:58:39 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	parse_split(int argc, char **argv, t_list **stack_a)
 	flags = (t_flags){0};
 	i = (check_flags(argc, argv, flags));
 	if (i == -1 || i > 3)
-		return (0);
+		return (write(1, "Error\n", 6), 0);
 	split = ft_split(argv[i], ' ');
 	if (!split)
 		return (write(1, "Error\n", 6), 0);

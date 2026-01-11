@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:51:09 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/10 04:38:44 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 00:52:15 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ int	check_minmax(char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (argv[i][0] == '-' && argv[i][1] == '-')
-		{
-			i++;
-			continue ;
-		}
 		num = ft_atol(argv[i]);
 		if (num < INT_MIN || num > INT_MAX)
 			return (0);
@@ -44,7 +39,9 @@ int	check_dups(char **argv)
 		j = i + 1;
 		while (argv[j])
 		{
-			if (ft_strcmp(argv[i], argv[j]) == 0)
+			if (argv[i][0] == '+' || argv[i][0] != '+')
+				if (ft_strcmp(argv[i] + 1, argv[j]) == 0
+				|| ft_strcmp(argv[i], argv[j]) == 0)
 				return (0);
 			j++;
 		}
@@ -80,11 +77,6 @@ int	check_num(char **argv)
 	numbers = 0;
 	while (argv[i])
 	{
-		if (argv[i][0] == '-' && argv[i][1] == '-')
-		{
-			i++;
-			continue ;
-		}
 		if (!is_valid_number(argv[i]))
 			return (0);
 		numbers++;
