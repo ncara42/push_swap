@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 22:08:10 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 04:00:48 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/11 04:47:27 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "../libft/includes/libft.h"
-# include "../ft_printf/includes/ft_printf.h"
 
 typedef enum e_option
 {

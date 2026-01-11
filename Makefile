@@ -6,7 +6,7 @@
 #    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/10 01:40:49 by admin            ###   ########.fr        #
+#    Updated: 2026/01/11 04:49:20 by admin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,7 @@ endif
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-PRINTF_DIR = ./ft_printf
-PRINTF = $(PRINTF_DIR)/libftprintf.a
-
-LDFLAGS = -I./includes -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf
+LDFLAGS = -I./includes -L$(LIBFT_DIR) -lft
 
 SRCS =	srcs/push_swap.c \
 		srcs/disorder_index.c \
@@ -59,17 +56,14 @@ OBJS = $(SRCS:srcs/%.c=$(OBJS_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME):  $(LIBFT) $(PRINTF) $(OBJS)
+$(NAME):  $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 	@echo "PUSH_SWAP COMPILED!"
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
-$(PRINTF):
-	@make -C $(PRINTF_DIR)
-
-debug: $(LIBFT) $(PRINTF)
+debug: $(LIBFT)
 	make DEBUG=1 -B $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(DNAME)
 	@echo "PUSH_SWAP DEBUG COMPILED!"
@@ -82,12 +76,10 @@ $(OBJS_DIR)/%.o: srcs/%.c Makefile includes/push_swap.h
 clean:
 	@rm -rf $(OBJS_DIR)
 	@make -C $(LIBFT_DIR) clean
-	@make -C $(PRINTF_DIR) clean
 
 fclean: clean
 	@rm -f $(NAME) $(DNAME)
 	@make -C $(LIBFT_DIR) fclean
-	@make -C $(PRINTF_DIR) fclean
 
 re : fclean all
 
