@@ -6,7 +6,7 @@
 #    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 11:54:06 by ncaravac          #+#    #+#              #
-#    Updated: 2026/01/11 16:34:57 by vvan-ach         ###   ########.fr        #
+#    Updated: 2026/01/11 19:23:19 by ncaravac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ ${NAME}: ${OBJ}
 	@echo "LIBFT COMPILED!"
 
 $(OBJS_DIR)/%.o: srcs/%.c Makefile includes/libft.h
-	mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)
 	@${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
 	@echo "Compiling: $<"
 

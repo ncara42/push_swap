@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 18:35:04 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/11 19:27:40 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,6 @@ int	main(int argc, char **argv)
 		return (0);
 	parse_options(argc, argv, &options);
 	adaptive(s, &options);
-	while (stack_a)
-	{
-		printf("%ld\n", stack_a->content);
-		stack_a = stack_a->next;
-	}
 	free_all(&stack_a, &stack_b, &options);
 	return (0);
 }
