@@ -1,0 +1,8 @@
+*.o
+*.d
+.DS_STORE
+.gdb_history
+push_swap
+checker_linux
+checker*
+a.out
