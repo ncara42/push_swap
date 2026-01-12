@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:20:57 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/11 19:45:35 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/12 19:05:19 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,4 @@ void	bench_simple(t_stacks s, t_stats **stats)
 	sort_small_a(s, s.stack_a, stats);
 	count_bench(stats);
 	print_bench_info(stats, SIMPLE);
-	free(*stats);
 }

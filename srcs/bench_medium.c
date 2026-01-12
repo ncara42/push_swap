@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 23:28:36 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/11 19:47:05 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/12 19:05:07 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,4 @@ void	bench_medium(t_stacks s, t_stats **stats)
 		(*stats)->algo = MEDIUM;
 	count_bench(stats);
 	print_bench_info(stats, MEDIUM);
-	free(*stats);
 }

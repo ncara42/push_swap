@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 01:42:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/12 18:53:56 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/12 19:05:31 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
 	{
 		count_bench(stats);
 		print_bench_info(stats, COMPLEX);
-		free(*stats);
 	}
 
 }
