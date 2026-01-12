@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
+#    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/11 16:33:14 by vvan-ach         ###   ########.fr        #
+#    Updated: 2026/01/12 13:38:45 by ncaravac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 DNAME = dpush_swap
 CC = cc
 CFLAGS = -Wextra -Werror -Wall
-INCLUDES = -I./includes -I$(LIBFT_DIR)/includes -I$(PRINTF_DIR)/includes
+INCLUDES = -I./includes -I$(LIBFT_DIR)/includes
 
 ifeq ($(DEBUG), 1)
 	CFLAGS += -ggdb3
