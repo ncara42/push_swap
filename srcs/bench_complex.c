@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 01:42:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/12 19:05:31 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/12 19:25:54 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,32 +33,26 @@ void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
 {
 	if (!s.stack_a || !*s.stack_a)
 		return ;
+	if ((*stats)->isadaptive)
+		(*stats)->algo = ADAPTIVE;
+	else
+		(*stats)->algo = COMPLEX;
 	if (len <= 3)
 	{
 		sort_three(s, len, stats);
 		if (print)
 		{
-			if ((*stats)->isadaptive)
-				(*stats)->algo = ADAPTIVE;
-			else
-				(*stats)->algo = COMPLEX;
 			count_bench(stats);
 			print_bench_info(stats, COMPLEX);
 		}
 		return ;
 	}
 	bench_complex_next(s, stats, len, print);
-
-	if ((*stats)->isadaptive)
-		(*stats)->algo = ADAPTIVE;
-	else
-		(*stats)->algo = COMPLEX;
 	if (print)
 	{
 		count_bench(stats);
 		print_bench_info(stats, COMPLEX);
 	}
-
 }
 
 int	bench_complex_a_next(t_stacks s, int len, long pivot, t_stats **stats)

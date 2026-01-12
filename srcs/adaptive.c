@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:12:07 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/12 19:16:38 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/12 19:26:38 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	run_complex(t_stacks s, t_stats **stats)
 	size = ft_lstsize(*s.stack_a);
 	if ((*stats)->isbench)
 		bench_complex(s, stats, size, 1);
-	else	
+	else
 		complex(s, size);
 }
 
