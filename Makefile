@@ -6,7 +6,7 @@
 #    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/12 19:11:26 by ncaravac         ###   ########.fr        #
+#    Updated: 2026/01/12 19:35:29 by vvan-ach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,4 +85,4 @@ fclean: clean
 
 re : fclean all
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re libft debug
