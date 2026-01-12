@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/12 13:48:37 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:25:48 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int	first_check(int argc, char **argv, t_stacks s)
 	}
 	return (1);
 }
-
 
 int	main(int argc, char **argv)
 {
