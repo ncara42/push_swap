@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 01:42:01 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/11 04:52:59 by admin            ###   ########.fr       */
+/*   Updated: 2026/01/12 18:53:56 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,7 @@ void	bench_complex_next(t_stacks s, t_stats **stats, int len, int print)
 	pushed = bench_complex_a_next(s, len, pivot, stats);
 	bench_complex(s, stats, len - pushed, 0);
 	bench_complex_b(s, pushed, stats);
-	if ((*stats)->isadaptive)
-		(*stats)->algo = ADAPTIVE;
-	else
-		(*stats)->algo = COMPLEX;
-	if (print)
-	{
-		count_bench(stats);
-		print_bench_info(stats, COMPLEX);
-		free(*stats);
-	}
+	(void)print;
 }
 
 void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
@@ -57,6 +48,18 @@ void	bench_complex(t_stacks s, t_stats **stats, int len, int print)
 		return ;
 	}
 	bench_complex_next(s, stats, len, print);
+
+	if ((*stats)->isadaptive)
+		(*stats)->algo = ADAPTIVE;
+	else
+		(*stats)->algo = COMPLEX;
+	if (print)
+	{
+		count_bench(stats);
+		print_bench_info(stats, COMPLEX);
+		free(*stats);
+	}
+
 }
 
 int	bench_complex_a_next(t_stacks s, int len, long pivot, t_stats **stats)
