@@ -1,6 +1,7 @@
 *.a
 *.o
 *.d
+objs/
 .DS_STORE
 .gdb_history
 push_swap
