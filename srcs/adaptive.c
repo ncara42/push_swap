@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:12:07 by vvan-ach          #+#    #+#             */
-/*   Updated: 2026/01/12 19:08:09 by vvan-ach         ###   ########.fr       */
+/*   Updated: 2026/01/12 19:16:38 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	which_algo(t_optype opt, t_stacks s, t_stats **stats)
 	{
 		if ((*stats)->isbench)
 			print_bench_info(stats, SIMPLE);
-		free(*stats);
 	}
 	return ;
 }
