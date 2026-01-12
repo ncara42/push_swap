@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:51:09 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/11 18:53:43 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/12 19:04:44 by ncaravac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,9 @@ static int	is_valid_number(char *str)
 		return (0);
 	while (str[j])
 	{
-		if ((str[j] >= '0' && str[j] <= '9'))
-			j++;
-		else if ((str[j] >= 9 && str[j] <= 13) || str[j] == 39)
-			j++;
-		else
+		if (!(str[j] >= '0' && str[j] <= '9'))
 			return (0);
+		j++;
 	}
 	return (1);
 }

@@ -6,14 +6,14 @@
 #    By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 14:22:24 by vvan-ach          #+#    #+#              #
-#    Updated: 2026/01/12 18:51:22 by ncaravac         ###   ########.fr        #
+#    Updated: 2026/01/12 19:11:26 by ncaravac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 DNAME = dpush_swap
 CC = cc
-CFLAGS = -Wextra -Werror -Wall -ggdb3
+CFLAGS = -Wextra -Werror -Wall
 INCLUDES = -I./includes -I$(LIBFT_DIR)/includes
 
 ifeq ($(DEBUG), 1)
