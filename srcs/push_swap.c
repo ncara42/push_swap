@@ -6,7 +6,7 @@
 /*   By: ncaravac <ncaravac@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:51:29 by ncaravac          #+#    #+#             */
-/*   Updated: 2026/01/12 15:25:48 by ncaravac         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:50:20 by vvan-ach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	parse_split(int argc, char **argv, t_list **stack_a)
 int	first_check(int argc, char **argv, t_stacks s)
 {
 	if (argc == 1)
-		return (write(2, "Error\n", 6), 0);
+		return (0);
 	else if (argc == 2 || argc == 3 || argc == 4)
 	{
 		if (!parse_split(argc, argv, s.stack_a))
