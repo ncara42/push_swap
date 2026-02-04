@@ -2,10 +2,6 @@
 
 # Push Swap - Stack sorting and algorithm implementations exercise
 
-<p align="center">
-	<img src="https://i.ibb.co/1YF8R8Z9/Chat-GPT-Image-Dec-27-2025-09-08-13-PM-1.png" width="800">
-</p>
-
 ## Description
 
 	Push swap is a project requiring to learn, understand and implement different types of sorting algorithms, the main objective is to create a program that takes as argument a stack of numbers that are not in order, and then, based on the amount of disorder in that stack, choose an algorithm varying betwen O(n^2) (simple), O(n√n) (medium), and O(n log n) (complex) to sort that stack with the less movements possible. Most of the projet is about optimisation and fine tuning our implementations of theses three algorithm that we choose : Selection sorting (simple), chunk based sorting (medium), quicksort with stack-based partitioning (complex)
