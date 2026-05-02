@@ -286,6 +286,22 @@ ARG=$(seq 1 100 | shuf); ./push_swap $ARG | wc -l
 ARG=$(seq 1 500 | shuf); ./push_swap --bench $ARG
 ```
 
+## Valgrind
+
+Para detectar fugas de memoria y accesos inválidos, compila en modo debug y ejecuta Valgrind:
+
+```bash
+make debug
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./dpush_swap 5 2 3 1 4
+```
+
+También puedes usar el binario normal:
+
+```bash
+make
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap 5 2 3 1 4
+```
+
 ## 📈 Rendimiento Esperado
 
 ### Pilas Pequeñas (< 100 números)
